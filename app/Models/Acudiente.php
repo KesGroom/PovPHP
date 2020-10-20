@@ -7,5 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Acudiente extends Model
 {
-    use HasFactory;
+    public function user()
+    {
+        return $this->belongsTo(User::class)->withDefault([
+            'name' => 'Nadie',
+            'telefono' => 'Nadie',
+            'email' => 'Nadie',
+        ]);
+    }
 }
