@@ -27,7 +27,7 @@
                 <td>{{$usuario->genero}}</td>
                 <td>{{$usuario->tipo_documento}}</td>
                 <td><a href="{{route('usuarios.edit',$usuario)}}">Editar</a>
-                    <a href="{{route('usuarios.cancel',$usuario)}}">Eliminar</a> 
+                  
                  </td>
             </tr>
         @endforeach

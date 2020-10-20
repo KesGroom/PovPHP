@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class UserController extends Controller
 {
     public function index(){
-       $usuarios = User::all();
+       $usuarios = User::where('estado','activo')->get();
        return view('usuarios.index', compact('usuarios'));
     }
     public function edit(User $usuario){
