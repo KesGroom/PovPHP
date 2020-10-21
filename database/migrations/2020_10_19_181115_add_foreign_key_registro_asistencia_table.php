@@ -22,8 +22,8 @@ class AddForeignKeyRegistroAsistenciaTable extends Migration
             $table->foreign('estudiante')->references('id')->on('estudiantes')
                 ->onDelete('cascade')->onUpdate('cascade');
 
-            $table->integer('docente_materia')->unsigned();
-            $table->foreign('docente_materia')->references('id')->on('docente_materia')
+            $table->integer('docente_curso')->unsigned();
+            $table->foreign('docente_curso')->references('id')->on('docente_curso')
                 ->onDelete('cascade')->onUpdate('cascade');
         });
     }
@@ -38,7 +38,7 @@ class AddForeignKeyRegistroAsistenciaTable extends Migration
         Schema::table('registro_asistencia', function (Blueprint $table) {
             $table->dropForeign('registro_asistencia_periodos_id_foreign');
             $table->dropForeign('registro_asistencia_estudiantes_id_foreign');
-            $table->dropForeign('registro_asistencia_docente_materia_id_foreign');
+            $table->dropForeign('registro_asistencia_docente_curso_id_foreign');
         });
     }
 }

@@ -14,10 +14,6 @@ class AddForeignKeyHorarioClaseTable extends Migration
     public function up()
     {
         Schema::table('horario_clase', function (Blueprint $table) {
-            $table->integer('docente_materia')->unsigned();
-            $table->foreign('docente_materia')->references('id')->on('docente_materia')
-                ->onDelete('cascade')->onUpdate('cascade');
-
             $table->integer('docente_curso')->unsigned();
             $table->foreign('docente_curso')->references('id')->on('docente_curso')
                 ->onDelete('cascade')->onUpdate('cascade');
@@ -33,7 +29,6 @@ class AddForeignKeyHorarioClaseTable extends Migration
     {
         Schema::table('horario_clase', function (Blueprint $table) {
             $table->dropForeign('horario_clase_docente_curso_id_foreign');
-            $table->dropForeign('horario_clase_docente_materia_id_foreign');
         });
     }
 }

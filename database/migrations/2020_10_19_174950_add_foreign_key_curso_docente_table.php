@@ -21,6 +21,10 @@ class AddForeignKeyCursoDocenteTable extends Migration
             $table->integer('curso')->unsigned();
             $table->foreign('curso')->references('id')->on('cursos')
                 ->onDelete('cascade')->onUpdate('cascade');
+
+            $table->integer('materia')->unsigned();
+            $table->foreign('materia')->references('id')->on('materias')
+                ->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -34,6 +38,7 @@ class AddForeignKeyCursoDocenteTable extends Migration
         Schema::table('docente_curso', function (Blueprint $table) {
             $table->dropForeign('docente_curso_users_id_foreign');
             $table->dropForeign('docente_curso_curso_id_foreign');
+            $table->dropForeign('docente_curso_materias_id_foreign');
         });
     }
 }
