@@ -27,7 +27,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('foto_perfil',100);
             $table->enum('estado', ['Activo', 'Inactivo']);
-            $table->enum('tipo_documento', ['Cedula ciudadania', 'Tarjeta de identidad', 'Registro civil']);
+            $table->enum('tipo_documento', ['Cedula de ciudadania', 'Tarjeta de identidad', 'Registro civil']);
             $table->rememberToken();
             $table->timestamps();
         });

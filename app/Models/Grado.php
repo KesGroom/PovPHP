@@ -9,4 +9,5 @@ class Grado extends Model
 {
     use HasFactory;
   
+    protected $table = 'grados';
 }

@@ -4,7 +4,9 @@
     "description": "The Laravel Framework.",
     "keywords": [
         "framework",
-        "laravel"
+        "laravel",
+        "POV",
+        "María Cano IED"
     ],
     "license": "MIT",
     "require": {

@@ -1,0 +1,341 @@
+body a:hover{
+    text-decoration: none !important;
+}
+
+.scrollbarStyle::-webkit-scrollbar{
+    width: 5px;
+} 
+
+.scrollbarStyle::-webkit-scrollbar-thumb{
+    background-color: black;
+    border-radius: 15px;
+}
+
+/* Clase para ocultar cosas */
+.Oculto{
+    display: none;
+}
+
+.enlaces{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;  
+    width: 100%; 
+    padding: 0.5rem 2.5rem; 
+    background-color: #b71c1c;
+    margin-top:-1.4rem;
+}
+
+.enlaces a{
+    font-size: 1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.enlaces ion-icon{
+    color: white;
+    font-size: 1em;
+    margin-right: 5px;
+}
+
+.footer {
+    width: 100%;
+    font-size: 0.9em;
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+}
+
+.redes {
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.red-block {
+    color: white;
+    width: 33.33%;
+    padding: 0.3rem 0.8rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.red-block:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.facebook {
+    background-color: rgb(59, 59, 187);
+}
+
+.instagram {
+    background-color: rgb(184, 129, 28);
+}
+
+.youtube {
+    background-color: rgb(194, 23, 23);
+}
+
+.design {
+    color: white;
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    text-decoration: none;
+    padding: 0 1rem;
+}
+
+/* Inputs*/
+/* --- radio, checkbox --- */
+[type="radio"],
+[type="checkbox"]{
+    position: absolute; 
+    opacity: 0;
+    display: none;
+    pointer-events: initial;
+
+}
+
+[type="radio"]+label,
+[type="checkbox"] + label,
+.exportExcel label{
+    cursor: pointer;
+    user-select: none; 
+}
+
+.Check label,
+.Radio label{
+    color: #9e9e9e;
+    padding: 5px 15px 5px 36px;
+    display: inline-block;
+    position: relative;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.Check label:hover,
+.Radio label:hover{
+    background: rgba(183, 28, 28, 0.4);
+    color: white;
+}
+
+.Check label:hover:before,
+.Radio label:hover:before{
+    border: 1.5px solid white;
+}
+
+.Check label:before,
+.Radio label:before{
+    content: "";
+    width: 12px;
+    height: 12px;
+    background: none;
+    display: inline-block;
+    border: 1.5px solid #b71c1c;
+    border-radius: 50%;
+    position: absolute;
+    left: 12px;
+    top: 7px;
+    transition: all 0.3s ease;
+}
+
+.Check label:before{
+    border-radius: 2px;
+}
+
+.Check input[type="checkbox"]:checked+label,
+.Radio input[type="radio"]:checked+label{
+    padding: 5px 15px;
+    background: #b71c1c;
+    border-radius: 15px;
+    color: white;
+}
+
+.Check input[type="checkbox"]:checked+label:before,
+.Radio input[type="radio"]:checked+label:before{
+    display: none;
+}
+
+/* Engaño visual para cuando el checkbox está "Seleccionado" */
+
+.reverseCheck label{
+    color: white;
+    padding: 5px 15px;
+    display: inline-block;
+    position: relative;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    background: #b71c1c;
+}
+
+.reverseCheck input[type="checkbox"]:checked+label:hover{
+    background: rgba(183, 28, 28, 0.4);
+    color: white;
+}
+
+.reverseCheck input[type="checkbox"]:checked+label:hover:before{
+    border: 1.5px solid white;
+}
+
+.reverseCheck label:before{
+    content: "";
+    width: 12px;
+    height: 12px;
+    background: none;
+    display: none;
+    border: 1.5px solid transparent;
+    border-radius: 3px;
+    position: absolute;
+    left: 12px;
+    top: 7px;
+    transition: all 0.3s ease;
+}
+
+.reverseCheck input[type="checkbox"]:checked+label{
+    padding: 5px 15px 5px 36px;
+    background: none;
+    border-radius: 3px;
+    color: #9e9e9e;
+}
+
+.reverseCheck input[type="checkbox"]:checked+label:before{
+    display: inline-block;
+    border: 1.5px solid #b71c1c;
+}
+
+.btn-MC{
+    background-color: #b71c1c;
+}
+
+/* FlexBox */
+/*Row*/
+.displayRowCC{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.displayRowSbC{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.displayRowSaC{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.displayRowSaIni{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+.displayRowSaEnd{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+.displayRowSbIni{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.displayRowSbEnd{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.displayRowIniC{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.displayRowEndC{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+/*Column*/
+.displayColCC{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.displayColSbC{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.displayColSbIni{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.displayColSbEnd{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.displayColIniC{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.displayColEndC{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+.displayColSaIni{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+.displayColSaC{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.displayColSaIni{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+.displayColSaEnd{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-end;
+}

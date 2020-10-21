@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Pqrs extends Model
 {
     use HasFactory;
+    protected $table = 'pqrs';
 }

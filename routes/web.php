@@ -7,6 +7,8 @@ use App\Http\Controllers\DocenteCursoController;
 use App\Http\Controllers\GradoController;
 use App\Http\Controllers\UserController;
 use App\Models\Docente_curso;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\VarDumper\Cloner\Cursor;
 
@@ -21,13 +23,8 @@ use Symfony\Component\VarDumper\Cloner\Cursor;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::middleware(['web'])->group(function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 //Routas para Acudiente
 Route::get('acudientes/create',[AcudienteController::class,'create'])->name('acudientes.create');
 Route::post('acudientes',[AcudienteController::class,'store'])->name('acudientes.store');
@@ -70,4 +67,19 @@ Route::put('docentecurso{curso}',[DocenteCursoController::class,'update'])->name
 
 
 Route::post('docentecurso',[DocenteCursoController::class,'crearplantillas'])->name('docentecurso.crearplantillas');
+    Route::get('/', function () {
+        return view('welcome');
+    });
 
+    Auth::routes();
+
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+
+    Route::get('lang/{lang}', function ($lang) {
+        session(['lang' => $lang]);
+        return Redirect::back();
+    })->where([
+        'lang' => 'en|es'
+    ]);
+});

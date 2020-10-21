@@ -8,9 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Curso extends Model
 {
     use HasFactory;
- /**
- * Get the author of the post.
- */
+ 
 public function grados()
 {
     return $this->belongsTo(Grado::class)->withDefault([
@@ -31,4 +29,5 @@ public function grados()
 // }
    
 
+    protected $table = 'cursos';
 }

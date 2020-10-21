@@ -15,4 +15,6 @@ class Acudiente extends Model
             'email' => 'Nadie',
         ]);
     }
+    use HasFactory;
+    protected $table = 'acudientes';
 }
