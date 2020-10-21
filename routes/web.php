@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,10 +15,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::middleware(['web'])->group(function () {
+    Route::get('/', function () {
+        return view('welcome');
+    });
+
+    Auth::routes();
+
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+    Route::get('lang/{lang}', function ($lang) {
+        session(['lang' => $lang]);
+        return Redirect::back();
+    })->where([
+        'lang' => 'en|es'
+    ]);
 });
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
