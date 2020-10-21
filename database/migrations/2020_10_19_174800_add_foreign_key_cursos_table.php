@@ -29,6 +29,7 @@ class AddForeignKeyCursosTable extends Migration
     {
         Schema::table('cursos', function (Blueprint $table) {
             $table->dropForeign('cursos_grados_id_foreign');
+            
         });
     }
 }
