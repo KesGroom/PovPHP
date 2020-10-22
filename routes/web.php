@@ -69,8 +69,8 @@ Route::middleware(['web'])->group(function () {
     Route::get('pqrs/create', [PqrsController::class, 'create'])->name('pqrs.create');
     Route::post('pqrs', [PqrsController::class, 'store'])->name('pqrs.store');
     Route::get('pqrs/index', [PqrsController::class, 'index'])->name('pqrs.index');
-    Route::get('pqrs/{curso}/edit', [PqrsController::class, 'edit'])->name('pqrs.edit');
-    Route::put('pqrs{curso}', [PqrsController::class, 'update'])->name('pqrs.update');
+    Route::get('pqrs/{pqrs}/responder', [PqrsController::class, 'responder'])->name('pqrs.responder');
+    Route::put('pqrs{pqrs}', [PqrsController::class, 'update'])->name('pqrs.update');
 
     Route::post('docentecurso', [DocenteCursoController::class, 'crearplantillas'])->name('docentecurso.crearplantillas');
     Route::get('/', function () {

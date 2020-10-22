@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Acudiente;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AcudienteController extends Controller
 {
@@ -25,7 +26,7 @@ class AcudienteController extends Controller
             'telefono_fijo' => 'required|min:3|max:250',
             'genero' => 'required',
             'password' => 'required|min:3|max:250',
-            'foto_perfil' => 'required',
+            'foto_perfil' => 'required|image',
             'tipo_documento' => 'required',
       ]);
              $user = new User();
@@ -39,7 +40,9 @@ class AcudienteController extends Controller
              $user->telefono_fijo = $validatedData['telefono_fijo'];
              $user->genero = $validatedData['genero'];
              $user->password  =  bcrypt($validatedData['password']);
-             $user->foto_perfil = $validatedData['foto_perfil'];
+             $imagenes = $request->file('foto_perfil')->store('imagenes');
+             $url  = Storage::url($imagenes);
+             $user->foto_perfil = $imagenes;
              $user->estado  = "Activo";
              $user->tipo_documento = $validatedData['tipo_documento'];
              $user->rol = 4;
@@ -48,8 +51,9 @@ class AcudienteController extends Controller
              $acuudiente->estado  ="Activo";
              $acuudiente->id = $validatedData['id'];
              $acuudiente->save();
-             $status = 'Se ha registaro un nuevo usuario';
-    return back()->with(compact('status'));
+             $status = 'Se ha registrado un nuevo acudiente';
+             return back()->with(compact('status'));
+       
     }
     public function index()
     {

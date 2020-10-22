@@ -15,7 +15,7 @@
                 </div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('acudientes.store') }}">
+                    <form method="POST" action="{{ route('acudientes.store') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group row">
                             <label for="id" class="col-md-4 col-form-label text-md-right">Documento</label>
@@ -147,7 +147,7 @@
                             <label for="foto_perfil" class="col-md-4 col-form-label text-md-right">Foto de perfil</label>
 
                             <div class="col-md-6">
-                                <input id="foto_perfil" type="text" class="form-control @error('foto_perfil') is-invalid @enderror" name="foto_perfil" value="{{ old('foto_perfil') }}" required autocomplete="foto_perfil" autofocus>
+                                <input id="foto_perfil" type="file" class="form-control @error('foto_perfil') is-invalid @enderror" name="foto_perfil" value="{{ old('foto_perfil') }}" required autocomplete="foto_perfil" autofocus accept="image/*">
 
                                 @error('foto_perfil')
                                     <span class="invalid-feedback" role="alert">

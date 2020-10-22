@@ -25,6 +25,20 @@ class PqrsController extends Controller
     }
     public function index(){
         $pqrs = Pqrs::where('estado','Activo')->get();
-        return view('pqrs.index' , compact('pqrs'));
+        $Pregunta = Pqrs::where('categoria','Pregunta')->get();
+        $Queja = Pqrs::where('categoria','Queja')->get();
+        $Reclamo = Pqrs::where('categoria','Reclamo')->get();
+        $Sugerencia = Pqrs::where('categoria','Sugerencia')->get();
+        return view('pqrs.index' , compact('pqrs','Pregunta','Queja','Reclamo','Sugerencia'));
+    }
+    public function responder(Pqrs $pqrs){
+        return view('pqrs.responder', compact('pqrs'));
+
+    }
+    public function update(Request $request,Pqrs $pqrs){
+        $pqrs->respuesta = $request->respuesta;
+        $pqrs->save();
+        $status = 'Se ha respondido  el pqrs';
+        return back()->with(compact('status'));
     }
 }
