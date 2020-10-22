@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm sticky-top">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
             <img src="{{ asset('storage/colegio/escudo.jpg') }}" alt="Escudo" style="width: 5rem; height: 3rem;">
@@ -24,33 +24,41 @@
                         <a class="nav-link" href="{{ route('login') }}">{{ __('pov.login') }}</a>
                     </li>
                 @else
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    <li class="nav-item displayRowSbC">
+                        <a class="nav-link" href="#">
+                            <img src="{{ asset('storage/imgPerfil/' . Auth::user()->foto_perfil . '') }}"
+                                style="width: 2.5rem; height: 2.5rem;" alt="">
+                        </a>
+                        <a class="nav-link" href="#">
                             {{ Auth::user()->name }}
                         </a>
+                        <a class="nav-link" title="{{ __('pov.logout') }}" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                            <ion-icon name="power"></ion-icon>
+                        </a>
 
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                 document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                        </div>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
                     </li>
                 @endguest
                 {{-- Language switch --}}
                 @if (session('lang') == 'es')
-                    <li class="nav-item">
+                    @guest
+                        <li class="nav-item">
+                        @else
+                        <li class="nav-item mt-2">
+                        @endguest
                         <a class="nav-link" href="{{ url('lang', ['en']) }}"><img
                                 src="{{ asset('storage/sistema/Estados.png') }}" alt="En"
                                 style="width: 1.3rem; height: 1.3rem;"></a>
                     </li>
                 @else
-                    <li class="nav-item">
+                    @guest
+                        <li class="nav-item">
+                        @else
+                        <li class="nav-item mt-2">
+                        @endguest
                         <a class="nav-link" href="{{ url('lang', ['es']) }}"><img
                                 src="{{ asset('storage/sistema/Colombia.png') }}" alt="Es"
                                 style="width: 1.3rem; height: 1.3rem;"></a>
