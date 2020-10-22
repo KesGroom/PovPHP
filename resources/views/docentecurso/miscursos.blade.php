@@ -27,7 +27,7 @@
                         </div>
                         <button type="submit" class="btn btn-primary">XD</button>
                     </form>
-                </td>
+             </td>
             </tr>
         
         @endforeach

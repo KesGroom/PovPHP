@@ -125,8 +125,7 @@
                         <div class=" ">
                             <label for="tipo_documento">tipo documento</label>
                             <select  class="form-control" id="tipo_documento" name="tipo_documento"  required>
-                                <option value="Cedula ciudadania">Cedula ciudadania<option>
-                                <option value="Cedula ciudadania">Cedula ciudadania<option>
+                                <option value="Cedula de ciudadania">Cedula de ciudadania<option>
                                 <option value="Tarjeta de identidad">Tarjeta de identidad<option>
                                 <option value="Registro civil">Registro civil<option>
                             </select>

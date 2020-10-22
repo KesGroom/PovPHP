@@ -9,4 +9,8 @@ class Pqrs extends Model
 {
     use HasFactory;
     protected $table = 'pqrs';
+    public function acudientes()
+    {
+        return $this->belongsTo('App\Models\Acudiente', 'acudiente');
+    }
 }
