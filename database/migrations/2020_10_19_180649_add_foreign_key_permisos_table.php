@@ -14,7 +14,7 @@ class AddForeignKeyPermisosTable extends Migration
     public function up()
     {
         Schema::table('permisos', function (Blueprint $table) {
-            $table->integer('permiso_padre')->unsigned();
+            $table->integer('permiso_padre')->unsigned()->nullable();
             $table->foreign('permiso_padre')->references('id')->on('permisos')
                 ->onDelete('cascade')->onUpdate('cascade');
         });

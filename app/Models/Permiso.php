@@ -9,4 +9,9 @@ class Permiso extends Model
 {
     use HasFactory;
     protected $table = 'permisos';
+
+    public function rol_has_permiso()
+    {
+        return $this->hasMany('App\Models\Rol_has_permiso');
+    }
 }

@@ -12,6 +12,9 @@
 
     @else
         <a href="">
+            <ion-icon name="newspaper"></ion-icon> {{ __('pov.txtNoticias') }}
+        </a>
+        <a href="">
             <ion-icon name="desktop"></ion-icon> {{ __('pov.txtDash') }}
         </a>
     @endguest

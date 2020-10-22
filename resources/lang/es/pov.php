@@ -18,6 +18,7 @@ return [
     'txtGaleria' => 'Galería',
     'txtContactenos' => 'Contactenos',
     'txtDash' => 'Panel de control',
+    'txtNoticias' => 'Noticias',
     'designBy' => 'Desarrollado por',
     'back' => 'Regresar',
 ];

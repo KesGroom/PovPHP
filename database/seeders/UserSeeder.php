@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class UserSeeder extends Seeder
 {
@@ -31,6 +32,7 @@ class UserSeeder extends Seeder
         $coor->estado = "Activo";
         $coor->tipo_documento= 'Cedula de ciudadania';
         $coor->rol = 1;
+        $coor->remember_token = Str::random(10);
         $coor->save();
         //Usuario Coordinador Luisa(Kevin)
         $luisa = new User();
@@ -49,6 +51,7 @@ class UserSeeder extends Seeder
         $luisa->estado = "Activo";
         $luisa->tipo_documento= 'Cedula de ciudadania';
         $luisa->rol = 1;
+        $luisa->remember_token = Str::random(10);
         $luisa->save();
         //Usuario Docente Kevin
         $kevin = new User();
@@ -67,6 +70,7 @@ class UserSeeder extends Seeder
         $kevin->estado = "Activo";
         $kevin->tipo_documento= 'Cedula de ciudadania';
         $kevin->rol = 2;
+        $kevin->remember_token = Str::random(10);
         $kevin->save();
         //Usuario Acudiente Carlos(Kevin)
         $carlos = new User();
@@ -85,6 +89,7 @@ class UserSeeder extends Seeder
         $carlos->estado = "Activo";
         $carlos->tipo_documento= 'Cedula de ciudadania';
         $carlos->rol = 4;
+        $carlos->remember_token = Str::random(10);
         $carlos->save();
         //Usuario Estudiante Cesar(Kevin)
         $cesar = new User();
@@ -103,6 +108,7 @@ class UserSeeder extends Seeder
         $cesar->estado = "Activo";
         $cesar->tipo_documento= 'Tarjeta de identidad';
         $cesar->rol = 3;
+        $cesar->remember_token = Str::random(10);
         $cesar->save();
 
 

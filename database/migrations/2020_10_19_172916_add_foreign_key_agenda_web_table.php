@@ -14,8 +14,8 @@ class AddForeignKeyAgendaWebTable extends Migration
     public function up()
     {
         Schema::table('agenda_web', function (Blueprint $table) {
-            $table->integer('docente_materia')->unsigned();
-            $table->foreign('docente_materia')->references('id')->on('docente_materia')
+            $table->integer('docente_curso')->unsigned();
+            $table->foreign('docente_curso')->references('id')->on('docente_curso')
                 ->onDelete('cascade')->onUpdate('cascade');
 
             $table->string('estudiante', 10);
@@ -36,7 +36,7 @@ class AddForeignKeyAgendaWebTable extends Migration
     public function down()
     {
         Schema::table('agenda_web', function (Blueprint $table) {
-            $table->dropForeign('agenda_web_docente_materia_id_foreign');
+            $table->dropForeign('agenda_web_docente_curso_id_foreign');
             $table->dropForeign('agenda_web_estudiantes_id_foreign');
             $table->dropForeign('agenda_web_actividades_id_foreign');
         });

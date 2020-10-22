@@ -17,6 +17,7 @@ return [
     'txtGaleria' => 'Gallery',
     'txtContactenos' => 'Contact Us',
     'txtDash' => 'Dashboard',
+    'txtNoticias' => 'News',
     'designBy' => 'Developed by',
     'back' => 'Return',
 

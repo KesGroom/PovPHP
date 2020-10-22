@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Permiso;
+use App\Models\Rol_has_permiso;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +27,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $rol = Auth::user()->rol;
+        $rhp = Rol_has_permiso::where('rol', $rol)->get()->values('id');
+        return view('home', compact('rhp'));
     }
 }
