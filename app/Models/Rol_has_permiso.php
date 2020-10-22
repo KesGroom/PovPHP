@@ -10,12 +10,12 @@ class Rol_has_permiso extends Model
     use HasFactory;
     protected $table = 'roles_has_permisos';
 
-    public function rol()
+    public function roles()
     {
         return $this->belongsTo('App\Models\Rol', 'rol');
     }
-    public function permiso()
+    public function permisos()
     {
-        return $this->belongsTo('App\Models\Permiso', 'id');
+        return $this->belongsTo('App\Models\Permiso', 'permiso');
     }
 }
