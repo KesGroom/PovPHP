@@ -15,7 +15,7 @@ class AddForeignKeyMateriasTable extends Migration
     {
         Schema::table('materias', function (Blueprint $table) {
             $table->integer('area')->unsigned();
-            $table->foreign('area')->references('id')->on('area_grado')
+            $table->foreign('area')->references('id')->on('areas')
                 ->onDelete('cascade')->onUpdate('cascade');
         });
     }
@@ -28,7 +28,7 @@ class AddForeignKeyMateriasTable extends Migration
     public function down()
     {
         Schema::table('materias', function (Blueprint $table) {
-            $table->dropForeign('materias_area_grado_id_foreign');
+            $table->dropForeign('materias_area_id_foreign');
         });
     }
 }

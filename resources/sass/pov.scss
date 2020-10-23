@@ -25,6 +25,9 @@ body a:hover{
     padding: 0.5rem 2.5rem; 
     background-color: #b71c1c;
     margin-top:-1.4rem;
+    position: sticky;
+    top: 75px;
+    z-index: 1000;
 }
 
 .enlaces a{
@@ -152,6 +155,7 @@ body a:hover{
     position: absolute;
     left: 12px;
     top: 7px;
+    margin-top: 0.2rem;
     transition: all 0.3s ease;
 }
 
@@ -221,6 +225,11 @@ body a:hover{
 
 .btn-MC{
     background-color: #b71c1c;
+    color: white;
+}
+.btn-MC:hover{
+    background-color: #a71d1d;
+    color: white;
 }
 
 /* FlexBox */
@@ -403,7 +412,6 @@ body a:hover{
 
 }
 
-
 .slider .contenedor {
     position: relative;
     width: 100%;
@@ -448,4 +456,216 @@ body a:hover{
 .contenido .informacion .creditos {
     width: 60%;
     margin-left: 40%;
+}
+
+.seccion {
+    width: 100%;
+
+    /* Flex */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tituloSeccionL {
+    width: 50%;
+    padding: 1rem;
+    color: white;
+    background-color: #b71c1c;
+    font-size: 2.5em;
+    border-radius: 0 15px 15px 0;
+}
+
+.separador {
+    border: none;
+    width: 50%;
+    height: 0.1rem;
+    background-color: rgb(148, 148, 148);
+}
+
+.tituloSeccionR {
+    width: 50%;
+    padding: 1rem;
+    color: white;
+    background-color: #b71c1c;
+    font-size: 2.5em;
+    border-radius: 15px 0 0 15px;
+}
+
+.biografia {
+    width: 100%;
+    padding: 1rem 18rem;
+    text-align: justify;
+
+    /* Flex */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+.biografia img {
+    width: 15rem;
+    height: 20rem;
+    margin-left: 2rem;
+    border: 2px solid #b71c1c;
+}
+
+.tituloQuienes {
+    font-size: 1.8em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.contenedorMV {
+    width: 100%;
+    padding: 1rem 11rem;
+
+    /* Flex */
+    display: flex;
+    flex-direction: row;
+}
+
+.mision p,
+.vision p {
+    text-align: justify;
+}
+
+.mision,
+.vision {
+    padding: 0 3rem;
+}
+
+.himno {
+    width: 100%;
+
+    /* Flex */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+
+}
+
+.estrofa {
+    width: 33.33%;
+    padding: 1rem 6rem;
+
+}
+
+.tituloEstrofa {
+    text-align: center;
+    font-size: 1.8em;
+    font-weight: bold;
+    margin-top: 1.5rem;
+}
+
+.estrofa p {
+    text-align: center;
+    border-top: 1.5px solid #b71c1c;
+    margin-bottom: 1.5rem;
+    padding: 0.5rem;
+}
+
+.Contacto {
+    width: 100%;
+    padding: 1rem 2rem;
+
+    /* Flex */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+.Contacto .mapa {
+    width: 48%;
+}
+
+.Contacto .mapa iframe {
+    width: 100%;
+    height: 28rem;
+}
+
+.informacion {
+    width: 100%;
+    padding: 1rem 2rem;
+
+    /* Flex */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-footer{
+    border-radius: 0 0 5px 5px !important;
+    padding: 12px 20px !important;
+    position: absolute;
+    width: 100.5% !important;
+    left: -1px;
+    border-right: 2px solid #8f1313 !important;
+    border-left: 2px solid #8f1313 !important;
+    border-bottom: 2px solid #8f1313 !important;
+}
+
+.card{
+    position: relative;
+}
+
+.containerMain {
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+}
+
+.mt-6 {
+    margin-top: 5rem;
+}
+
+.invMt-6 {
+    margin-top: -5.5rem;
+}
+
+.imgEditPerfil {
+    width: 200px;
+    height: 200px;
+}
+
+input[type="file"]#newFile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+label[for="newFile"] {
+    font-size: 14px;
+    color: black;
+    border: 1px solid #b71c1c;
+    display: flex !important;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    transition: all .5s;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 5px 40px !important;
+    width: fit-content;
+    text-align: center;
+}
+
+label[for="newFile"]:hover {
+    font-size: 14px;
+    color: white;
+    border-radius: 15px;
+    background-color: #b71c1c;
+    border: 1px solid #971313;
 }

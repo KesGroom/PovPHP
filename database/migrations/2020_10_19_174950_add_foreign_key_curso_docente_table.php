@@ -18,7 +18,7 @@ class AddForeignKeyCursoDocenteTable extends Migration
             $table->foreign('docente')->references('id')->on('users')
                 ->onDelete('cascade')->onUpdate('cascade');
 
-            $table->integer('curso')->unsigned();
+            $table->integer('curso')->unsigned()->nullable();
             $table->foreign('curso')->references('id')->on('cursos')
                 ->onDelete('cascade')->onUpdate('cascade');
 

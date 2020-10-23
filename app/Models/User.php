@@ -15,6 +15,13 @@ class User extends Authenticatable
      *
      * @var array
      */
+    protected $table = 'users';
+
+    public function roles()
+    {
+        return $this->belongsTo('App\Models\Rol', 'rol');
+    }
+
     protected $fillable = [
         "url",
         'name',

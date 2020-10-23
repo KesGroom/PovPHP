@@ -25,15 +25,15 @@
                     </li>
                 @else
                     <li class="nav-item displayRowSbC">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{ route('editProfile', Auth::user()) }}">
                             <img src="{{ asset('storage/imgPerfil/' . Auth::user()->foto_perfil . '') }}"
-                                style="width: 2.5rem; height: 2.5rem;" alt="">
+                                style="width: 2.5rem; height: 2.5rem; border-radius: 50%;" alt="">
                         </a>
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{ route('editProfile', Auth::user()) }}">
                             {{ Auth::user()->name }}
                         </a>
                         <a class="nav-link" title="{{ __('pov.logout') }}" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                document.getElementById('logout-form').submit();">
+                                                        document.getElementById('logout-form').submit();">
                             <ion-icon name="power"></ion-icon>
                         </a>
 

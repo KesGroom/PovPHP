@@ -17,7 +17,6 @@ class CreateMateriasTable extends Migration
             $table->increments('id');
             $table->enum('estado', ['Activo', 'Inactivo']);
             $table->string('nombre_materia', 30);
-            $table->integer('cantidad_competencias');
             $table->timestamps();
         });
     }

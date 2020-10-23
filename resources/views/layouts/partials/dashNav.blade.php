@@ -9,15 +9,15 @@
         @if ($permiso->permisos->permiso_padre == null)
             @if (session('lang') == 'es')
                 <div class="dropdown">
-                    <a href="{{ $permiso->permisos->url }}" class="dropdown-toggle" role="button"
+                    <a href="" class="dropdown-toggle" role="button"
                         id="{{ $permiso->permisos->nombre }}" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
-                        <ion-icon name="{{ $permiso->permisos->icon }}"></ion-icon> {{ $permiso->permisos->nombre }}
+                        <ion-icon name="{{$permiso->permisos->icon }}"></ion-icon> {{ $permiso->permisos->nombre }}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="{{ $permiso->permisos->nombre }}">
                         @foreach ($rhp as $hijo)
                             @if ($hijo->permisos->permiso_padre == $permiso->permiso)
-                                <a href="{{ $hijo->permisos->url }}" class="dropdown-item">
+                                <a href="{{$hijo->permisos->url}}" class="dropdown-item">
                                     {{ $hijo->permisos->nombre }}
                                 </a>
                             @endif
@@ -26,7 +26,7 @@
                 </div>
             @else
                 <div class="dropdown">
-                    <a href="{{ $permiso->permisos->url }}" class="dropdown-toggle" role="button"
+                    <a href="" class="dropdown-toggle" role="button"
                         id="{{ $permiso->permisos->name }}" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
                         <ion-icon name="{{ $permiso->permisos->icon }}"></ion-icon> {{ $permiso->permisos->name }}
@@ -34,7 +34,7 @@
                     <div class="dropdown-menu" aria-labelledby="{{ $permiso->permisos->name }}">
                         @foreach ($rhp as $hijo)
                             @if ($hijo->permisos->permiso_padre == $permiso->permiso)
-                                <a href="{{ $hijo->permisos->url }}" class="dropdown-item">
+                                <a href="{{$hijo->permisos->url}}" class="dropdown-item">
                                     {{ $hijo->permisos->name }}
                                 </a>
                             @endif

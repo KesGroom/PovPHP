@@ -26,17 +26,24 @@ use Symfony\Component\VarDumper\Cloner\Cursor;
 */
 
 Route::middleware(['web'])->group(function () {
+    //Rutas para control del usuario de sesión
+    Route::get('userPages/{usuario}/editProfile', [UserController::class, 'editProfile'])->name('editProfile');
+    Route::put('userPages/changePhoto{usuarios}', [UserController::class, 'updatePhoto'])->name('userPages.updatePhoto');
+    Route::put('userPages/changeInfo{usuario}', [UserController::class, 'updateInfo'])->name('userPages.updateInfo');
+    Route::put('userPages/changePass{usuarioPass}', [UserController::class, 'updatePass'])->name('userPages.updatePass');
+    
     //Routas para Acudiente
     Route::get('acudientes/create', [AcudienteController::class, 'create'])->name('acudientes.create');
     Route::post('acudientes', [AcudienteController::class, 'store'])->name('acudientes.store');
     Route::get('acudientes/index', [AcudienteController::class, 'index'])->name('acudientes.index');
 
-    //Routas para Acudiente
+    //Routas para Usuarios
     Route::get('usuarios/create', [UserController::class, 'create'])->name('usuarios.create');
     Route::post('usuarios', [UserController::class, 'store'])->name('usuarios.store');
     Route::get('usuarios/index', [UserController::class, 'index'])->name('usuarios.index');
     Route::get('usuarios/{usuario}/edit', [UserController::class, 'edit'])->name('usuarios.edit');
     Route::put('usuarios{usuario}', [UserController::class, 'update'])->name('usuarios.update');
+
     //Routas para Areas
     Route::get('areas/create', [AreaController::class, 'create'])->name('areas.create');
     Route::post('areas', [AreaController::class, 'store'])->name('areas.store');
@@ -75,7 +82,7 @@ Route::middleware(['web'])->group(function () {
     Route::post('docentecurso', [DocenteCursoController::class, 'crearplantillas'])->name('docentecurso.crearplantillas');
     Route::get('/', function () {
         return view('welcome');
-    });
+    })->name('welcome');
 
     Auth::routes();
 

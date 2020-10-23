@@ -29,9 +29,6 @@ class HomeController extends Controller
     {
         $rol = Auth::user()->rol;
         $rhp = Rol_has_permiso::where('rol', $rol)->get();
-        foreach($rhp as $r){
-            
-        }
         return view('home', compact('rhp'));
     }
 }

@@ -1,9 +1,5 @@
 <style>
-    .enlaces{
-        position: sticky;
-        top: 75px;
-        z-index: 1000;
-    }
+
 </style>
 <div class="enlaces">
     <a href="#Quienes">

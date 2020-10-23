@@ -23,7 +23,7 @@ class CreateZonaServicioTable extends Migration
             $table->time('hora_salida');
             $table->integer('tiempo_servicio');
             $table->integer('cupos');
-            $table->integer('cantidad_labores');
+            $table->string('labores');
             $table->string('dias_servicio', 80);
             $table->timestamps();
         });

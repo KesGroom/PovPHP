@@ -19,13 +19,12 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         $this->call(PermisosSeeder::class);
         $this->call(RolHasPermisoSeeder::class);
-        //$this->call(GradoSeeder::class);
-        //$this->call(CursoSeeder::class);
-        //$this->call(AreaSeeder::class);
-        //$this->call(AreaGradoSeeder::class);
-        //$this->call(MateriaSeeder::class);
-        //$this->call(AcudienteSeeder::class);
-        //$this->call(EstudianteSeeder::class);
-        //$this->call(DocenteCursoSeeder::class);
+        $this->call(GradoSeeder::class);
+        $this->call(CursoSeeder::class);
+        $this->call(AreaSeeder::class);
+        $this->call(MateriaSeeder::class);
+        // $this->call(AcudienteSeeder::class);
+        // $this->call(EstudianteSeeder::class);
+        $this->call(DocenteCursoSeeder::class);
     }
 }
