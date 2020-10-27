@@ -14,7 +14,7 @@ class PermisosSeeder extends Seeder
      */
     public function run()
     {
-        $url = "home";
+        $url = "http://127.0.0.1:8000/home";
 
         /**
          * Permisos de control de usuarios
@@ -34,7 +34,7 @@ class PermisosSeeder extends Seeder
         $perHUR = new Permiso();
         $perHUR->nombre = "Usuarios registrados";
         $perHUR->name = "Registered Users";
-        $perHUR->url = "usuarios/index";
+        $perHUR->url = "http://127.0.0.1:8000/usuarios/index";
         $perHUR->permiso_padre = $perUsu->id;
         $perHUR->estado = 'Activo';
         $perHUR->save();

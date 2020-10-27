@@ -9,8 +9,8 @@ class GradoController extends Controller
 {
     public function create(){
         return view('grados.create');
-
     }
+    
     public function store(Request $request){
       $area = new Grado();
       $area->estado = "Activo";
@@ -21,15 +21,16 @@ class GradoController extends Controller
       $status = 'Se ha creado un grado';
       return back()->with(compact('status'));
     }
+
     public function index(){
         $grados = Grado::where('estado','Activo')->get();
         return view('grados.index', compact('grados'));
-
     }
+
     public function edit(Grado $grado){
         return view('grados.edit', compact('grado'));
-
     }
+
     public function update(Request $request,Grado $grado){
         $grado->estado = "Activo";
         $grado->nombre_grado = $request->nombre_grado;

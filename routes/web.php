@@ -1,11 +1,13 @@
 <?php
 
+use App\Exports\UserExport;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AcudienteController;
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\DocenteCursoController;
 use App\Http\Controllers\GradoController;
+use App\Http\Controllers\NoticiaController;
 use App\Http\Controllers\PqrsController;
 use App\Http\Controllers\UserController;
 use App\Models\Docente_curso;
@@ -41,8 +43,16 @@ Route::middleware(['web'])->group(function () {
     Route::get('usuarios/create', [UserController::class, 'create'])->name('usuarios.create');
     Route::post('usuarios', [UserController::class, 'store'])->name('usuarios.store');
     Route::get('usuarios/index', [UserController::class, 'index'])->name('usuarios.index');
+    Route::get('usuarios/index{usuario}', [UserController::class, 'indexRol'])->name('usuarios.indexRol');
+    Route::put('usuarios/index/resetPhoto{usuario}', [UserController::class, 'photoReset'])->name('usuarios.photoReset');
+    Route::put('usuarios/index/delete{usuario}', [UserController::class, 'delete'])->name('usuarios.delete');
     Route::get('usuarios/{usuario}/edit', [UserController::class, 'edit'])->name('usuarios.edit');
     Route::put('usuarios{usuario}', [UserController::class, 'update'])->name('usuarios.update');
+
+    //Rutas para noticias
+    Route::get('pages/news/create', [NoticiaController::class, 'create'])->name('news.create');
+    Route::get('pages/news/index', [NoticiaController::class, 'index'])->name('news.index');
+    Route::get('pages/news', [NoticiaController::class, 'store'])->name('news.store');
 
     //Routas para Areas
     Route::get('areas/create', [AreaController::class, 'create'])->name('areas.create');
@@ -95,4 +105,12 @@ Route::middleware(['web'])->group(function () {
     })->where([
         'lang' => 'en|es'
     ]);
+
+    //Exportaciones
+    //---Excel---
+    //UserExport
+    Route::get('exports/users', [UserController::class, 'export'])->name('usuarios.export');
+    Route::get('exports/usersTemplate', [UserController::class, 'template'])->name('usuarios.template');
+    Route::post('usuarios/index', [UserController::class, 'import'])->name('usuarios.import');
+
 });

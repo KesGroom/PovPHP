@@ -5,7 +5,7 @@
 
 @extends('layouts.app')
 @section('content')
-    @include('layouts/partials/backNav')
+    @include('layouts/partials/dashNav')
     @if (session('status'))
         <div class="alert alert-success" role="alert">
             {{ session('status') }}

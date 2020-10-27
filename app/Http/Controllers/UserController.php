@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\UserExport;
+use App\Exports\UserTemplate;
+use App\Imports\UsersImport;
 use App\Models\Rol_has_permiso;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
@@ -18,9 +22,41 @@ class UserController extends Controller
     $rhp = Rol_has_permiso::where('rol', $rol)->get();
     return view('usuarios.index', compact('usuarios', 'rhp'));
   }
+
+  public function indexRol(User $usuario)
+  {
+    $usuarios = User::where([['estado', 'activo'], ['rol', $usuario->rol]])->paginate('15');
+    $rol = Auth::user()->rol;
+    $rhp = Rol_has_permiso::where('rol', $rol)->get();
+    return view('usuarios.index', compact('usuarios', 'rhp'));
+  }
+
+  public function photoReset(User $usuario)
+  {
+    $usuario->foto_perfil = 'icon.png';
+    $usuario->save();
+
+    $usuarios = User::where('estado', 'activo')->paginate('15');
+    $rol = Auth::user()->rol;
+    $rhp = Rol_has_permiso::where('rol', $rol)->get();
+    return back()->with(compact('usuarios', 'rhp'));
+  }
+
+  public function delete(User $usuario)
+  {
+    $usuario->estado = 'Inactivo';
+    $usuario->save();
+
+    $usuarios = User::where('estado', 'activo')->paginate('15');
+    $rol = Auth::user()->rol;
+    $rhp = Rol_has_permiso::where('rol', $rol)->get();
+    return back()->with(compact('usuarios', 'rhp'));
+  }
   public function edit(User $usuario)
   {
-    return view('usuarios.edit', compact('usuario'));
+    $rol = Auth::user()->rol;
+    $rhp = Rol_has_permiso::where('rol', $rol)->get();
+    return view('usuarios.edit', compact('usuario', 'rhp'));
   }
   public function editProfile(User $usuario)
   {
@@ -124,5 +160,27 @@ class UserController extends Controller
     $usuario->save();
     $status = 'Se ha actualizado el usuario';
     return back()->with(compact('status'));
+  }
+
+  public function export()
+  {
+    return Excel::download(new UserExport, 'usuarios.xlsx');
+  }
+  public function template()
+  {
+    return Excel::download(new UserTemplate, 'Plantilla_usuarios.xlsx');
+  }
+  public function import(Request $request)
+  {
+      // $request->validate([
+      //     'nombre' => ['required','unique:productos,nombre'],
+      // ]);
+      $file = $request->file('newFile');
+      Excel::import(new UsersImport, $file);
+
+      $usuarios = User::where('estado', 'activo')->paginate('15');
+      $rol = Auth::user()->rol;
+      $rhp = Rol_has_permiso::where('rol', $rol)->get();
+      return view('usuarios.index', compact('usuarios', 'rhp'));
   }
 }
