@@ -124,5 +124,9 @@ return [
     'importData' => 'Import data',
     'titulo419' => 'Authentication failed',
     'info419' => 'Authentication failed for a previously submitted request or the authentication key/token has expired. Please try again or contact the institution.',
-
+    'noResult' => 'No results found for ',
+    'noExist' => 'No results found',
+    'preResult' => 'We found ',
+    'posResult' => ' results for: ',
+    'restore' => 'Restore Data',
 ];

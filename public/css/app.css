@@ -11722,3 +11722,209 @@ label[for=newFile]:hover {
   width: 100%;
 }
 
+.txtDoc {
+  color: brown;
+  font-size: 12px;
+}
+
+.txtEst {
+  color: goldenrod;
+  font-size: 12px;
+}
+
+.txtOther {
+  color: #dbdd61;
+  font-size: 12px;
+}
+
+.txtAcu {
+  color: #e9795d;
+  font-size: 12px;
+}
+
+.falseLink {
+  border: none;
+  background: none;
+  outline: none !important;
+  cursor: pointer;
+}
+
+.falseLink:hover {
+  border: none;
+  background: none;
+  outline: none;
+  color: #b71c1c;
+}
+
+.actions {
+  width: 100%;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.actions form {
+  margin-left: 1rem;
+}
+
+.actions a {
+  margin-top: -0.9rem;
+}
+
+.page-link {
+  position: relative;
+  display: block;
+  padding: 0.5rem 0.75rem;
+  margin-left: -1px;
+  line-height: 1.25;
+  color: #b71c1c !important;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+}
+
+.page-item.active .page-link {
+  z-index: 3;
+  color: #fff !important;
+  background-color: #b71c1c !important;
+  border-color: #8d1414 !important;
+}
+
+.panel-control {
+  width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 5px;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.panel-control .Pc-principal,
+.panel-control .Pc-secundario {
+  width: 100%;
+}
+
+.panel-control .Pc-principal {
+  padding: 0 2rem;
+}
+
+.buscador {
+  position: relative;
+}
+
+.input-buscador {
+  width: 25rem;
+  border-radius: 15px;
+  padding: 0.1rem 0.5rem;
+  font-size: 0.9em;
+  transition: all linear 200ms;
+}
+
+.input-buscador:focus {
+  outline: none;
+  padding: 0.1rem 0.5rem;
+}
+
+.input-buscador:focus ~ .icon-buscador a {
+  color: #b71c1c !important;
+}
+
+.icon-buscador {
+  position: absolute;
+  right: 0;
+}
+
+.icon-buscador a {
+  color: #000;
+  transition: all linear 200ms;
+}
+
+.icon-buscador a:hover {
+  color: #000;
+}
+
+.icon-buscador a ion-icon {
+  font-size: 2em;
+}
+
+.add-icon {
+  font-size: 1.3em;
+  color: #000;
+}
+
+.add-icon:hover {
+  font-size: 1.3em;
+  color: #b71c1c;
+}
+
+.panel-control .PC-secundario {
+  border-top: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.panel-control .PC-secundario .PC-button {
+  padding: 0.3rem 1rem;
+  color: #fff;
+  width: 16.66%;
+  font-size: 0.9em;
+}
+
+.panel-control .PC-secundario .PC-button ion-icon,
+.panel-control .PC-secundario .PC-button .fas {
+  margin-right: 0.5rem;
+}
+
+.excel {
+  background-color: #67CB99;
+}
+
+.importExcel {
+  background-color: #67bfcb;
+}
+
+.templateExcel {
+  background-color: #f0e338;
+}
+
+.filter {
+  background-color: #C4C4C4;
+}
+
+.graphic {
+  background-color: #d68a8a;
+}
+
+.restore {
+  background-color: #da9e6e;
+}
+
+.excel:hover {
+  background-color: #5db88a;
+}
+
+.importExcel:hover {
+  background-color: #5aa8b3;
+}
+
+.templateExcel:hover {
+  background-color: #e7da27;
+}
+
+.filter:hover {
+  background-color: #b1adad;
+}
+
+.graphic:hover {
+  background-color: #c57373;
+}
+
+.restore:hover {
+  background-color: #cc8b55;
+}
+
+.modal-footer {
+  padding: 0 !important;
+}
+

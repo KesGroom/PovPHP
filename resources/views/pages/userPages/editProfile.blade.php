@@ -27,11 +27,11 @@
                         </ul>
                     </div>
                 </div>
-                @include('userPages.changePass')
+                @include('pages.userPages.changePass')
 
                 <div class="row col-sd-12 col-md-6">
-                    @include('userPages.changePhoto')
-                    @include('userPages.changeInfo')
+                    @include('pages.userPages.changePhoto')
+                    @include('pages.userPages.changeInfo')
                 </div>
             </div>
         </div>

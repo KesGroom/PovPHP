@@ -122,6 +122,10 @@ return [
     'importData' => 'Importar datos',
     'titulo419' => 'Fallo de autenticación',
     'info419' => 'La autenticación falló para una solicitud solictada previamente o que la clave / token de autenticación ha caducado. Por favor intente nuevamente o comuniquese con la institución.',
+    'noResult' => 'No se encontraron resultados para ',
+    'noExist' => 'No se encontraron resultados',
+    'preResult' => 'Se encontrarón ',
+    'posResult' => ' resultados para: ',
+    'restore' => 'Restaurar dato',
 
-    
 ];

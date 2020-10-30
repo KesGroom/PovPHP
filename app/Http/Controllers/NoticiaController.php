@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Noticia;
+use App\Models\Rol_has_permiso;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,12 +12,14 @@ class NoticiaController extends Controller
     public function index()
     {
         $noticias = Noticia::where('estado', 'Activo')->get();
-        return view('news.index', compact('noticias'));
+        $rol = Auth::user()->rol;
+        $rhp = Rol_has_permiso::where('rol', $rol)->get();
+        return view('pages.news.index', compact('noticias', 'rhp'));
     }
 
     public function create()
     {
-        return view('news.create');
+        return view('pages.news.create');
     }
 
     public function store(Request $request)

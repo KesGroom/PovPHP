@@ -10,3 +10,19 @@ $('input[type=file]').change(function () {
     console.log(idname);
     $('span.' + idname).next().find('span').html(filename);
 });
+
+window.addEventListener('load', function() {
+    document.getElementById('buscador').addEventListener('keyup', function() {
+        if ((document.getElementById("buscador").value.length) >= 1)
+            fetch(`/usuarios/buscador?texto=${document.getElementById("buscador").value}`, {
+                method: 'get'
+            })
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('resultado').innerHTML = html
+            })
+        else
+            document.getElementById("resultado").innerHTML = ""
+    })
+
+});

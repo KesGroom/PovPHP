@@ -20,7 +20,14 @@ class UserController extends Controller
     $usuarios = User::where('estado', 'activo')->paginate('15');
     $rol = Auth::user()->rol;
     $rhp = Rol_has_permiso::where('rol', $rol)->get();
-    return view('usuarios.index', compact('usuarios', 'rhp'));
+    return view('pages.usuarios.index', compact('usuarios', 'rhp'));
+  }
+  public function recovery()
+  {
+    $usuarios = User::where('estado', 'Inactivo')->paginate('15');
+    $rol = Auth::user()->rol;
+    $rhp = Rol_has_permiso::where('rol', $rol)->get();
+    return view('pages.usuarios.recovery', compact('usuarios', 'rhp'));
   }
 
   public function indexRol(User $usuario)
@@ -28,7 +35,7 @@ class UserController extends Controller
     $usuarios = User::where([['estado', 'activo'], ['rol', $usuario->rol]])->paginate('15');
     $rol = Auth::user()->rol;
     $rhp = Rol_has_permiso::where('rol', $rol)->get();
-    return view('usuarios.index', compact('usuarios', 'rhp'));
+    return view('pages.usuarios.index', compact('usuarios', 'rhp'));
   }
 
   public function photoReset(User $usuario)
@@ -52,17 +59,27 @@ class UserController extends Controller
     $rhp = Rol_has_permiso::where('rol', $rol)->get();
     return back()->with(compact('usuarios', 'rhp'));
   }
+  public function restore(User $usuario)
+  {
+    $usuario->estado = 'Activo';
+    $usuario->save();
+
+    $usuarios = User::where('estado', 'Inactivo')->paginate('15');
+    $rol = Auth::user()->rol;
+    $rhp = Rol_has_permiso::where('rol', $rol)->get();
+    return back()->with(compact('usuarios', 'rhp'));
+  }
   public function edit(User $usuario)
   {
     $rol = Auth::user()->rol;
     $rhp = Rol_has_permiso::where('rol', $rol)->get();
-    return view('usuarios.edit', compact('usuario', 'rhp'));
+    return view('pages.usuarios.edit', compact('usuario', 'rhp'));
   }
   public function editProfile(User $usuario)
   {
     $rol = Auth::user()->rol;
     $rhp = Rol_has_permiso::where('rol', $rol)->get();
-    return view('userPages.editProfile', compact('usuario', 'rhp'));
+    return view('pages.userPages.editProfile', compact('usuario', 'rhp'));
   }
 
   public function updatePass(Request $request, User $usuarioPass)
@@ -170,17 +187,43 @@ class UserController extends Controller
   {
     return Excel::download(new UserTemplate, 'Plantilla_usuarios.xlsx');
   }
+
   public function import(Request $request)
   {
-      // $request->validate([
-      //     'nombre' => ['required','unique:productos,nombre'],
-      // ]);
-      $file = $request->file('newFile');
-      Excel::import(new UsersImport, $file);
+    $file = $request->file('newFile');
+    Excel::import(new UsersImport, $file);
 
-      $usuarios = User::where('estado', 'activo')->paginate('15');
-      $rol = Auth::user()->rol;
-      $rhp = Rol_has_permiso::where('rol', $rol)->get();
-      return view('usuarios.index', compact('usuarios', 'rhp'));
+    $usuarios = User::where('estado', 'activo')->paginate('15');
+    $rol = Auth::user()->rol;
+    $rhp = Rol_has_permiso::where('rol', $rol)->get();
+    return view('pages.usuarios.index', compact('usuarios', 'rhp'));
+  }
+
+  public function searchList(Request $request)
+  {
+    $rol = Auth::user()->rol;
+    $usuarios = User::where([['name', 'like', '%' . $request->texto . '%'],['estado', 'Activo']])
+    ->orWhere([['apellido', 'like', '%' . $request->texto . '%'],['estado', 'Activo']])
+    ->orWhere([['id', 'like', '%' . $request->texto . '%'],['estado', 'Activo']])
+    ->orWhere([['direccion', 'like', '%' . $request->texto . '%'],['estado', 'Activo']])
+    ->orWhere([['fecha_nacimiento', 'like', '%' . $request->texto . '%'],['estado', 'Activo']])
+    ->orWhere([['telefono_fijo', 'like', '%' . $request->texto . '%'],['estado', 'Activo']])
+    ->orWhere([['celular', 'like', '%' . $request->texto . '%'],['estado', 'Activo']])
+    ->orWhere([['email', 'like', '%' . $request->texto . '%'],['estado', 'Activo']])
+    ->latest()
+    ->take('24')
+    ->get();
+    $rhp = Rol_has_permiso::where('rol', $rol)->get();
+    $texto = $request->texto;
+    $count = User::where([['name', 'like', '%' . $request->texto . '%'],['estado', 'Activo']])
+    ->orWhere([['apellido', 'like', '%' . $request->texto . '%'],['estado', 'Activo']])
+    ->orWhere([['id', 'like', '%' . $request->texto . '%'],['estado', 'Activo']])
+    ->orWhere([['direccion', 'like', '%' . $request->texto . '%'],['estado', 'Activo']])
+    ->orWhere([['fecha_nacimiento', 'like', '%' . $request->texto . '%'],['estado', 'Activo']])
+    ->orWhere([['telefono_fijo', 'like', '%' . $request->texto . '%'],['estado', 'Activo']])
+    ->orWhere([['celular', 'like', '%' . $request->texto . '%'],['estado', 'Activo']])
+    ->orWhere([['email', 'like', '%' . $request->texto . '%'],['estado', 'Activo']])
+    ->count();
+    return view('pages.usuarios.userResult', compact('rhp', 'usuarios', 'texto', 'count'));
   }
 }
