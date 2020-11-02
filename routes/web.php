@@ -7,6 +7,7 @@ use App\Http\Controllers\AreaController;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\DocenteCursoController;
 use App\Http\Controllers\GradoController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\NoticiaController;
 use App\Http\Controllers\PqrsController;
 use App\Http\Controllers\UserController;
@@ -68,6 +69,8 @@ Route::middleware(['web'])->group(function () {
     Route::get('pages/news/create', [NoticiaController::class, 'create'])->name('news.create');
     Route::get('pages/news/index', [NoticiaController::class, 'index'])->name('news.index');
     Route::get('pages/news', [NoticiaController::class, 'store'])->name('news.store');
+    Route::get('mail/index', [MailController::class, 'layout'])->name('mail.layout');
+    Route::post('mail/index/mail-layout', [MailController::class, 'postulacion'])->name('mail.postular');
 
     //--------------------------------------------------------------------------------------------------------------------------\\
 
