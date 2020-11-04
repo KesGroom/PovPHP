@@ -32,6 +32,6 @@ class PruebaMail extends Mailable
      */
     public function build()
     {
-        return $this->view('mail.mail-layout');
+        return $this->view('mail.mail');
     }
 }

@@ -126,6 +126,6 @@ return [
     'noExist' => 'No se encontraron resultados',
     'preResult' => 'Se encontrarón ',
     'posResult' => ' resultados para: ',
-    'restore' => 'Restaurar dato',
+    'restoreBtn' => 'Restaurar dato',
 
 ];

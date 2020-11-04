@@ -4,4 +4,5 @@
         @csrf
         <button type="submit" class="btn btn-MC">Enviar</button>
     </form>
+    @include('mail.rees')
 @endsection

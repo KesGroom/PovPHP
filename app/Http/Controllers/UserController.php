@@ -46,6 +46,7 @@ class UserController extends Controller
     $usuarios = User::where('estado', 'activo')->paginate('15');
     $rol = Auth::user()->rol;
     $rhp = Rol_has_permiso::where('rol', $rol)->get();
+    MailController::replace($usuario);
     return back()->with(compact('usuarios', 'rhp'));
   }
 

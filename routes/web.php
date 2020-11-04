@@ -70,7 +70,8 @@ Route::middleware(['web'])->group(function () {
     Route::get('pages/news/index', [NoticiaController::class, 'index'])->name('news.index');
     Route::get('pages/news', [NoticiaController::class, 'store'])->name('news.store');
     Route::get('mail/index', [MailController::class, 'layout'])->name('mail.layout');
-    Route::post('mail/index/mail-layout', [MailController::class, 'postulacion'])->name('mail.postular');
+    Route::post('mail/index/mail', [MailController::class, 'postulacion'])->name('mail.postular');
+    Route::post('mail/index/rees{user}', [MailController::class, 'replace'])->name('mail.rees');
 
     //--------------------------------------------------------------------------------------------------------------------------\\
 
