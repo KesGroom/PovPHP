@@ -14,7 +14,7 @@
     @guest
 
     @else
-        <a href="">
+        <a href="emails/correo">
             <ion-icon name="newspaper"></ion-icon> {{ __('pov.txtNoticias') }}
         </a>
         <a href="{{ route('home') }}">

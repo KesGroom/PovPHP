@@ -4,12 +4,17 @@ use App\Exports\UserExport;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AcudienteController;
 use App\Http\Controllers\AreaController;
+use App\Http\Controllers\BitacoraServicioController;
+use App\Http\Controllers\CorreoController;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\DocenteCursoController;
 use App\Http\Controllers\GradoController;
 use App\Http\Controllers\NoticiaController;
 use App\Http\Controllers\PqrsController;
+use App\Http\Controllers\SalaServicioController;
+use App\Http\Controllers\ServicioSocialController;
 use App\Http\Controllers\UserController;
+use App\Models\Bitacora_servicio;
 use App\Models\Docente_curso;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -53,6 +58,9 @@ Route::middleware(['web'])->group(function () {
     Route::get('pages/news/create', [NoticiaController::class, 'create'])->name('news.create');
     Route::get('pages/news/index', [NoticiaController::class, 'index'])->name('news.index');
     Route::get('pages/news', [NoticiaController::class, 'store'])->name('news.store');
+    Route::get('emails/correo',[CorreoController::class, 'send'])->name('emails.correo');
+    Route::post('correo',[CorreoController::class, 'enviar'])->name('correo.enviar');
+    Route::post('correoRechazado',[CorreoController::class, 'rechazar'])->name('correo.rechazar');
 
     //Routas para Areas
     Route::get('areas/create', [AreaController::class, 'create'])->name('areas.create');
@@ -74,6 +82,28 @@ Route::middleware(['web'])->group(function () {
     Route::get('cursos/index', [CursoController::class, 'index'])->name('cursos.index');
     Route::get('cursos/{curso}/edit', [CursoController::class, 'edit'])->name('cursos.edit');
     Route::put('cursos{curso}', [CursoController::class, 'update'])->name('cursos.update');
+
+
+    //Rutas para Servicio social
+    Route::get('zonas/create', [ServicioSocialController::class, 'create'])->name('zonas.create');
+    Route::get('zonas/index', [ServicioSocialController::class, 'index'])->name('zonas.index');
+    Route::post('zonas', [ServicioSocialController::class, 'store'])->name('zonas.store');
+    Route::get('zonas/{zona}/edit', [ServicioSocialController::class, 'edit'])->name('zonas.edit');
+    Route::post('zonas/{zona}', [ServicioSocialController::class, 'update'])->name('zonas.update');
+
+
+    
+    //Rutas para bitacora social
+    Route::get('bitacora/create', [BitacoraServicioController::class, 'create'])->name('bitacora.create');
+    Route::get('bitacora/index', [BitacoraServicioController::class, 'index'])->name('bitacora.index');
+    Route::post('bitacora', [BitacoraServicioController::class, 'store'])->name('bitacora.store');
+    Route::get('bitacora/{bita}/edit', [BitacoraServicioController::class, 'edit'])->name('bitacora.edit');
+    Route::post('bitacora/{bita}', [BitacoraServicioController::class, 'update'])->name('bitacora.update');
+
+    // Rutas para la sala de servicio 
+    Route::get('sala/index', [SalaServicioController::class, 'index'])->name('sala.index');
+    Route::post('sala', [SalaServicioController::class, 'store'])->name('sala.store');
+
 
     //Routas para Docentes curso
     Route::get('docentecurso/create', [DocenteCursoController::class, 'create'])->name('docentecurso.create');
