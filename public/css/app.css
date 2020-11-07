@@ -11401,22 +11401,25 @@ body a:hover {
 }
 
 .slider .contenedor .contenido .informacion {
-  width: 45%;
+  width: 50%;
   height: 80%;
-  padding: 1rem;
+  padding: 0.5rem;
 }
 
 .contenido .informacion .tituloC {
   font-size: 2.5em;
+  width: 100%;
 }
 
 .contenido .informacion .subtituloC {
-  font-size: 1.8em;
+  font-size: 1.3em;
   border-bottom: 1px solid white;
+  width: 100%;
 }
 
 .contenido .informacion .texto {
   font-size: 1em;
+  width: 100%;
 }
 
 .contenido .informacion .creditos {

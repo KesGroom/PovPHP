@@ -29,9 +29,9 @@ class NoticiaFactory extends Factory
             'titulo' => $this->faker->sentence(4),
             'subtitulo' => $this->faker->sentence(6),
             'informacion' => $this->faker->paragraph(),
-            'image' => $this->faker->randomElement(['Bodies Into.jpg', 'Flag Colombia.jpg', 'Project Compute.jpg', 'Sciencepeople.jpg']),
-            'categoria' => Categoria_noticia::where('estado', 'Activo')->random()->id,
-            'coordinador' => User::where([['estado', 'Activo'], ['rol', 1]])->random()->id
+            'imagen' => $this->faker->randomElement(['Bodies Into.jpg', 'Flag Colombia.jpg', 'Project Computer.jpg', 'Science people.jpg']),
+            'categoria' => Categoria_noticia::where('estado', 'Activo')->get()->random(),
+            'coordinador' => User::where([['estado', 'Activo'], ['rol', 1]])->get()->random()
 
         ];
     }

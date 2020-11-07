@@ -95,7 +95,6 @@ return [
     'infoPersonal' => 'Personal Information',
     'photoAlert' => 'Your profile picture has been successfully changed',
     'remember' => 'Remember me',
-    'usersReg' => 'Registered users',
     'txtNombre' => 'Firstname',
     'txtApellido' => 'Lastname',
     'txtFechaNacimiento' => 'Birth date',
@@ -117,7 +116,10 @@ return [
     'impoExcel' => 'Import from excel',
     'restore' => 'Data recovery',
     'filter' => 'Filter results',
+    'usersReg' => 'Registered users',
     'addUser' => 'Add user',
+    'newsReg' => 'News registered',
+    'addNew' => 'Add new',
     'search' => 'Search',
     'templateExcel' => 'Download template',
     'graphic' => 'Statistics',
@@ -129,4 +131,9 @@ return [
     'preResult' => 'We found ',
     'posResult' => ' results for: ',
     'restore' => 'Restore Data',
+    'txtTitle' => 'Title',
+    'txtSubtitle' => 'Subtitle',
+    'txtInfo' => 'Information',
+    'txtCategory' => 'Category',
+    'createNew' => 'Register new'
 ];

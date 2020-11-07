@@ -4,12 +4,20 @@
                alt="FotoPerfilMariaCano">
            <div class="actions">
                @if ($usuario->estado == 'Inactivo')
-                   @include('pages.usuarios.restore')
+                   @include('layouts.forms.restore',[
+                       'class' => 'usuarios',
+                       'icono' => 'fa-user-clock',
+                       'retorno' => $usuario,
+                   ])
                @else
                    @include('pages.usuarios.resetPhoto')
                    <a href="{{ route('usuarios.edit', $usuario) }}" title="{{ __('pov.edit') }}"><i
                            class="fas fa-user-edit"></i></a>
-                   @include('pages.usuarios.delete')
+                   @include('layouts.forms.delete',[
+                       'class' => 'usuarios',
+                       'icono' => 'fa-user-times',
+                       'retorno' => $usuario,
+                   ])
                @endif
            </div>
            <div class="card-header">

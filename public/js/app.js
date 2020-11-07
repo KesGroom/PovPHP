@@ -37505,7 +37505,7 @@ $('input[type=file]').change(function () {
 });
 window.addEventListener('load', function () {
   document.getElementById('buscador').addEventListener('keyup', function () {
-    if (document.getElementById("buscador").value.length >= 1) fetch("/usuarios/buscador?texto=".concat(document.getElementById("buscador").value), {
+    if (document.getElementById("buscador").value.length >= 1) fetch("/" + clase + "/buscador?texto=".concat(document.getElementById("buscador").value), {
       method: 'get'
     }).then(function (response) {
       return response.text();
@@ -37535,8 +37535,8 @@ window.addEventListener('load', function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\POV-PHP\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\POV-PHP\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\PovPHP\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\PovPHP\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

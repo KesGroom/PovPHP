@@ -52,7 +52,7 @@ Route::middleware(['web'])->group(function () {
     Route::put('pages/usuarios/recovery/restore{usuario}', [UserController::class, 'restore'])->name('usuarios.restore');
     Route::get('pages/usuarios/index{usuario}', [UserController::class, 'indexRol'])->name('usuarios.indexRol');
     Route::put('pages/usuarios/index/resetPhoto{usuario}', [UserController::class, 'photoReset'])->name('usuarios.photoReset');
-    Route::put('pages/usuarios/index/delete{usuario}', [UserController::class, 'delete'])->name('usuarios.delete');
+    Route::put('pages/usuarios/delete{usuario}', [UserController::class, 'delete'])->name('usuarios.delete');
     Route::get('pages/usuarios/{usuario}/edit', [UserController::class, 'edit'])->name('usuarios.edit');
     Route::put('pages/usuarios{usuario}', [UserController::class, 'update'])->name('usuarios.update');
     //---Excel---
@@ -68,7 +68,20 @@ Route::middleware(['web'])->group(function () {
     //Rutas para noticias
     Route::get('pages/news/create', [NoticiaController::class, 'create'])->name('news.create');
     Route::get('pages/news/index', [NoticiaController::class, 'index'])->name('news.index');
-    Route::get('pages/news', [NoticiaController::class, 'store'])->name('news.store');
+    Route::get('pages/news/recovery', [NoticiaController::class, 'recovery'])->name('news.recovery');
+    Route::put('pages/news/recovery/restore{noticia}', [NoticiaController::class, 'restore'])->name('news.restore');
+    Route::get('pages/news/{noticia}/edit', [NoticiaController::class, 'edit'])->name('news.edit');
+    Route::post('pages/news/create', [NoticiaController::class, 'store'])->name('news.store');
+    Route::put('pages/news/delete{new}', [NoticiaController::class, 'delete'])->name('news.delete');
+    Route::put('pages/news{noticia}', [NoticiaController::class, 'update'])->name('news.update');
+    //---Buscador---
+    Route::get('news/buscador', [NoticiaController::class, 'searchList']);
+    Route::get('news/newsResult', [NoticiaController::class, 'searchList']);
+    //---Excel---
+    Route::get('exports/news', [NoticiaController::class, 'export'])->name('news.export');
+    Route::get('exports/newsTemplate', [NoticiaController::class, 'template'])->name('news.template');
+    Route::post('news/index', [NoticiaController::class, 'import'])->name('news.import');
+
     Route::get('mail/index', [MailController::class, 'layout'])->name('mail.layout');
     Route::post('mail/index/mail', [MailController::class, 'postulacion'])->name('mail.postular');
     Route::post('mail/index/rees{user}', [MailController::class, 'replace'])->name('mail.rees');
@@ -127,9 +140,7 @@ Route::middleware(['web'])->group(function () {
 
     //Rutas del sistema
 
-    Route::get('/', function () {
-        return view('welcome');
-    })->name('welcome');
+    Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
 
     Auth::routes();
 

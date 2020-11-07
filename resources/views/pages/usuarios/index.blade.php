@@ -17,6 +17,7 @@
         'exportExcel' => route('usuarios.export'),
         'templateExcel' => route('usuarios.template') ,
         'restore' => route('usuarios.recovery') ,
+        'add' => 'Poner Link'
         ])
         <div class="cont-card-img-table" id="resultado">
         </div>
@@ -25,4 +26,7 @@
         </div>
 
     </div>
+    <script>
+        var clase ='usuarios';
+    </script>
 @endsection

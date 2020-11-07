@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Noticia;
 use App\Models\Permiso;
 use App\Models\Rol_has_permiso;
 use Illuminate\Http\Request;
@@ -30,5 +31,10 @@ class HomeController extends Controller
         $rol = Auth::user()->rol;
         $rhp = Rol_has_permiso::where('rol', $rol)->get();
         return view('home', compact('rhp'));
+    }
+
+    public function welcome(){
+        $latestNews = Noticia::where('estado', 'activo')->orderBy('created_at', 'desc')->get()->take(4);
+        return view('welcome', compact('latestNews'));
     }
 }

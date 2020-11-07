@@ -16,6 +16,7 @@
         'exportExcel' => route('usuarios.export'),
         'templateExcel' => route('usuarios.template') ,
         'restore' => route('usuarios.recovery') ,
+        'add' => 'Holi'
         ])
         <div class="cont-card-img-table" id="resultado">
         </div>

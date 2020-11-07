@@ -27,9 +27,9 @@
                                             name="id" value="{{ $usuario->id }}" required autocomplete="id" autofocus>
 
                                         @error('id')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
                                         @enderror
                                     </div>
                                 </div>
@@ -45,9 +45,9 @@
                                             value="{{ $usuario->name }}" required autocomplete="name" autofocus>
 
                                         @error('name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
                                         @enderror
                                     </div>
                                 </div>
@@ -63,9 +63,9 @@
                                             value="{{ $usuario->apellido }}" required autocomplete="apellido" autofocus>
 
                                         @error('apellido')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
                                         @enderror
                                     </div>
                                 </div>
@@ -81,9 +81,9 @@
                                             value="{{ $usuario->email }}" required autocomplete="email" autofocus>
 
                                         @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
                                         @enderror
                                     </div>
                                 </div>
@@ -100,9 +100,9 @@
                                             autocomplete="fecha_nacimiento" autofocus>
 
                                         @error('fecha_nacimiento')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
                                         @enderror
                                     </div>
                                 </div>
@@ -118,9 +118,9 @@
                                             value="{{ $usuario->direccion }}" required autocomplete="direccion" autofocus>
 
                                         @error('direccion')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
                                         @enderror
                                     </div>
                                 </div>
@@ -136,9 +136,9 @@
                                             value="{{ $usuario->celular }}" required autocomplete="celular" autofocus>
 
                                         @error('celular')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
                                         @enderror
                                     </div>
                                 </div>
@@ -155,9 +155,9 @@
                                             autocomplete="telefono_fijo" autofocus>
 
                                         @error('telefono_fijo')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
                                         @enderror
                                     </div>
                                 </div>
@@ -168,12 +168,27 @@
                                         class="col-md-4 col-form-label text-md-right">{{ __('pov.txtTypeDocument') }}</label>
                                     <select class="form-control col-md-6" id="tipo_documento" name="tipo_documento"
                                         required>
-                                        <option value="Cedula ciudadania">{{ __('pov.TDCedula') }}
-                                        <option>
-                                        <option value="Tarjeta de identidad">{{ __('pov.TDTarjeta') }}
-                                        <option>
-                                        <option value="Registro civil">{{ __('pov.TDCedulaEx') }}
-                                        <option>
+                                        @if ($usuario->tipo_documento == 'Cedula ciudadania')
+                                            <option selected value="Cedula ciudadania">{{ __('pov.TDCedula') }}
+                                            <option>
+                                            @else
+                                            <option value="Cedula ciudadania">{{ __('pov.TDCedula') }}
+                                            <option>
+                                        @endif
+                                        @if ($usuario->tipo_documento == 'Tarjeta de identidad')
+                                            <option selected value="Tarjeta de identidad">{{ __('pov.TDTarjeta') }}
+                                            <option>
+                                            @else
+                                            <option value="Tarjeta de identidad">{{ __('pov.TDTarjeta') }}
+                                            <option>
+                                        @endif
+                                        @if ($usuario->tipo_documento == 'Cedula de Extrajeria')
+                                            <option selected value="Cedula de Extrajeria">{{ __('pov.TDCedulaEx') }}
+                                            <option>
+                                            @else
+                                            <option value="Cedula de Extrajeria">{{ __('pov.TDCedulaEx') }}
+                                            <option>
+                                        @endif
                                     </select>
                                 </div>
                             </li>
@@ -182,10 +197,20 @@
                                     <label for="genero"
                                         class="col-md-4 col-form-label text-md-right">{{ __('pov.txtGenero') }}</label>
                                     <select class="form-control col-md-6" id="genero" name="genero" required>
-                                        <option value="Masculino">{{ __('pov.GenderMale') }}
-                                        <option>
-                                        <option value="Femenino">{{ __('pov.GenderFemale') }}
-                                        <option>
+                                        @if ($usuario->genero == 'Masculino')
+                                            <option selected value="Masculino">{{ __('pov.GenderMale') }}
+                                            <option>
+                                            @else
+                                            <option value="Masculino">{{ __('pov.GenderMale') }}
+                                            <option>
+                                        @endif
+                                        @if ($usuario->genero == 'Femenino')
+                                            <option selected value="Femenino">{{ __('pov.GenderFemale') }}
+                                            <option>
+                                            @else
+                                            <option value="Femenino">{{ __('pov.GenderFemale') }}
+                                            <option>
+                                        @endif
                                     </select>
                                 </div>
                             </li>

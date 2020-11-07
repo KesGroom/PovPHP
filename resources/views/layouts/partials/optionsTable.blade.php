@@ -1,6 +1,6 @@
 <div class="panel-control displayColIniC">
     <div class="PC-principal displayRowSbC">
-        <h2 class="mt-4 mb-4">{{$tituloPC}}</h2>
+        <h2 class="mt-4 mb-4">{{ $tituloPC }}</h2>
         <div class="buscador">
             <input type="text" placeholder="{{ __('pov.search') }}" class="input-buscador" id="buscador">
             <label class="icon-buscador">
@@ -9,9 +9,9 @@
                 </a>
             </label>
         </div>
-        <a href="" class="add-icon displayRowCC">
+        <a href="{{ $add }}" class="add-icon displayRowCC">
             <ion-icon name="add-circle"></ion-icon>
-            {{$addElement}}
+            {{ $addElement }}
         </a>
     </div>
     <div class="PC-secundario displayRowEndC">
@@ -23,7 +23,7 @@
             <ion-icon name="pie-chart"></ion-icon>
             {{ __('pov.graphic') }}
         </a>
-        <a href="{{$restore}}" class="PC-button restore displayRowCC">
+        <a href="{{ $restore }}" class="PC-button restore displayRowCC">
             <ion-icon name="sync"></ion-icon>
             {{ __('pov.restore') }}
         </a>
@@ -31,11 +31,11 @@
             <i class="fas fa-file-upload"></i>
             {{ __('pov.impoExcel') }}
         </a>
-        <a href="{{$templateExcel}}" class="PC-button templateExcel displayRowCC">
+        <a href="{{ $templateExcel }}" class="PC-button templateExcel displayRowCC">
             <i class="fas fa-file-download"></i>
             {{ __('pov.templateExcel') }}
         </a>
-        <a href="{{$exportExcel}}" class="PC-button excel displayRowCC">
+        <a href="{{ $exportExcel }}" class="PC-button excel displayRowCC">
             <i class="fas fa-file-excel"></i>
             {{ __('pov.excel') }}
         </a>
@@ -52,7 +52,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{$importExcel}}" method="post" enctype="multipart/form-data">
+            <form action="{{ $importExcel }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body displayRowCC">
                     <span class="newFile">

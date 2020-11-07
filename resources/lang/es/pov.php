@@ -93,7 +93,6 @@ return [
     'infoPersonal' => 'Información Personal',
     'photoAlert' => 'Su foto de perfil se ha cambiado satisfactoriamente',
     'remember' => 'Recuérdame',
-    'usersReg' => 'Usuarios registrados',
     'txtNombre' => 'Nombre',
     'txtApellido' => 'Apellido',
     'txtFechaNacimiento' => 'Fecha de nacimiento',
@@ -115,7 +114,10 @@ return [
     'impoExcel' => 'Importar de excel',
     'restore' => 'Recuperar datos',
     'filter' => 'Filtrar resultados',
+    'usersReg' => 'Usuarios registrados',
     'addUser' => 'Añadir usuario',
+    'newsReg' => 'Noticias registrados',
+    'addNew' => 'Añadir noticia',
     'search' => 'Buscar',
     'templateExcel' => 'Descargar plantilla',
     'graphic' => 'Estadísticas',
@@ -127,5 +129,10 @@ return [
     'preResult' => 'Se encontrarón ',
     'posResult' => ' resultados para: ',
     'restoreBtn' => 'Restaurar dato',
+    'txtTitle' => 'Titulo',
+    'txtSubtitle' => 'Subtitulo',
+    'txtInfo' => 'Información',
+    'txtCategory' => 'Categoría',
+    'createNew' => 'Registrar noticia'
 
 ];

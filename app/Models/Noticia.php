@@ -9,4 +9,17 @@ class Noticia extends Model
 {
     use HasFactory;
     protected $table = 'noticias';
+
+    protected $fillable = [
+        'titulo',
+        'subtitulo',
+        'informacion',
+        'imagen',
+        'categoria',
+        'coordinador'
+    ];
+
+    public function posted(){
+       return $this->belongsTo('App\Models\User', 'coordinador');
+    }
 }
