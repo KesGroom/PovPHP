@@ -15,7 +15,6 @@ class Noticia extends Model
         'subtitulo',
         'informacion',
         'imagen',
-        'categoria',
         'coordinador'
     ];
 

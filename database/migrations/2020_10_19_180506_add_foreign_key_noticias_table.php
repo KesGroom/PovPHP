@@ -14,10 +14,6 @@ class AddForeignKeyNoticiasTable extends Migration
     public function up()
     {
         Schema::table('noticias', function (Blueprint $table) {
-            $table->integer('categoria')->unsigned();
-            $table->foreign('categoria')->references('id')->on('categoria_noticia')
-                ->onDelete('cascade')->onUpdate('cascade');
-
             $table->string('coordinador');
             $table->foreign('coordinador')->references('id')->on('users')
                 ->onDelete('cascade')->onUpdate('cascade');
@@ -33,7 +29,6 @@ class AddForeignKeyNoticiasTable extends Migration
     {
         Schema::table('noticias', function (Blueprint $table) {
             $table->dropForeign('noticias_users_id_foreign');
-            $table->dropForeign('noticias_categoria_id_foreign');
         });
     }
 }
