@@ -9,4 +9,8 @@ class Materia extends Model
 {
     use HasFactory;
     protected $table = 'materias';
+    public function areaM()
+    {
+        return $this->belongsTo('App\Models\Area','area');
+    }
 }

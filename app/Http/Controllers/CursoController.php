@@ -3,8 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Curso;
+use App\Models\Docente_curso;
+use App\Models\Estudiante;
 use App\Models\Grado;
+use App\Models\Periodo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class CursoController extends Controller
 {
@@ -42,4 +47,19 @@ class CursoController extends Controller
       $status = 'Se ha actualizado un Curso';
       return back()->with(compact('status'));
     }
-}
+    public function miscursos(){
+      $id =  Auth::user()->id;
+      $cursos = Docente_curso::where('docente', Auth::user()->id)->get();
+      return view('cursos.miscursos', compact('cursos','id'));
+      }
+    public function asistencia(Request $request){
+           $estudiantes = Estudiante::where('curso', $request->curso)->get();
+           $docente_curso = $request->docente_curso;
+           $periodos = Periodo::all();
+           return view('cursos.verestudiantes',compact('estudiantes' ,'periodos','docente_curso'));
+    }
+    
+    }
+   
+
+

@@ -9,4 +9,8 @@ class Registro_asistencia extends Model
 {
     use HasFactory;
     protected $table = 'registro_asistencia';
+    public function student()
+    {
+        return $this->belongsTo('App\Models\Estudiante', 'Estudiante');
+    }
 }

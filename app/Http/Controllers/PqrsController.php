@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pqrs;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PqrsController extends Controller
 {
@@ -41,4 +42,17 @@ class PqrsController extends Controller
         $status = 'Se ha respondido  el pqrs';
         return back()->with(compact('status'));
     }
+
+    //CONSULTA MYSQL SELECT COUNT(id) , p.categoria from pqrs p WHERE respuesta IS  NULL GROUP BY categoria
+    public function graficar(){
+        $pqrs = DB::table('pqrs')
+        ->select('categoria',DB::raw('count(*) as total'))
+        ->whereNull('respuesta')
+        ->groupBy('categoria')
+        ->get();
+        return response(json_encode($pqrs),200);
+}
+   public function vergrafica(){
+       return view('graficas.pqrs');
+   }
 }

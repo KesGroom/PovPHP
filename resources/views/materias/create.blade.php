@@ -15,15 +15,15 @@
                 </div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('pqrs.store') }}">
+                    <form method="POST" action="{{ route('materias.store') }}">
                         @csrf
                         <div class="form-group row">
-                            <label for="asunto" class="col-md-4 col-form-label text-md-right">Asunto</label>
+                            <label for="nombre_materia" class="col-md-4 col-form-label text-md-right">Nombre materia</label>
 
                             <div class="col-md-6">
-                                <input id="asunto" type="text" class="form-control @error('asunto') is-invalid @enderror" name="asunto" value="{{ old('asunto') }}" required autocomplete="asunto" autofocus>
+                                <input id="nombre_materia" type="text" class="form-control @error('nombre_materia') is-invalid @enderror" name="nombre_materia" value="{{ old('nombre_materia') }}" required autocomplete="nombre_materia" autofocus>
 
-                                @error('asunto')
+                                @error('nombre_materia')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -31,12 +31,11 @@
                             </div>
                         </div>
                         <div class=" ">
-                            <label for="categoria">Categoria</label>
-                            <select  class="form-control" id="categoria" name="categoria"  required>
-                                <option value="Pregunta">Pregunta</option>
-                                <option value="Queja">Queja</option>
-                                <option value="Reclamo">Reclamo</option>
-                                <option value="Sugerencia">Sugerencia</option>
+                            <label for="area">Area</label>
+                            <select  class="form-control" id="area" name="area"  required>
+                                @foreach ($areas as $area)
+                                    <option value="{{$area->id}}">{{$area->nombre_area}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group row mb-0">
