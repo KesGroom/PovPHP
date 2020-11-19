@@ -53,6 +53,7 @@
                    <form method="POST" action="{{route('actividades.index')}}">
                        @csrf
                     <input id="docente_curso" type="hidden" class="form-control @error('docente_curso') is-invalid @enderror" name="docente_curso" value="{{$xd->id}}" required autocomplete="curso" autofocus readonly>
+                    <input id="curso" type="hidden" class="form-control @error('curso') is-invalid @enderror" name="curso" value="{{$xd->id}}" required autocomplete="curso" autofocus readonly>
                     <button type="submit" class="btn btn-primary">ver actividades</button>
                    </form>
                    <br>

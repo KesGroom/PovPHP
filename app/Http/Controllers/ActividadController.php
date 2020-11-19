@@ -10,10 +10,14 @@ use Illuminate\Support\Facades\DB;
 class ActividadController extends Controller
 {
     public function index(Request $request){
+        $curso = $request->curso;
         $Actividad = DB::table('actividades')
         ->where('docente_curso', '=', $request->docente_curso)
         ->get();
-        return view('Actividades.index' ,compact('Actividad'));
+        $tc  = DB::table('docente_curso')
+        ->where('id', '=',  $request->docente_curso)
+        ->first();
+        return view('Actividades.index' ,compact('Actividad','curso','tc'));
     }
     
     public function create(Request $request){
@@ -37,8 +41,10 @@ class ActividadController extends Controller
       $actividad->estado = "Activo";
       $actividad->docente_curso = $request->docente_curso;
       $actividad->save();
-      $status = 'Se ha creado una actividad';
-      return back()->with(compact('status'));
+    //   $status = 'Se ha creado una actividad';
+    //   return back()->with(compact('status'));
+
+    //No funciona no se por que .-. el status 
     }
     public function edit(Actividad $actividad){
         return view('Actividades.edit', compact('actividad'));

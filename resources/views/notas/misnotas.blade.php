@@ -3,7 +3,7 @@
 @extends('layouts.app')
 @section('content')
 my id {{$id}}
-<form method="POST" action="{{ route('asistencias.AsistenciaEA') }}">
+<form method="POST" action="{{ route('notas.notasEA') }}">
     @csrf
         <input id="id" type="hidden" class="form-control @error('id') is-invalid @enderror" name="id" value=" {{$id}}" required autocomplete="salon" autofocus readonly>
     <button class="btn btn-primary" type="submit">Consultar estudiante</button>
@@ -12,7 +12,7 @@ my id {{$id}}
 <br>
 <br>
 
-<form method="POST" action="{{ route('asistencias.AsistenciaEA') }}">
+<form method="POST" action="{{ route('notas.notasEA') }}">
     @csrf
     <div class=" ">
         <label for="id">Estudiante</label>

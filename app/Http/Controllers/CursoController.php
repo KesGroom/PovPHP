@@ -48,8 +48,9 @@ class CursoController extends Controller
       return back()->with(compact('status'));
     }
     public function miscursos(){
+      $id =  Auth::user()->id;
       $cursos = Docente_curso::where('docente', Auth::user()->id)->get();
-      return view('cursos.miscursos', compact('cursos'));
+      return view('cursos.miscursos', compact('cursos','id'));
       }
     public function asistencia(Request $request){
            $estudiantes = Estudiante::where('curso', $request->curso)->get();

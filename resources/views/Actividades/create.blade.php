@@ -72,13 +72,15 @@
     </div>
 
     {{-- Input del salon respectivo --}}
-    <input id="docente_curso" type="hidden" class="form-control @error('docente_curso') is-invalid @enderror" name="docente_curso" value="{{$DC->id}}" required autocomplete="docente_curso" autofocus readonly>
+    <input id="docente_curso" type="text" class="form-control @error('docente_curso') is-invalid @enderror" name="docente_curso" value="{{$DC->id}}" required autocomplete="docente_curso" autofocus readonly>
     {{-- x --}}
     <div class="form-group row mb-0">
         <div class="col-md-6 offset-md-4">
-            <button type="submit" class="btn btn-primary">
-                Registrar actividad 
-            </button>
+            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Registrar actividades
+                                </button>
+                            </div>
         </div>
     </div>
 </form>

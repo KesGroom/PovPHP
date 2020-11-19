@@ -36,7 +36,7 @@
                                 <option value="Pregunta">Pregunta</option>
                                 <option value="Queja">Queja</option>
                                 <option value="Reclamo">Reclamo</option>
-                                <option value="'Sugerencia'">Sugerencia</option>
+                                <option value="Sugerencia">Sugerencia</option>
                             </select>
                         </div>
                         <div class="form-group row mb-0">

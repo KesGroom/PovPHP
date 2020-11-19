@@ -12,10 +12,12 @@ use App\Http\Controllers\GradoController;
 use App\Http\Controllers\MateriaController;
 use App\Http\Controllers\PqrsController;
 use App\Http\Controllers\RegistroAsistenciaController;
+use App\Http\Controllers\RegistroNotaController;
 use App\Http\Controllers\UserController;
 use App\Models\Atencion_area;
 use App\Models\Docente_curso;
 use App\Models\Registro_asistencia;
+use App\Models\Registro_nota;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
@@ -96,12 +98,17 @@ Route::middleware(['web'])->group(function () {
   Route::post('asistencias/asistenciasEstudiante', [RegistroAsistenciaController::class, 'asistenciasEstudiante'])->name('asistencias.asistenciasEstudiante');
   Route::get('asistencias/{estudiante}/edit', [RegistroAsistenciaController::class, 'edit'])->name('asistencias.edit');
   Route::put('asistencias{estudiante}', [RegistroAsistenciaController::class, 'update'])->name('asistencias.update');
+//consultas por el estudiante y acudiente
+  Route::get('asistencia/miAsistencia', [RegistroAsistenciaController::class, 'miAsistencia'])->name('asistencias.misasistencias');
+  Route::post('asistencias/AsistenciaEA', [RegistroAsistenciaController::class, 'AsistenciaEA'])->name('asistencias.AsistenciaEA');
+
+
     //Routas para registro de actividades del cursos
-    Route::post('actividades', [ActividadController::class, 'store'])->name('actividades.store');
-    Route::post('actividades/index', [ActividadController::class, 'index'])->name('actividades.index');
-    Route::post('actividades/create', [ActividadController::class, 'create'])->name('actividades.create');
-    Route::get('actividades/{actividad}/edit', [ActividadController::class, 'edit'])->name('actividades.edit');
-    Route::put('actividades{actividad}', [ActividadController::class, 'update'])->name('actividades.update');
+    Route::post('actividades/index', [ActividadController::class,'index'])->name('actividades.index');
+    Route::post('actividades/create', [ActividadController::class,'create'])->name('actividades.create');
+    Route::post('actividades', [ActividadController::class,'store'])->name('actividades.store');
+    Route::get('actividades/{actividad}/edit', [ActividadController::class,'edit'])->name('actividades.edit');
+    Route::put('actividades{actividad}', [ActividadController::class,'update'])->name('actividades.update');
     //Routas para Docentes curso
     Route::get('docentecurso/create', [DocenteCursoController::class, 'create'])->name('docentecurso.create');
     Route::get('docentecurso/miscursos', [DocenteCursoController::class, 'miscursos'])->name('docentecurso.miscursos');
@@ -121,6 +128,23 @@ Route::middleware(['web'])->group(function () {
     Route::get('pqrs/index', [PqrsController::class, 'index'])->name('pqrs.index');
     Route::get('pqrs/{pqrs}/responder', [PqrsController::class, 'responder'])->name('pqrs.responder');
     Route::put('pqrs{pqrs}', [PqrsController::class, 'update'])->name('pqrs.update');
+    //Routas para notas
+    Route::post('notas/create', [RegistroNotaController::class, 'create'])->name('notas.create');
+    Route::post('notas', [RegistroNotaController::class, 'store'])->name('notas.store');
+    Route::get('notas/index', [RegistroNotaController::class, 'index'])->name('notas.index');
+    Route::get('notas/{notas}/edit', [RegistroNotaController::class, 'edit'])->name('notas.edit');
+    Route::put('notas{notas}', [RegistroNotaController::class, 'update'])->name('notas.update');
+    //consultas para notas acudiente y estudiante
+    Route::get('notas/minotas', [RegistroNotaController::class, 'minotas'])->name('notas.misnotas');
+    Route::post('notas/notasEA', [RegistroNotaController::class, 'notasEA'])->name('notas.notasEA');
+
+
+    //Pruebas Ajax -- Graficas
+    Route::post('materias/all', [MateriaController::class, 'all'])->name('materias.all');// prueba
+    Route::post('graficas/pqrs', [PqrsController::class, 'graficar'])->name('graficas.pqrs');
+     // rutas para graficas
+    Route::get('graficas/pqrs', [PqrsController::class, 'vergrafica'])->name('pqrs.vergrafica');
+
 
     Route::post('docentecurso', [DocenteCursoController::class, 'crearplantillas'])->name('docentecurso.crearplantillas');
     Route::get('/', function () {

@@ -42,4 +42,8 @@ class MateriaController extends Controller
       $status = 'Se ha actualizado una materia';
       return back()->with(compact('status'));
     }
+    public function all(Request $request){
+        $materias = Materia::where('estado',"Activo")->get();
+        return response(json_encode($materias),200);
+    }
 }

@@ -6,6 +6,7 @@ use App\Models\Estudiante;
 use App\Models\Pqrs;
 use App\Models\Registro_asistencia;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 class RegistroAsistenciaController extends Controller
 {
@@ -59,4 +60,24 @@ class RegistroAsistenciaController extends Controller
         $status = 'Se ha actualizado la asistencia';
         return back()->with(compact('status'));
     }
+
+    // Consultas para usuarios Estudiante y Acudiente
+
+
+    public function miAsistencia(){
+        $id = Auth::user()->id;
+        $estudiantes = Estudiante::where([
+            ['estado', '=', "Activo"],
+            ['acudiente', '=', $id],
+        ])->get();
+        return view('asistencias.misasistencias' , compact('estudiantes','id'));
+    }
+    public function AsistenciaEA(Request $request){
+        $asitencia = Registro_asistencia::where([
+            ['estado', '=', "Activo"],
+            ['estudiante', '=', $request->id],
+        ])->get();
+        return view('asistencias.AsistenciaEA', compact('asitencia'));
+    }
+
 }
