@@ -17,13 +17,12 @@ class CreateNoticiasTable extends Migration
             $table->increments('id');
             $table->enum('estado', ['Activo', 'Inactivo']);
             $table->string('titulo', 50);
-            $table->string('subtitulo', 50);
+            $table->string('subtitulo', 100);
             $table->text('informacion');
             $table->string('imagen', 50);
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *

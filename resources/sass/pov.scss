@@ -1,36 +1,32 @@
-body a:hover{
+body a:hover {
     text-decoration: none !important;
 }
 
-.scrollbarStyle::-webkit-scrollbar{
+.scrollbarStyle::-webkit-scrollbar {
     width: 5px;
-} 
+}
 
-.scrollbarStyle::-webkit-scrollbar-thumb{
+.scrollbarStyle::-webkit-scrollbar-thumb {
     background-color: black;
     border-radius: 15px;
 }
 
 /* Clase para ocultar cosas */
-.Oculto{
+.Oculto {
     display: none;
 }
 
-.enlaces{
+.enlaces {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;  
-    width: 100%; 
-    padding: 0.5rem 2.5rem; 
+    justify-content: space-around;
+    width: 100%;
+    padding: 0.5rem 2.5rem;
     background-color: #b71c1c;
-    margin-top:-1.4rem;
-    position: sticky;
-    top: 75px;
-    z-index: 1000;
 }
 
-.enlaces a{
+.enlaces a {
     font-size: 1em;
     display: flex;
     flex-direction: row;
@@ -39,10 +35,16 @@ body a:hover{
     color: white;
 }
 
-.enlaces ion-icon{
+.enlaces ion-icon {
     color: white;
     font-size: 1em;
     margin-right: 5px;
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1110;
 }
 
 .footer {
@@ -107,23 +109,22 @@ body a:hover{
 /* Inputs*/
 /* --- radio, checkbox --- */
 [type="radio"],
-[type="checkbox"]{
-    position: absolute; 
+[type="checkbox"] {
+    position: absolute;
     opacity: 0;
     display: none;
     pointer-events: initial;
-
 }
 
-[type="radio"]+label,
+[type="radio"] + label,
 [type="checkbox"] + label,
-.exportExcel label{
+.exportExcel label {
     cursor: pointer;
-    user-select: none; 
+    user-select: none;
 }
 
 .Check label,
-.Radio label{
+.Radio label {
     color: #9e9e9e;
     padding: 5px 15px 5px 36px;
     display: inline-block;
@@ -133,18 +134,18 @@ body a:hover{
 }
 
 .Check label:hover,
-.Radio label:hover{
+.Radio label:hover {
     background: rgba(183, 28, 28, 0.4);
     color: white;
 }
 
 .Check label:hover:before,
-.Radio label:hover:before{
+.Radio label:hover:before {
     border: 1.5px solid white;
 }
 
 .Check label:before,
-.Radio label:before{
+.Radio label:before {
     content: "";
     width: 12px;
     height: 12px;
@@ -159,26 +160,26 @@ body a:hover{
     transition: all 0.3s ease;
 }
 
-.Check label:before{
+.Check label:before {
     border-radius: 2px;
 }
 
-.Check input[type="checkbox"]:checked+label,
-.Radio input[type="radio"]:checked+label{
+.Check input[type="checkbox"]:checked + label,
+.Radio input[type="radio"]:checked + label {
     padding: 5px 15px;
     background: #b71c1c;
     border-radius: 15px;
     color: white;
 }
 
-.Check input[type="checkbox"]:checked+label:before,
-.Radio input[type="radio"]:checked+label:before{
+.Check input[type="checkbox"]:checked + label:before,
+.Radio input[type="radio"]:checked + label:before {
     display: none;
 }
 
 /* Engaño visual para cuando el checkbox está "Seleccionado" */
 
-.reverseCheck label{
+.reverseCheck label {
     color: white;
     padding: 5px 15px;
     display: inline-block;
@@ -188,16 +189,16 @@ body a:hover{
     background: #b71c1c;
 }
 
-.reverseCheck input[type="checkbox"]:checked+label:hover{
+.reverseCheck input[type="checkbox"]:checked + label:hover {
     background: rgba(183, 28, 28, 0.4);
     color: white;
 }
 
-.reverseCheck input[type="checkbox"]:checked+label:hover:before{
+.reverseCheck input[type="checkbox"]:checked + label:hover:before {
     border: 1.5px solid white;
 }
 
-.reverseCheck label:before{
+.reverseCheck label:before {
     content: "";
     width: 12px;
     height: 12px;
@@ -211,139 +212,139 @@ body a:hover{
     transition: all 0.3s ease;
 }
 
-.reverseCheck input[type="checkbox"]:checked+label{
+.reverseCheck input[type="checkbox"]:checked + label {
     padding: 5px 15px 5px 36px;
     background: none;
     border-radius: 3px;
     color: #9e9e9e;
 }
 
-.reverseCheck input[type="checkbox"]:checked+label:before{
+.reverseCheck input[type="checkbox"]:checked + label:before {
     display: inline-block;
     border: 1.5px solid #b71c1c;
 }
 
-.btn-MC{
+.btn-MC {
     background-color: #b71c1c;
     color: white;
 }
-.btn-MC:hover{
+.btn-MC:hover {
     background-color: #a71d1d;
     color: white;
 }
 
 /* FlexBox */
 /*Row*/
-.displayRowCC{
+.displayRowCC {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 }
-.displayRowSbC{
+.displayRowSbC {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
-.displayRowSaC{
+.displayRowSaC {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
 }
-.displayRowSaIni{
+.displayRowSaIni {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: flex-start;
 }
-.displayRowSaEnd{
+.displayRowSaEnd {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: flex-end;
 }
-.displayRowSbIni{
+.displayRowSbIni {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
 }
-.displayRowSbEnd{
+.displayRowSbEnd {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-end;
 }
-.displayRowIniC{
+.displayRowIniC {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
 }
-.displayRowEndC{
+.displayRowEndC {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
 }
 /*Column*/
-.displayColCC{
+.displayColCC {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.displayColSbC{
+.displayColSbC {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
 }
-.displayColSbIni{
+.displayColSbIni {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
 }
-.displayColSbEnd{
+.displayColSbEnd {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-end;
 }
-.displayColIniC{
+.displayColIniC {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
 }
-.displayColEndC{
+.displayColEndC {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
 }
-.displayColSaIni{
+.displayColSaIni {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: flex-start;
 }
-.displayColSaC{
+.displayColSaC {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
 }
-.displayColSaIni{
+.displayColSaIni {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: flex-start;
 }
-.displayColSaEnd{
+.displayColSaEnd {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -371,11 +372,10 @@ body a:hover{
     width: 100%;
 }
 
-.slider .sliderGuest{
+.slider .sliderGuest {
     width: 100%;
     height: 35rem;
 }
-
 
 @keyframes cambio {
     0% {
@@ -409,7 +409,6 @@ body a:hover{
     100% {
         margin-left: -300%;
     }
-
 }
 
 .slider .contenedor {
@@ -435,22 +434,25 @@ body a:hover{
 }
 
 .slider .contenedor .contenido .informacion {
-    width: 45%;
+    width: 50%;
     height: 80%;
-    padding: 1rem;
+    padding: 0.5rem;
 }
 
 .contenido .informacion .tituloC {
     font-size: 2.5em;
+    width: 100%;
 }
 
 .contenido .informacion .subtituloC {
-    font-size: 1.8em;
+    font-size: 1.3em;
     border-bottom: 1px solid white;
+    width: 100%;
 }
 
 .contenido .informacion .texto {
     font-size: 1em;
+    width: 100%;
 }
 
 .contenido .informacion .creditos {
@@ -503,7 +505,6 @@ body a:hover{
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-
 }
 
 .biografia img {
@@ -522,7 +523,6 @@ body a:hover{
 .contenedorMV {
     width: 100%;
     padding: 1rem 11rem;
-
     /* Flex */
     display: flex;
     flex-direction: row;
@@ -547,13 +547,11 @@ body a:hover{
     flex-wrap: wrap;
     justify-content: center;
     align-content: center;
-
 }
 
 .estrofa {
     width: 33.33%;
     padding: 1rem 6rem;
-
 }
 
 .tituloEstrofa {
@@ -580,7 +578,6 @@ body a:hover{
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
-
 }
 
 .Contacto .mapa {
@@ -604,7 +601,7 @@ body a:hover{
     align-items: center;
 }
 
-.btn-footer{
+.btn-footer {
     border-radius: 0 0 5px 5px !important;
     padding: 12px 20px !important;
     position: absolute;
@@ -615,12 +612,11 @@ body a:hover{
     border-bottom: 2px solid #8f1313 !important;
 }
 
-.card{
+.card {
     position: relative;
 }
 
 .containerMain {
-    margin-top: 2rem;
     margin-bottom: 4rem;
 }
 
@@ -654,7 +650,7 @@ label[for="newFile"] {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    transition: all .5s;
+    transition: all 0.5s;
     cursor: pointer;
     border-radius: 5px;
     padding: 5px 40px !important;
@@ -670,93 +666,341 @@ label[for="newFile"]:hover {
     border: 1px solid #971313;
 }
 
-    .card-img-MC {
-        position: absolute;
-        width: 3rem;
-        /*5*/
-        height: 3rem;
-        border-radius: 50%;
-        top: -1.5rem;
-        /*-2.5*/
-        left: 0.5rem;
-        transition: all linear 400ms;
+.card-img-MC {
+    position: absolute;
+    width: 3rem;
+    /*5*/
+    height: 3rem;
+    border-radius: 50%;
+    top: -1.5rem;
+    /*-2.5*/
+    left: 0.5rem;
+    transition: all linear 400ms;
+}
+
+.card-img-table {
+    padding: 0.9rem 0 0 0;
+    /*2rem*/
+    width: 12rem;
+    height: 100px;
+    /*18*/
+    transition: all linear 400ms;
+    margin-top: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 2.5rem;
+}
+
+.card-img-table {
+    width: 18rem;
+    height: fit-content;
+    padding: 0 0 0 0;
+}
+
+.card-img-table .card-img-MC {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    top: -2.5rem;
+    left: 0.5rem;
+}
+
+.card-img-table .list-group-item {
+    /* padding: 12px 20px; */
+    height: 65px;
+    overflow: hidden;
+    transition: all linear 400ms;
+    font-size: 13.5px;
+}
+
+.card-img-table .list-group {
+    height: fit-content !important;
+}
+
+.card-img-table .actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.cont-card-img-table {
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-content: center;
+    margin-top: 1rem;
+}
+
+.txtRol {
+    font-size: 12px;
+    color: blueviolet;
+}
+
+.actions {
+    width: 100%;
+    padding: 0.5rem;
+}
+
+.actions a {
+    color: black;
+    margin-left: 1rem;
+}
+
+.actions a:hover {
+    color: #b71c1c;
+}
+
+.cont-links {
+    width: 100%;
+}
+
+.txtDoc {
+    color: brown;
+    font-size: 12px;
+}
+
+.txtEst {
+    color: goldenrod;
+    font-size: 12px;
+}
+
+.txtOther {
+    color: rgb(219, 221, 97);
+    font-size: 12px;
+}
+
+.txtAcu {
+    color: rgb(233, 121, 93);
+    font-size: 12px;
+}
+
+.falseLink {
+    border: none;
+    background: none;
+    outline: none !important;
+    cursor: pointer;
+}
+
+.falseLink:hover {
+    border: none;
+    background: none;
+    outline: none;
+    color: #b71c1c;
+}
+
+.actions {
+    width: 100%;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.actions form {
+    margin-left: 1rem;
+}
+
+.actions a {
+    margin-top: -0.9rem;
+}
+
+.page-link {
+    position: relative;
+    display: block;
+    padding: 0.5rem 0.75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #b71c1c !important;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+}
+
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff !important;
+    background-color: #b71c1c !important;
+    border-color: #8d1414 !important;
+}
+
+.panel-control {
+    width: 100%;
+    height: fit-content;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 5px;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.panel-control .Pc-principal,
+.panel-control .Pc-secundario {
+    width: 100%;
+}
+
+.panel-control .Pc-principal {
+    padding: 0 2rem;
+}
+
+.buscador {
+    position: relative;
+}
+
+.input-buscador {
+    width: 25rem;
+    border-radius: 15px;
+    padding: 0.1rem 0.5rem;
+    font-size: 0.9em;
+    transition: all linear 200ms;
+}
+
+.input-buscador:focus {
+    outline: none;
+    padding: 0.1rem 0.5rem;
+}
+
+.input-buscador:focus ~ .icon-buscador a {
+    color: #b71c1c !important;
+}
+
+.icon-buscador {
+    position: absolute;
+    right: 0;
+}
+
+.icon-buscador a {
+    color: #000;
+    transition: all linear 200ms;
+}
+
+.icon-buscador a:hover {
+    color: #000;
+}
+
+.icon-buscador a ion-icon {
+    font-size: 2em;
+}
+
+.add-icon {
+    font-size: 1.3em;
+    color: #000;
+}
+
+.add-icon:hover {
+    font-size: 1.3em;
+    color: #b71c1c;
+}
+
+.panel-control .PC-secundario {
+    border-top: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.panel-control .PC-secundario .PC-button {
+    padding: 0.3rem 1rem;
+    color: #fff;
+    width: 16.66%;
+    font-size: 0.9em;
+}
+
+.panel-control .PC-secundario .PC-button ion-icon,
+.panel-control .PC-secundario .PC-button .fas {
+    margin-right: 0.5rem;
+}
+
+.excel {
+    background-color: #67cb99;
+}
+
+.importExcel {
+    background-color: #67bfcb;
+}
+
+.templateExcel {
+    background-color: #f0e338;
+}
+
+.filter {
+    background-color: #c4c4c4;
+}
+
+.graphic {
+    background-color: #d68a8a;
+}
+
+.restore {
+    background-color: #da9e6e;
+}
+
+.excel:hover {
+    background-color: #5db88a;
+}
+
+.importExcel:hover {
+    background-color: #5aa8b3;
+}
+
+.templateExcel:hover {
+    background-color: #e7da27;
+}
+
+.filter:hover {
+    background-color: #b1adad;
+}
+
+.graphic:hover {
+    background-color: #c57373;
+}
+
+.restore:hover {
+    background-color: #cc8b55;
+}
+
+.modal-footer {
+    padding: 0 !important;
+}
+
+.containerMain .card-header {
+    border: none !important;
+}
+
+#contenedor_carga {
+    background-color: rgba(250, 240, 245, 0.9);
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    transition: all 1s ease;
+    z-index: 10000;
+}
+
+#carga {
+    border: 10px solid #ccc;
+    border-top-color: #b71c1c;
+    border-top-style: groove;
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    animation: girar 1.5s linear infinite;
+}
+
+#carga img {
+    width: 5rem;
+    height: 3rem;
+}
+
+@keyframes girar {
+    from {
+        transform: rotate(0deg);
     }
 
-    .card-img-table {
-        padding: 0.9rem 0 0 0;
-        /*2rem*/
-        width: 12rem;
-        height: 100px;
-        /*18*/
-        transition: all linear 400ms;
-        margin-top: 1rem;
-        margin-right: 1rem;
-        margin-bottom: 2.5rem;
+    to {
+        transform: rotate(360deg);
     }
-
-    .card-img-table {
-        width: 18rem;
-        height: fit-content;
-        padding: 0 0 0 0;
-    }
-
-    .card-img-table .card-img-MC {
-        width: 5rem;
-        height: 5rem;
-        border-radius: 50%;
-        top: -2.5rem;
-        left: 0.5rem;
-    }
-
-    .card-img-table .list-group-item {
-        /* padding: 12px 20px; */
-        height: 65px;
-        overflow: hidden;
-        transition: all linear 400ms;
-        font-size: 13.5px;
-    }
-
-    .card-img-table .list-group {
-        height: fit-content !important;
-    }
-
-    .card-img-table .actions {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
-        align-items: center;
-    }
-
-    .cont-card-img-table {
-        width: 100%;
-        padding: 1rem;
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: space-between;
-        align-content: center;
-        margin-top: 1rem;
-    }
-
-    .txtRol {
-        font-size: 12px;
-        color: blueviolet;
-    }
-
-    .actions {
-        width: 100%;
-        padding: 0.5rem;
-    }
-
-    .actions a {
-        color: black;
-        margin-left: 1rem;
-    }
-
-    .actions a:hover {
-        color: #b71c1c;
-    }
-
-    .cont-links {
-        width: 100%;
-
-    }
+}

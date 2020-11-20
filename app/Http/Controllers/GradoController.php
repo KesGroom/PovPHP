@@ -38,4 +38,9 @@ class GradoController extends Controller
         $status = 'Se ha actualizado el Area';
         return back()->with(compact('status'));
     }
+
+    public function getGrades($nivel)
+    {
+      return Grado::where([['estado', 'Activo'], ['nivel_educativo', $nivel]])->select('id', 'nombre_grado')->get();
+    }
 }
