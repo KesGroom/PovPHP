@@ -77,7 +77,7 @@ Route::middleware(['web'])->group(function () {
     Route::put('pages/usuarios/recovery/restore{usuario}', [UserController::class, 'restore'])->name('usuarios.restore');
     Route::get('pages/usuarios/index{usuario}', [UserController::class, 'indexRol'])->name('usuarios.indexRol');
     Route::put('pages/usuarios/index/resetPhoto{usuario}', [UserController::class, 'photoReset'])->name('usuarios.photoReset');
-    Route::put('pages/usuarios/{usuario}', [UserController::class, 'delete'])->name('usuarios.delete');
+    Route::put('pages/usuarios{usuario}', [UserController::class, 'delete'])->name('usuarios.delete');
     Route::get('pages/usuarios/{usuario}/edit', [UserController::class, 'edit'])->name('usuarios.edit');
     Route::put('pages/usuarios/{usuario}/edit', [UserController::class, 'update'])->name('usuarios.update');
     //---Excel---
