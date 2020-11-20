@@ -54,7 +54,7 @@
                         @else
                         <li class="nav-item mt-2">
                         @endguest
-                        <a class="nav-link" href="{{ url('lang', ['es']) }}"><img
+                        <a class="nav-link" href="{{ url('lang', ['en']) }}"><img
                                 src="http://imgfz.com/i/BnyEPod.png" alt="En"
                                 style="width: 1.3rem; height: 1.3rem;"></a>
                     </li>
@@ -64,7 +64,7 @@
                         @else
                         <li class="nav-item mt-2">
                         @endguest
-                        <a class="nav-link" href="{{ url('lang', ['en']) }}"><img
+                        <a class="nav-link" href="{{ url('lang', ['es']) }}"><img
                                 src="http://imgfz.com/i/Ci0Lyg1.png" alt="Es"
                                 style="width: 1.3rem; height: 1.3rem;"></a>
                     </li>
