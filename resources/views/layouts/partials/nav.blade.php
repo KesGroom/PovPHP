@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm sticky-top">
     <div class="container">
         <a class="navbar-brand" href="{{ route('welcome') }}">
-            <img src="{{asset('img/Escudo.jpg')}}" alt="Escudo" style="width: 5rem; height: 3rem;">
+            <img src="{{asset('img/escudo.jpg')}}" alt="Escudo" style="width: 5rem; height: 3rem;">
             <span class="navbar-brand mb-0 h1">María Cano IED</span>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
