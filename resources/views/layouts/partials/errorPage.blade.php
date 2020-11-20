@@ -72,7 +72,7 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
 
     {{-- Favicon --}}
-    <link rel="shortcut icon" href="{{ asset('storage/sistema/LOGOFavicon.png') }}">
+    <link rel="shortcut icon" href="{{ asset('img/LOGOFavicon.png') }}">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
