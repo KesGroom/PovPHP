@@ -14,7 +14,7 @@ class PermisosSeeder extends Seeder
      */
     public function run()
     {
-        $url = "http://127.0.0.1:8000/home";
+        $url = "http://mariacanoied.herokuapp.com/home";
 
         /**
          * Permisos de control de usuarios
@@ -34,7 +34,7 @@ class PermisosSeeder extends Seeder
         $perHUR = new Permiso();
         $perHUR->nombre = "Usuarios registrados";
         $perHUR->name = "Registered Users";
-        $perHUR->url = "http://127.0.0.1:8000/pages/usuarios/index";
+        $perHUR->url = "http://mariacanoied.herokuapp.com/pages/usuarios/index";
         $perHUR->permiso_padre = $perUsu->id;
         $perHUR->estado = 'Activo';
         $perHUR->save();
@@ -197,7 +197,7 @@ class PermisosSeeder extends Seeder
         $perCN = new Permiso();
         $perCN->nombre = "Lista de noticias";
         $perCN->name = "News list";
-        $perCN->url = 'http://127.0.0.1:8000/pages/news/index';
+        $perCN->url = 'http://mariacanoied.herokuapp.com/pages/news/index';
         $perCN->permiso_padre = $perNot->id;
         $perCN->estado = 'Activo';
         $perCN->save();
