@@ -12,7 +12,11 @@
             @include('pages.usuarios.resetPhoto')
             <a href="{{ route('usuarios.edit', $usuario) }}" title="{{ __('pov.edit') }}"><i
                     class="fas fa-user-edit"></i></a>
-            @include('pages.usuarios.delete')
+                    @include('layouts.forms.delete',[
+                        'class' => 'usuarios',
+                        'icono' => 'fa-user-times',
+                        'retorno' => $usuario,
+                    ])
         </div>
         <div class="card-header">
             {{ $usuario->name }} {{ $usuario->apellido }} <br>

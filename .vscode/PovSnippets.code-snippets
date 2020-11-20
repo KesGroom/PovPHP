@@ -1,0 +1,106 @@
+{
+	"Validated Permission": {
+		"scope": "php",
+		"prefix": "_povvp",
+		"body": [
+			"if (!Auth::user()) {return WelcomeController::welcome();}",
+			"$$1validated= PermisoController::validatedPermit('$2');",
+			"if ($$3validated) {",
+			"$4",
+			"} else {return WelcomeController::welcome();}"
+		],
+		"description": "Validar permisos para una ruta GET"
+	},
+	"Options Table": {
+		"scope": "blade",
+		"prefix": "_povmenu",
+		"body": [
+			"@include('layouts.partials.optionsTable',[",
+			"'tituloPC'=> __('pov.$1'),",
+			"'addElement'=> __('pov.$2'),",
+			"'importExcel' => route('$3.import'),",
+			"'exportExcel' => route('$4.export'),",
+			"'templateExcel' => route('$5.template'),",
+			"'restore' => route('$6.recovery'),",
+			"'add' => route('$7.create'),",
+			"])"
+		],
+		"description": "Base para la construcción del menú para las tablas"
+	},
+	"Action delete": {
+		"scope": "blade",
+		"prefix": "_povdelete",
+		"body": [
+			"@include('layouts.forms.delete',[",
+			"'class'=> '$1',",
+			"'icono'=> 'fa-trash-alt',",
+			"'retorno' => $3,",
+			"])"
+		],
+		"description": "Include con la opción de eliminación"
+	},
+	"Action Restore": {
+		"scope": "blade",
+		"prefix": "_povrestore",
+		"body": [
+			"@include('layouts.forms.restore',[",
+			"'class'=> '$1',",
+			"'icono'=> 'fa-history',",
+			"'retorno' => $3,",
+			"])"
+		],
+		"description": "Include con la opción de restaurar datos"
+	},
+	"DateTime Print": {
+		"scope": "blade",
+		"prefix": "_povdatetime",
+		"body": [
+			"{{ date('d/m/Y H:i:s', strtotime($$1->created_at)) }}"
+		],
+		"description": "Formato de fecha y hora con php"
+	},
+	"Date Print": {
+		"scope": "blade",
+		"prefix": "_povdate",
+		"body": [
+			"{{ date('d/m/Y', strtotime($$1->created_at)) }}"
+		],
+		"description": "Formato de fecha con php"
+	},
+	"Blade-layout": {
+		"scope": "blade",
+		"prefix": "_povdashNav",
+		"body": [
+			"@extends('layouts.app')",
+			"@section('content')",
+			"@section('nav')",
+			"@include('layouts.partials.dashNav')",
+			"@endsection",
+			"@if (session('status'))",
+			"@section('script')",
+			"@include('layouts.partials.alerts',[",
+			"'option' => session('status'),",
+			"])",
+			"@endsection",
+			"@endif",
+			"@endsection",
+		],
+		"description": "Include con las opciones del sub menú del dashboard"
+	},
+	"SwalAlert Toast": {
+		"scope": "blade",
+		"prefix": "_povSWToast",
+		"body": [
+			"@if (session('lang') == 'es')",
+			"<script>",
+			"AlertaToast('$1', 'success');",
+			"</script>",
+			"@else",
+			"<script>",
+			"AlertaToast('$2', 'success');",
+			"</script>",
+			"@endif",
+		],
+		"description": "Alerta de SW de modo toast"
+	}
+}

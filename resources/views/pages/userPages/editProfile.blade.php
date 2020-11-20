@@ -1,13 +1,8 @@
-
-
 @extends('layouts.app')
 @section('content')
-    @include('layouts/partials/dashNav')
-    @if (session('status'))
-        <div class="alert alert-success" role="alert">
-            {{ session('status') }}
-        </div>
-    @endif
+@section('nav')
+@include('layouts.partials.dashNav')
+@endsection
     <div class="container containerMain">
         <div class="row justify-content-around">
             <div class="row col-sd-12 col-md-6">

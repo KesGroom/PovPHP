@@ -11,7 +11,6 @@ class CursoController extends Controller
     public function create(){
         $grados = Grado::where('estado','Activo')->get();
         return view('cursos.create', compact('grados'));
-
     }
     public function store(Request $request){
       $curso = new Curso();
@@ -41,5 +40,10 @@ class CursoController extends Controller
       $curso->save();
       $status = 'Se ha actualizado un Curso';
       return back()->with(compact('status'));
+    }
+
+    public function getCourses($id)
+    {
+      return Curso::where([['estado', 'Activo'], ['grado', $id]])->select('id', 'curso', 'salon')->get();
     }
 }

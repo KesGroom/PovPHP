@@ -7,7 +7,9 @@
 </style>
 @extends('layouts.app')
 @section('content')
-    @include('layouts.partials.dashNav')
+@section('nav')
+@include('layouts.partials.dashNav')
+@endsection
     <div class="container containerMain">
         @include('layouts.partials.optionsTable',[
         'tituloPC'=> __('pov.newsReg'),

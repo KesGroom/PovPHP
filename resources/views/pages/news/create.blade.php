@@ -1,6 +1,8 @@
 @extends('layouts.app')
 @section('content')
-    @include('layouts.partials.dashNav')
+@section('nav')
+@include('layouts.partials.dashNav')
+@endsection
     <div class="container containerMain">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -59,18 +61,6 @@
                                             </span>
                                         @enderror
                                     </div>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="form-group row">
-                                    <label for="categoria"
-                                        class="col-md-4 col-form-label text-md-right">{{ __('pov.txtCategory') }}</label>
-                                    <select class="form-control col-md-6" id="categoria" name="categoria" required>
-                                        @foreach ($categorias as $categoria)
-                                            <option value="{{ $categoria->id }}">{{ $categoria->nombre_categoria }}
-                                            <option>
-                                        @endforeach
-                                    </select>
                                 </div>
                             </li>
                             <li class="list-group-item">

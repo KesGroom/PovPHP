@@ -6,17 +6,17 @@
                 <div class="actions" style="width: 10%;">
                     @if ($noticia->estado == 'Inactivo')
                         @include('layouts.forms.restore', [
-                            'class' => 'news',
-                            'icono' => 'fa-history',
-                            'retorno' => $noticia
+                        'class' => 'news',
+                        'icono' => 'fa-history',
+                        'retorno' => $noticia
                         ])
                     @else
                         <a href="{{ route('news.edit', $noticia) }}" title="{{ __('pov.edit') }}"><i
                                 class="far fa-edit"></i></a>
                         @include('layouts.forms.delete', [
-                            'class' => 'news',
-                            'icono' => 'fa-trash-alt',
-                            'retorno' => $noticia
+                        'class' => 'news',
+                        'icono' => 'fa-trash-alt',
+                        'retorno' => $noticia
                         ])
                     @endif
                 </div>
@@ -42,6 +42,15 @@
             </div>
         </div>
     @empty
-        <li>No hay resultados</li>
+        <div class="card" style="width: 100%;">
+            <div class="card" style="width: 100%;">
+                <div class="card-body displayRowCC">
+                    <h5 class="card-title displayRowCC">
+                        <ion-icon style="font-size: 1.5em; color: rgb(230, 175, 57);" name="alert-circle-outline" class="mr-2">
+                        </ion-icon>{{ __('pov.noExist') }}
+                    </h5>
+                </div>
+            </div>
+        </div>
     @endforelse
 </div>

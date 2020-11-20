@@ -193,15 +193,7 @@ class PermisosSeeder extends Seeder
         $perNot->estado = 'Activo';
         $perNot->save();
 
-        /* Permisos hijo */
-        $perCN = new Permiso();
-        $perCN->nombre = "Registrar noticia";
-        $perCN->name = "Register new";
-        $perCN->url = 'http://127.0.0.1:8000/pages/news/create';
-        $perCN->permiso_padre = $perNot->id;
-        $perCN->estado = 'Activo';
-        $perCN->save();
-        
+        /* Permisos hijo */      
         $perCN = new Permiso();
         $perCN->nombre = "Lista de noticias";
         $perCN->name = "News list";

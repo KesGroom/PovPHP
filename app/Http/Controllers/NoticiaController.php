@@ -11,44 +11,70 @@ use App\Models\Rol_has_permiso;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
+use PHPUnit\Framework\Constraint\IsTrue;
 
 class NoticiaController extends Controller
 {
     public function index()
     {
-        $noticias = Noticia::where('estado', 'Activo')->paginate(20);
-        $rol = Auth::user()->rol;
-        $rhp = Rol_has_permiso::where('rol', $rol)->get();
-        return view('pages.news.index', compact('noticias', 'rhp'));
+        if (!Auth::user()) {
+            return WelcomeController::welcome();
+        }
+        $validated = PermisoController::validatedPermit('Lista de noticias');
+        if ($validated) {
+            $noticias = Noticia::where('estado', 'Activo')->paginate(20);
+            $rhp = RolHasPermisoController::rhp();
+            return view('pages.news.index', compact('noticias', 'rhp'));
+        } else {
+            return WelcomeController::welcome();
+        }
     }
     public function recovery()
     {
-        $noticias = Noticia::where('estado', 'Inactivo')->paginate(20);
-        $rol = Auth::user()->rol;
-        $rhp = Rol_has_permiso::where('rol', $rol)->get();
-        return view('pages.news.index', compact('noticias', 'rhp'));
+        if (!Auth::user()) {
+            return WelcomeController::welcome();
+        }
+        $validated = PermisoController::validatedPermit('Lista de noticias');
+        if ($validated) {
+            $noticias = Noticia::where('estado', 'Inactivo')->paginate(20);
+            $rhp = RolHasPermisoController::rhp();
+            return view('pages.news.index', compact('noticias', 'rhp'));
+        } else {
+            return WelcomeController::welcome();
+        }
     }
 
     public function create()
     {
-        $rol = Auth::user()->rol;
-        $rhp = Rol_has_permiso::where('rol', $rol)->get();
-        $categorias = Categoria_noticia::where('estado', 'activo')->get();
-        return view('pages.news.create', compact('rhp', 'categorias'));
+        if (!Auth::user()) {
+            return WelcomeController::welcome();
+        }
+        $validated = PermisoController::validatedPermit('Lista de noticias');
+        if ($validated) {
+            $rhp = RolHasPermisoController::rhp();
+            return view('pages.news.create', compact('rhp'));
+        } else {
+            return WelcomeController::welcome();
+        }
     }
 
     public function edit(Noticia $noticia)
     {
-        $rol = Auth::user()->rol;
-        $rhp = Rol_has_permiso::where('rol', $rol)->get();
-        $categorias = Categoria_noticia::where('estado', 'activo')->get();
-        return view('pages.news.edit', compact('rhp', 'categorias', 'noticia'));
+        if (!Auth::user()) {
+            return WelcomeController::welcome();
+        }
+        $validated = PermisoController::validatedPermit('Lista de noticias');
+        if ($validated) {
+            $rhp = RolHasPermisoController::rhp();
+            return view('pages.news.edit', compact('rhp', 'noticia'));
+        } else {
+            return WelcomeController::welcome();
+        }
     }
 
     public function delete(Noticia $new)
     {
-        $rol = Auth::user()->rol;
-        $rhp = Rol_has_permiso::where('rol', $rol)->get();
+        $rhp = RolHasPermisoController::rhp();
         $count = Noticia::where('estado', 'Activo')->count();
         if ($count == 4) {
             return back()->with(compact('rhp'));
@@ -59,13 +85,12 @@ class NoticiaController extends Controller
         }
     }
 
-    public function restore(Noticia $new)
+    public function restore(Noticia $noticia)
     {
-        $new->estado = 'Activo';
-        $new->save();
+        $noticia->estado = 'Activo';
+        $noticia->save();
 
-        $rol = Auth::user()->rol;
-        $rhp = Rol_has_permiso::where('rol', $rol)->get();
+        $rhp = RolHasPermisoController::rhp();
         return back()->with(compact('rhp'));
     }
 
@@ -75,7 +100,6 @@ class NoticiaController extends Controller
             'titulo' => 'required|min:10|max:50',
             'subtitulo' => 'required|min:10|max:50',
             'info' => 'required|min:20|max:255',
-            'categoria' => 'required|min:1|max:50',
         ]);
 
         $noticia = new Noticia();
@@ -91,7 +115,6 @@ class NoticiaController extends Controller
         } else {
             $noticia->imagen = 'Colegio frontal.jpg';
         }
-        $noticia->categoria = $validated['categoria'];
         $noticia->coordinador = Auth::user()->id;
         $noticia->save();
         if (session('lang') == 'es') {
@@ -108,7 +131,6 @@ class NoticiaController extends Controller
             'titulo' => 'required|min:10|max:50',
             'subtitulo' => 'required|min:10|max:50',
             'info' => 'required|min:20|max:255',
-            'categoria' => 'required|min:1|max:50',
         ]);
 
         $noticia->estado = "Activo";
@@ -123,7 +145,6 @@ class NoticiaController extends Controller
         } else {
             $noticia->imagen = $noticia->imagen;
         }
-        $noticia->categoria = $validated['categoria'];
         $noticia->coordinador = Auth::user()->id;
         $noticia->save();
         if (session('lang') == 'es') {
@@ -167,8 +188,7 @@ class NoticiaController extends Controller
         Excel::import(new NewsImport, $file);
 
         $noticias = Noticia::where('estado', 'Activo')->paginate(20);
-        $rol = Auth::user()->rol;
-        $rhp = Rol_has_permiso::where('rol', $rol)->get();
+        $rhp = RolHasPermisoController::rhp();
         return view('pages.news.index', compact('noticias', 'rhp'));
     }
 }

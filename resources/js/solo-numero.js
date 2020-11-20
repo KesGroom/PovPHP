@@ -26,3 +26,9 @@ window.addEventListener('load', function () {
     })
 
 });
+
+window.onload = function () {
+    var contendor = document.getElementById('contenedor_carga');
+    contendor.style.visibility = 'hidden';
+    contenedor.style.opacity = 0;
+}

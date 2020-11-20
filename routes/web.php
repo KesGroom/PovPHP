@@ -11,10 +11,13 @@ use App\Http\Controllers\MailController;
 use App\Http\Controllers\NoticiaController;
 use App\Http\Controllers\PqrsController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WelcomeController;
 use App\Models\Docente_curso;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 use Symfony\Component\VarDumper\Cloner\Cursor;
 
 /*
@@ -29,8 +32,25 @@ use Symfony\Component\VarDumper\Cloner\Cursor;
 */
 
 Route::middleware(['web'])->group(function () {
+
+    Route::get('/email/verify', function () {
+        return view('auth.verify-email');
+    })->middleware(['auth'])->name('verification.notice');
+
+    Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+        $request->fulfill();
+
+        return redirect('/home');
+    })->middleware(['auth', 'signed'])->name('verification.verify');
+
+    Route::post('/email/verification-notification', function (Request $request) {
+        $request->user()->sendEmailVerificationNotification();
+
+        return back()->with('status', 'verification-link-sent');
+    })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
     //Rutas para control del usuario de sesión
-    Route::get('pages/userPages/{usuario}/editProfile', [UserController::class, 'editProfile'])->name('editProfile');
+    Route::get('pages/userPages/{usuario}/editProfile', [UserController::class, 'editProfile'])->name('editProfile')->middleware(['auth', 'verified', 'password.confirm']);
     Route::put('pages/userPages/changePhoto{usuarios}', [UserController::class, 'updatePhoto'])->name('userPages.updatePhoto');
     Route::put('pages/userPages/changeInfo{usuario}', [UserController::class, 'updateInfo'])->name('userPages.updateInfo');
     Route::put('pages/userPages/changePass{usuarioPass}', [UserController::class, 'updatePass'])->name('userPages.updatePass');
@@ -46,7 +66,7 @@ Route::middleware(['web'])->group(function () {
 
     //Rutas para Usuarios
     Route::get('pages/usuarios/create', [UserController::class, 'create'])->name('usuarios.create');
-    Route::post('pages/usuarios', [UserController::class, 'store'])->name('usuarios.store');
+    Route::post('pages/usuarios/create', [UserController::class, 'store'])->name('usuarios.store');
     Route::get('pages/usuarios/index', [UserController::class, 'index'])->name('usuarios.index');
     Route::get('pages/usuarios/recovery', [UserController::class, 'recovery'])->name('usuarios.recovery');
     Route::put('pages/usuarios/recovery/restore{usuario}', [UserController::class, 'restore'])->name('usuarios.restore');
@@ -54,7 +74,7 @@ Route::middleware(['web'])->group(function () {
     Route::put('pages/usuarios/index/resetPhoto{usuario}', [UserController::class, 'photoReset'])->name('usuarios.photoReset');
     Route::put('pages/usuarios/delete{usuario}', [UserController::class, 'delete'])->name('usuarios.delete');
     Route::get('pages/usuarios/{usuario}/edit', [UserController::class, 'edit'])->name('usuarios.edit');
-    Route::put('pages/usuarios{usuario}', [UserController::class, 'update'])->name('usuarios.update');
+    Route::put('pages/usuarios/{usuario}/edit', [UserController::class, 'update'])->name('usuarios.update');
     //---Excel---
     Route::get('exports/users', [UserController::class, 'export'])->name('usuarios.export');
     Route::get('exports/usersTemplate', [UserController::class, 'template'])->name('usuarios.template');
@@ -140,9 +160,9 @@ Route::middleware(['web'])->group(function () {
 
     //Rutas del sistema
 
-    Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
+    Route::get('/', [WelcomeController::class, 'welcome'])->name('welcome');
 
-    Auth::routes();
+    Auth::routes(['verify' => true]);
 
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 

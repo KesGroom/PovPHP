@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('layouts.partials.dashNav')
+@section('nav')
+@include('layouts.partials.dashNav')
+@endsection
     @if (session('status'))
         <div class="alert alert-success" role="alert">
             {{ session('status') }}
@@ -59,9 +61,9 @@
                                         class="col-md-4 col-form-label text-md-right">{{ __('pov.txtInfo') }}</label>
 
                                     <div class="col-md-6">
-                                        <textarea id="info" type="text"
-                                            class="form-control @error('info') is-invalid @enderror" name="info"
-                                            value="{{ $noticia->informacion }}" required autocomplete="info" autofocus></textarea>
+                                        <textarea id="info" type="text" rows="6"
+                                            class="form-control @error('info') is-invalid @enderror" name="info" required
+                                            autocomplete="info" autofocus>{{ $noticia->informacion }}</textarea>
 
                                         @error('info')
                                             <span class="invalid-feedback" role="alert">
@@ -71,46 +73,28 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="list-group-item">
-                                <div class="form-group row">
-                                    <label for="category"
-                                        class="col-md-4 col-form-label text-md-right">{{ __('pov.txtCategory') }}</label>
-                                    <select class="form-control col-md-6" id="category" name="categoria"
-                                        required>
-                                        @foreach ($categorias as $categoria)
-                                            @if ($noticia->categoria == $categoria->id)
-                                                <option value="{{ $categoria->id }}" selected>
-                                                    {{ $categoria->nombre_categoria }}
-                                                </option>
-                                            @else
-                                                <option value="{{ $categoria->id }}">
-                                                    {{ $categoria->nombre_categoria }}
-                                                </option>
-                                            @endif
-                                        @endforeach
-                                    </select>
+
+                            <li class="list-group-item displayRowSaC">
+                                <img class="imgEditPerfil" src="{{ asset('storage/colegio/' . $noticia->imagen . '') }}"
+                                    alt="">
+                                <div class="form-group">
+                                    <span class="newFile">
+                                        <input id="newFile" type="file" accept="image/*"
+                                            class="@error('newFile') is-invalid @enderror" name="newFile"
+                                            autocomplete="newFile">
+                                    </span>
+                                    <label for="newFile" class="displayRowCC">
+                                        <ion-icon name="cloud-upload-outline" class="mr-2"></ion-icon>
+                                        <span>{{ __('pov.uploadImg') }}</span>
+                                    </label>
+                                    @error('newFile')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </li>
                         </ul>
-                        <li class="list-group-item displayRowSaC">
-                            <img class="imgEditPerfil"
-                                src="{{ asset('storage/colegio/' . $noticia->imagen . '') }}" alt="">
-                            <div class="form-group">
-                                <span class="newFile">
-                                    <input id="newFile" type="file" accept="image/*"
-                                        class="@error('newFile') is-invalid @enderror" name="newFile"
-                                        autocomplete="newFile">
-                                </span>
-                                <label for="newFile" class="displayRowCC">
-                                    <ion-icon name="cloud-upload-outline" class="mr-2"></ion-icon><span>{{__('pov.uploadImg')}}</span>
-                                </label>
-                                @error('newFile')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </li>
                         <button type="submit" class="btn btn-MC btn-block btn-footer">
                             {{ __('pov.update') }}
                         </button>

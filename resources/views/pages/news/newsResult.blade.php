@@ -10,9 +10,22 @@
         <div class="card mb-4" style="width: 100%;">
             <div class="card-header displayRowSbC">
                 {{ $noticia->titulo }}
-                <div>
-                    <a href="{{route('news.edit', $noticia)}}" title="{{ __('pov.edit') }}"><i class="far fa-edit"></i></a>
-                    @include('pages.news.delete')
+                <div class="actions" style="width: 10%;">
+                    @if ($noticia->estado == 'Inactivo')
+                        @include('layouts.forms.restore', [
+                        'class' => 'news',
+                        'icono' => 'fa-history',
+                        'retorno' => $noticia
+                        ])
+                    @else
+                        <a href="{{ route('news.edit', $noticia) }}" title="{{ __('pov.edit') }}"><i
+                                class="far fa-edit"></i></a>
+                        @include('layouts.forms.delete', [
+                        'class' => 'news',
+                        'icono' => 'fa-trash-alt',
+                        'retorno' => $noticia
+                        ])
+                    @endif
                 </div>
             </div>
             <div class="card-body">

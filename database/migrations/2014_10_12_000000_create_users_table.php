@@ -24,10 +24,10 @@ class CreateUsersTable extends Migration
             $table->string('celular', 12);
             $table->string('telefono_fijo', 8)->nullable();
             $table->enum('genero', ['Masculino', 'Femenino']);
-            $table->string('password');
-            $table->string('foto_perfil',100);
+            $table->string('password')->nullable();
+            $table->string('foto_perfil',100)->nullable();
             $table->enum('estado', ['Activo', 'Inactivo']);
-            $table->enum('tipo_documento', ['Cedula de ciudadania', 'Tarjeta de identidad', 'Cedula de extranria']);
+            $table->enum('tipo_documento', ['Cedula de ciudadania', 'Tarjeta de identidad', 'Cedula de extranjeria', 'Registro civil']);
             $table->rememberToken();
             $table->timestamps();
         });

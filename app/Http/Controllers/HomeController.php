@@ -26,15 +26,10 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public static function index()
     {
         $rol = Auth::user()->rol;
         $rhp = Rol_has_permiso::where('rol', $rol)->get();
         return view('home', compact('rhp'));
-    }
-
-    public function welcome(){
-        $latestNews = Noticia::where('estado', 'activo')->orderBy('created_at', 'desc')->get()->take(4);
-        return view('welcome', compact('latestNews'));
     }
 }

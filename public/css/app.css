@@ -10930,11 +10930,6 @@ body a:hover {
   width: 100%;
   padding: 0.5rem 2.5rem;
   background-color: #b71c1c;
-  margin-top: -1.4rem;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 75px;
-  z-index: 1000;
 }
 
 .enlaces a {
@@ -10950,6 +10945,13 @@ body a:hover {
   color: white;
   font-size: 1em;
   margin-right: 5px;
+}
+
+.header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1110;
 }
 
 .footer {
@@ -11579,7 +11581,6 @@ body a:hover {
 }
 
 .containerMain {
-  margin-top: 2rem;
   margin-bottom: 4rem;
 }
 
@@ -11880,7 +11881,7 @@ label[for=newFile]:hover {
 }
 
 .excel {
-  background-color: #67CB99;
+  background-color: #67cb99;
 }
 
 .importExcel {
@@ -11892,7 +11893,7 @@ label[for=newFile]:hover {
 }
 
 .filter {
-  background-color: #C4C4C4;
+  background-color: #c4c4c4;
 }
 
 .graphic {
@@ -11929,5 +11930,60 @@ label[for=newFile]:hover {
 
 .modal-footer {
   padding: 0 !important;
+}
+
+.containerMain .card-header {
+  border: none !important;
+}
+
+#contenedor_carga {
+  background-color: rgba(250, 240, 245, 0.9);
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  transition: all 1s ease;
+  z-index: 10000;
+}
+
+#carga {
+  border: 10px solid #ccc;
+  border-top-color: #b71c1c;
+  border-top-style: groove;
+  height: 100px;
+  width: 100px;
+  border-radius: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  -webkit-animation: girar 1.5s linear infinite;
+          animation: girar 1.5s linear infinite;
+}
+
+#carga img {
+  width: 5rem;
+  height: 3rem;
+}
+
+@-webkit-keyframes girar {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes girar {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 

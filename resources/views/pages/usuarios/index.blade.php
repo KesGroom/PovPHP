@@ -3,30 +3,40 @@
     .card-header {
         border: none !important;
     }
+
 </style>
 
 @extends('layouts.app')
 
 @section('content')
+@section('nav')
     @include('layouts.partials.dashNav')
-    <div class="container containerMain">
-        @include('layouts.partials.optionsTable', [
-        'tituloPC'=> __('pov.usersReg'),
-        'addElement'=> __('pov.addUser'),
-        'importExcel' => route('usuarios.import'),
-        'exportExcel' => route('usuarios.export'),
-        'templateExcel' => route('usuarios.template') ,
-        'restore' => route('usuarios.recovery') ,
-        'add' => 'Poner Link'
+@endsection
+@if (session('status'))
+    @section('script')
+        @include('layouts.partials.alerts',[
+        'option' => session('status'),
         ])
-        <div class="cont-card-img-table" id="resultado">
-        </div>
-        <div class="cont-card-img-table" id="noConsult">
-            @include('pages/usuarios/userList')
-        </div>
-
+    @endsection
+@endif
+<div class="container containerMain">
+    @include('layouts.partials.optionsTable', [
+    'tituloPC'=> __('pov.usersReg'),
+    'addElement'=> __('pov.addUser'),
+    'importExcel' => route('usuarios.import'),
+    'exportExcel' => route('usuarios.export'),
+    'templateExcel' => route('usuarios.template') ,
+    'restore' => route('usuarios.recovery') ,
+    'add' => route('usuarios.create'),
+    ])
+    <div class="cont-card-img-table" id="resultado">
     </div>
-    <script>
-        var clase ='usuarios';
-    </script>
+    <div class="cont-card-img-table" id="noConsult">
+        @include('pages/usuarios/userList')
+    </div>
+
+</div>
+<script>
+    var clase = 'usuarios';
+</script>
 @endsection

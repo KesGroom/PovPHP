@@ -118,6 +118,19 @@
             width: 40%;
         }
 
+        .btn {
+            cursor: pointer;
+            display: block;
+            width: 100%;
+            padding: .5rem 1rem;
+            font-size: 1.25rem;
+            line-height: 1.5;
+            border-radius: .3rem;
+            color: #fff;
+            background-color: #b71c1c;
+            border-color: #7c1414;
+        }
+
     </style>
 </head>
 
@@ -132,9 +145,16 @@
                 <div class="subtitulo">
                     <p>{{ $data['subtitle'] }}</p>
                 </div>
-                <div class="opcional">
-                    <p>{{ $data['optionalText'] }}</p>
-                </div>
+                @if ($data['optionCheck'] == 'yes')
+                    <div class="opcional">
+                        <p>{{ $data['optionalText'] }}</p>
+                    </div>
+                @endif
+                @if ($data['btnCheck'] == 'yes')
+                    <a class="btn" href="{{ $data['btnUrl'] }}">
+                        {{ $data['btnText'] }}
+                    </a>
+                @endif
                 <div class="text">
                     <p>{{ $data['text'] }}</p>
                     @if ($data['list'] == 'yes')

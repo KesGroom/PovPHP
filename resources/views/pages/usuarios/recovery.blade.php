@@ -7,7 +7,16 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('layouts.partials.dashNav')
+@section('nav')
+@include('layouts.partials.dashNav')
+@endsection
+@if (session('status'))
+    @section('script')
+        @include('layouts.partials.alerts',[
+        'option' => session('status'),
+        ])
+    @endsection
+@endif
     <div class="container containerMain">
         @include('layouts.partials.optionsTable', [
         'tituloPC'=> __('pov.usersReg'),
@@ -16,7 +25,7 @@
         'exportExcel' => route('usuarios.export'),
         'templateExcel' => route('usuarios.template') ,
         'restore' => route('usuarios.recovery') ,
-        'add' => 'Holi'
+        'add' => route('usuarios.create'),
         ])
         <div class="cont-card-img-table" id="resultado">
         </div>
