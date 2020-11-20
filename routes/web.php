@@ -17,16 +17,8 @@ use App\Http\Controllers\PqrsController;
 use App\Http\Controllers\RegistroAsistenciaController;
 use App\Http\Controllers\RegistroNotaController;
 use App\Http\Controllers\UserController;
-<<<<<<< HEAD
-use App\Models\Atencion_area;
-use App\Models\Docente_curso;
-use App\Models\Registro_asistencia;
-use App\Models\Registro_nota;
-=======
 use App\Http\Controllers\WelcomeController;
-use App\Models\Docente_curso;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
->>>>>>> 5ac3b337aa8b2a5c6efe413e39918c3b97e50427
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
@@ -127,7 +119,6 @@ Route::middleware(['web'])->group(function () {
     Route::get('areas/index', [AreaController::class, 'index'])->name('areas.index');
     Route::get('areas/{area}/edit', [AreaController::class, 'edit'])->name('areas.edit');
 
-<<<<<<< HEAD
     Route::put('areas{area}', [AreaController::class, 'update'])->name('areas.update');
       //Routas para atencion Areas
       Route::get('atencion_areas/create', [AtencionAreaController::class, 'create'])->name('atencion_areas.create');
@@ -144,11 +135,9 @@ Route::middleware(['web'])->group(function () {
       Route::put('citas{area}', [CitaController::class, 'update'])->name('citas.update');
   
     //Routas para Grado
-=======
     //--------------------------------------------------------------------------------------------------------------------------\\
 
     //Rutas para Grado
->>>>>>> 5ac3b337aa8b2a5c6efe413e39918c3b97e50427
     Route::get('grados/create', [GradoController::class, 'create'])->name('grados.create');
     Route::post('grados', [GradoController::class, 'store'])->name('grados.store');
     Route::get('grados/index', [GradoController::class, 'index'])->name('grados.index');
@@ -163,7 +152,6 @@ Route::middleware(['web'])->group(function () {
     Route::get('cursos/index', [CursoController::class, 'index'])->name('cursos.index');
     Route::get('cursos/{curso}/edit', [CursoController::class, 'edit'])->name('cursos.edit');
     Route::put('cursos{curso}', [CursoController::class, 'update'])->name('cursos.update');
-<<<<<<< HEAD
   //Routas para cursos del profesor inciado session 
     Route::get('cursos/miscursos', [CursoController::class, 'miscursos'])->name('cursos.miscursos');
     Route::post('cursos', [CursoController::class, 'asistencia'])->name('cursos.asistencia');
@@ -187,19 +175,16 @@ Route::middleware(['web'])->group(function () {
     Route::get('actividades/{actividad}/edit', [ActividadController::class,'edit'])->name('actividades.edit');
     Route::put('actividades{actividad}', [ActividadController::class,'update'])->name('actividades.update');
     //Routas para Docentes curso
-=======
 
     //--------------------------------------------------------------------------------------------------------------------------\\
 
     //Rutas para Docentes curso
->>>>>>> 5ac3b337aa8b2a5c6efe413e39918c3b97e50427
     Route::get('docentecurso/create', [DocenteCursoController::class, 'create'])->name('docentecurso.create');
     Route::get('docentecurso/miscursos', [DocenteCursoController::class, 'miscursos'])->name('docentecurso.miscursos');
     Route::post('docentecurso', [DocenteCursoController::class, 'store'])->name('docentecurso.store');
     Route::get('docentecurso/index', [DocenteCursoController::class, 'index'])->name('docentecurso.index');
     Route::get('docentecurso/{curso}/edit', [DocenteCursoController::class, 'edit'])->name('docentecurso.edit');
     Route::put('docentecurso{curso}', [DocenteCursoController::class, 'update'])->name('docentecurso.update');
-<<<<<<< HEAD
      //Routas para materias
      Route::get('materias/create', [MateriaController::class, 'create'])->name('materias.create');
      Route::post('materias', [MateriaController::class, 'store'])->name('materias.store');
@@ -207,13 +192,11 @@ Route::middleware(['web'])->group(function () {
      Route::get('materias/{materias}/edit', [MateriaController::class, 'edit'])->name('materias.edit');
      Route::put('materias{materias}', [MateriaController::class, 'update'])->name('materias.update');
     //Routas para Pqrs
-=======
     Route::post('docentecurso', [DocenteCursoController::class, 'crearplantillas'])->name('docentecurso.crearplantillas');
 
     //--------------------------------------------------------------------------------------------------------------------------\\
 
     //Rutas para Pqrs
->>>>>>> 5ac3b337aa8b2a5c6efe413e39918c3b97e50427
     Route::get('pqrs/create', [PqrsController::class, 'create'])->name('pqrs.create');
     Route::post('pqrs', [PqrsController::class, 'store'])->name('pqrs.store');
     Route::get('pqrs/index', [PqrsController::class, 'index'])->name('pqrs.index');
