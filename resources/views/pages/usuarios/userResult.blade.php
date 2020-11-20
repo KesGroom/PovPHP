@@ -6,8 +6,13 @@
 </div>
 @forelse ($usuarios as $usuario)
     <div class="card card-img-table">
+        @if ($usuario->foto_perfil == 'icon.png')
+        <img src="{{ asset('img/icon.png') }}" class=" card-img-MC"
+            alt="FotoPerfilMariaCano">
+        @else
         <img src="{{ asset('storage/imgPerfil/' . $usuario->foto_perfil . '') }}" class=" card-img-MC"
             alt="FotoPerfilMariaCano">
+        @endif
         <div class="actions">
             @include('pages.usuarios.resetPhoto')
             <a href="{{ route('usuarios.edit', $usuario) }}" title="{{ __('pov.edit') }}"><i

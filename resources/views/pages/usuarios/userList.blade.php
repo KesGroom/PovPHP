@@ -1,7 +1,7 @@
    @forelse ($usuarios as $usuario)
        <div class="card card-img-table">
            @if ($usuario->foto_perfil == 'icon.png')
-           <img src="http://imgfz.com/i/pN3PmGa.png" class=" card-img-MC"
+           <img src="{{ asset('img/icon.png') }}" class=" card-img-MC"
                alt="FotoPerfilMariaCano">
            @else
            <img src="{{ asset('storage/imgPerfil/' . $usuario->foto_perfil . '') }}" class=" card-img-MC"

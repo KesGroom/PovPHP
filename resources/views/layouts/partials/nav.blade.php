@@ -27,7 +27,7 @@
                     <li class="nav-item displayRowSbC">
                         <a class="nav-link" href="{{ route('editProfile', Auth::user()) }}">
                             @if (Auth::user()->foto_perfil == 'icon.png')
-                                <img src="http://imgfz.com/i/pN3PmGa.png"
+                                <img src="{{ asset('img/icon.png') }}"
                                     style="width: 2.5rem; height: 2.5rem; border-radius: 50%;" alt="">
                             @else
                                 <img src="{{ asset('storage/imgPerfil/' . Auth::user()->foto_perfil . '') }}"
@@ -38,7 +38,7 @@
                             {{ Auth::user()->name }}
                         </a>
                         <a class="nav-link" title="{{ __('pov.logout') }}" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                            document.getElementById('logout-form').submit();">
+                                                                document.getElementById('logout-form').submit();">
                             <ion-icon name="power"></ion-icon>
                         </a>
 
@@ -54,9 +54,8 @@
                         @else
                         <li class="nav-item mt-2">
                         @endguest
-                        <a class="nav-link" href="{{ url('lang', ['en']) }}"><img
-                                src="{{ asset('img/Estados.png') }}" alt="En"
-                                style="width: 1.3rem; height: 1.3rem;"></a>
+                        <a class="nav-link" href="{{ url('lang', ['en']) }}"><img src="{{ asset('img/Estados.png') }}"
+                                alt="En" style="width: 1.3rem; height: 1.3rem;"></a>
                     </li>
                 @else
                     @guest
@@ -64,9 +63,8 @@
                         @else
                         <li class="nav-item mt-2">
                         @endguest
-                        <a class="nav-link" href="{{ url('lang', ['es']) }}"><img
-                                src="{{ asset('img/Colombia.png') }}" alt="Es"
-                                style="width: 1.3rem; height: 1.3rem;"></a>
+                        <a class="nav-link" href="{{ url('lang', ['es']) }}"><img src="{{ asset('img/Colombia.png') }}"
+                                alt="Es" style="width: 1.3rem; height: 1.3rem;"></a>
                     </li>
                 @endif
             </ul>

@@ -10,11 +10,11 @@
             <ul class="list-group list-group-flush">
                 <li class="list-group-item displayRowSbC">
                     @if ($usuario->foto_perfil == 'icon.png')
-                    <img class="imgEditPerfil"
-                        src="http://imgfz.com/i/pN3PmGa.png" alt="">
+                    <img src="{{ asset('img/icon.png') }}" class=" card-img-MC"
+                        alt="FotoPerfilMariaCano">
                     @else
-                    <img class="imgEditPerfil"
-                        src="{{ asset('storage/imgPerfil/' . $usuario->foto_perfil . '') }}" alt="">
+                    <img src="{{ asset('storage/imgPerfil/' . $usuario->foto_perfil . '') }}" class=" card-img-MC"
+                        alt="FotoPerfilMariaCano">
                     @endif
                     <div class="form-group">
                         <span class="newFile">
