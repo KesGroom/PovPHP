@@ -15,7 +15,7 @@ class CreateRolesHasPermisosTable extends Migration
     {
         Schema::create('roles_has_permisos', function (Blueprint $table) {
             $table->increments('id');
-            $table->enum('estado', ['Activo', 'Inactivo']);
+            // $table->enum('estado', ['Activo', 'Inactivo']);
             $table->timestamps();
         });
     }
