@@ -74,10 +74,10 @@ Route::middleware(['web'])->group(function () {
     Route::post('pages/usuarios/create', [UserController::class, 'store'])->name('usuarios.store');
     Route::get('pages/usuarios/index', [UserController::class, 'index'])->name('usuarios.index');
     Route::get('pages/usuarios/recovery', [UserController::class, 'recovery'])->name('usuarios.recovery');
-    Route::put('pages/usuarios/recovery/restore{usuario}', [UserController::class, 'restore'])->name('usuarios.restore');
+    Route::put('pages/usuarios/recovery{usuario}', [UserController::class, 'restore'])->name('usuarios.restore');
     Route::get('pages/usuarios/index{usuario}', [UserController::class, 'indexRol'])->name('usuarios.indexRol');
     Route::put('pages/usuarios/index/resetPhoto{usuario}', [UserController::class, 'photoReset'])->name('usuarios.photoReset');
-    Route::put('pages/usuarios{usuario}', [UserController::class, 'delete'])->name('usuarios.delete');
+    Route::put('pages/usuarios/index{usuario}', [UserController::class, 'delete'])->name('usuarios.delete');
     Route::get('pages/usuarios/{usuario}/edit', [UserController::class, 'edit'])->name('usuarios.edit');
     Route::put('pages/usuarios/{usuario}/edit', [UserController::class, 'update'])->name('usuarios.update');
     //---Excel---
