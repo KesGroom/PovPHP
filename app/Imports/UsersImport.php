@@ -13,12 +13,12 @@ class UsersImport implements ToModel, WithHeadingRow
     public function model(array $row)
     {
         return new User([
-            'tipo_documento'     => $row['tipo_documento'],
-            'id'     => $row['id'],
-            'name'     => $row['name'],
+            'tipo_documento'     => $row['tipo_de_documento'],
+            'id'     => $row['numero_de_documento'],
+            'name'     => $row['nombre'],
             'apellido' => $row['apellido'],
-            'email'    => $row['email'],
-            'fecha_nacimiento'    => $row['fecha_nacimiento'],
+            'email'    => $row['correo_electronico'],
+            'fecha_nacimiento'    => $row['fecha_de_nacimiento'],
             'direccion'    => $row['direccion'],
             'celular'    => $row['celular'],
             'telefono_fijo'    => $row['telefono_fijo'],

@@ -13,8 +13,6 @@ class UserTemplate implements FromView
 
     public function view(): View
     {
-        return view('exports.usersTemplate', [
-            'users' => User::where('estado', 'Activo')->get(),
-        ]);
+        return view('exports.usersTemplate');
     }
 }

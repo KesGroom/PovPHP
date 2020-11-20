@@ -10,19 +10,27 @@ use App\Http\Controllers\CitaController;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\DocenteCursoController;
 use App\Http\Controllers\GradoController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\NoticiaController;
 use App\Http\Controllers\MateriaController;
 use App\Http\Controllers\PqrsController;
 use App\Http\Controllers\RegistroAsistenciaController;
 use App\Http\Controllers\RegistroNotaController;
 use App\Http\Controllers\UserController;
+<<<<<<< HEAD
 use App\Models\Atencion_area;
 use App\Models\Docente_curso;
 use App\Models\Registro_asistencia;
 use App\Models\Registro_nota;
+=======
+use App\Http\Controllers\WelcomeController;
+use App\Models\Docente_curso;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+>>>>>>> 5ac3b337aa8b2a5c6efe413e39918c3b97e50427
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 use Symfony\Component\VarDumper\Cloner\Cursor;
 
 /*
@@ -37,38 +45,89 @@ use Symfony\Component\VarDumper\Cloner\Cursor;
 */
 
 Route::middleware(['web'])->group(function () {
+
+    Route::get('/email/verify', function () {
+        return view('auth.verify-email');
+    })->middleware(['auth'])->name('verification.notice');
+
+    Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+        $request->fulfill();
+
+        return redirect('/home');
+    })->middleware(['auth', 'signed'])->name('verification.verify');
+
+    Route::post('/email/verification-notification', function (Request $request) {
+        $request->user()->sendEmailVerificationNotification();
+
+        return back()->with('status', 'verification-link-sent');
+    })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
     //Rutas para control del usuario de sesión
-    Route::get('userPages/{usuario}/editProfile', [UserController::class, 'editProfile'])->name('editProfile');
-    Route::put('userPages/changePhoto{usuarios}', [UserController::class, 'updatePhoto'])->name('userPages.updatePhoto');
-    Route::put('userPages/changeInfo{usuario}', [UserController::class, 'updateInfo'])->name('userPages.updateInfo');
-    Route::put('userPages/changePass{usuarioPass}', [UserController::class, 'updatePass'])->name('userPages.updatePass');
-    
-    //Routas para Acudiente
+    Route::get('pages/userPages/{usuario}/editProfile', [UserController::class, 'editProfile'])->name('editProfile')->middleware(['auth', 'password.confirm']);
+    Route::put('pages/userPages/changePhoto{usuarios}', [UserController::class, 'updatePhoto'])->name('userPages.updatePhoto');
+    Route::put('pages/userPages/changeInfo{usuario}', [UserController::class, 'updateInfo'])->name('userPages.updateInfo');
+    Route::put('pages/userPages/changePass{usuarioPass}', [UserController::class, 'updatePass'])->name('userPages.updatePass');
+
+    //--------------------------------------------------------------------------------------------------------------------------\\
+
+    //Rotas para Acudiente
     Route::get('acudientes/create', [AcudienteController::class, 'create'])->name('acudientes.create');
     Route::post('acudientes', [AcudienteController::class, 'store'])->name('acudientes.store');
     Route::get('acudientes/index', [AcudienteController::class, 'index'])->name('acudientes.index');
 
-    //Routas para Usuarios
-    Route::get('usuarios/create', [UserController::class, 'create'])->name('usuarios.create');
-    Route::post('usuarios', [UserController::class, 'store'])->name('usuarios.store');
-    Route::get('usuarios/index', [UserController::class, 'index'])->name('usuarios.index');
-    Route::get('usuarios/index{usuario}', [UserController::class, 'indexRol'])->name('usuarios.indexRol');
-    Route::put('usuarios/index/resetPhoto{usuario}', [UserController::class, 'photoReset'])->name('usuarios.photoReset');
-    Route::put('usuarios/index/delete{usuario}', [UserController::class, 'delete'])->name('usuarios.delete');
-    Route::get('usuarios/{usuario}/edit', [UserController::class, 'edit'])->name('usuarios.edit');
-    Route::put('usuarios{usuario}', [UserController::class, 'update'])->name('usuarios.update');
+    //--------------------------------------------------------------------------------------------------------------------------\\
+
+    //Rutas para Usuarios
+    Route::get('pages/usuarios/create', [UserController::class, 'create'])->name('usuarios.create');
+    Route::post('pages/usuarios/create', [UserController::class, 'store'])->name('usuarios.store');
+    Route::get('pages/usuarios/index', [UserController::class, 'index'])->name('usuarios.index');
+    Route::get('pages/usuarios/recovery', [UserController::class, 'recovery'])->name('usuarios.recovery');
+    Route::put('pages/usuarios/recovery/restore{usuario}', [UserController::class, 'restore'])->name('usuarios.restore');
+    Route::get('pages/usuarios/index{usuario}', [UserController::class, 'indexRol'])->name('usuarios.indexRol');
+    Route::put('pages/usuarios/index/resetPhoto{usuario}', [UserController::class, 'photoReset'])->name('usuarios.photoReset');
+    Route::put('pages/usuarios/delete{usuario}', [UserController::class, 'delete'])->name('usuarios.delete');
+    Route::get('pages/usuarios/{usuario}/edit', [UserController::class, 'edit'])->name('usuarios.edit');
+    Route::put('pages/usuarios/{usuario}/edit', [UserController::class, 'update'])->name('usuarios.update');
+    //---Excel---
+    Route::get('exports/users', [UserController::class, 'export'])->name('usuarios.export');
+    Route::get('exports/usersTemplate', [UserController::class, 'template'])->name('usuarios.template');
+    Route::post('usuarios/index', [UserController::class, 'import'])->name('usuarios.import');
+    //---Buscador---
+    Route::get('usuarios/buscador', [UserController::class, 'searchList']);
+    Route::get('usuarios/UserResult', [UserController::class, 'searchList']);
+
+    //--------------------------------------------------------------------------------------------------------------------------\\
 
     //Rutas para noticias
     Route::get('pages/news/create', [NoticiaController::class, 'create'])->name('news.create');
     Route::get('pages/news/index', [NoticiaController::class, 'index'])->name('news.index');
-    Route::get('pages/news', [NoticiaController::class, 'store'])->name('news.store');
+    Route::get('pages/news/recovery', [NoticiaController::class, 'recovery'])->name('news.recovery');
+    Route::put('pages/news/recovery/restore{noticia}', [NoticiaController::class, 'restore'])->name('news.restore');
+    Route::get('pages/news/{noticia}/edit', [NoticiaController::class, 'edit'])->name('news.edit');
+    Route::post('pages/news/create', [NoticiaController::class, 'store'])->name('news.store');
+    Route::put('pages/news/delete{new}', [NoticiaController::class, 'delete'])->name('news.delete');
+    Route::put('pages/news{noticia}', [NoticiaController::class, 'update'])->name('news.update');
+    //---Buscador---
+    Route::get('news/buscador', [NoticiaController::class, 'searchList']);
+    Route::get('news/newsResult', [NoticiaController::class, 'searchList']);
+    //---Excel---
+    Route::get('exports/news', [NoticiaController::class, 'export'])->name('news.export');
+    Route::get('exports/newsTemplate', [NoticiaController::class, 'template'])->name('news.template');
+    Route::post('news/index', [NoticiaController::class, 'import'])->name('news.import');
 
-    //Routas para Areas
+    Route::get('mail/index', [MailController::class, 'layout'])->name('mail.layout');
+    Route::post('mail/index/mail', [MailController::class, 'postulacion'])->name('mail.postular');
+    Route::post('mail/index/rees{user}', [MailController::class, 'replace'])->name('mail.rees');
+
+    //--------------------------------------------------------------------------------------------------------------------------\\
+
+    //Rutas para Areas
     Route::get('areas/create', [AreaController::class, 'create'])->name('areas.create');
     Route::post('areas', [AreaController::class, 'store'])->name('areas.store');
     Route::get('areas/index', [AreaController::class, 'index'])->name('areas.index');
     Route::get('areas/{area}/edit', [AreaController::class, 'edit'])->name('areas.edit');
 
+<<<<<<< HEAD
     Route::put('areas{area}', [AreaController::class, 'update'])->name('areas.update');
       //Routas para atencion Areas
       Route::get('atencion_areas/create', [AtencionAreaController::class, 'create'])->name('atencion_areas.create');
@@ -85,18 +144,26 @@ Route::middleware(['web'])->group(function () {
       Route::put('citas{area}', [CitaController::class, 'update'])->name('citas.update');
   
     //Routas para Grado
+=======
+    //--------------------------------------------------------------------------------------------------------------------------\\
+
+    //Rutas para Grado
+>>>>>>> 5ac3b337aa8b2a5c6efe413e39918c3b97e50427
     Route::get('grados/create', [GradoController::class, 'create'])->name('grados.create');
     Route::post('grados', [GradoController::class, 'store'])->name('grados.store');
     Route::get('grados/index', [GradoController::class, 'index'])->name('grados.index');
     Route::get('grados/{grado}/edit', [GradoController::class, 'edit'])->name('grados.edit');
     Route::put('grados{grado}', [GradoController::class, 'update'])->name('grados.update');
 
-    //Routas para cursos
+    //--------------------------------------------------------------------------------------------------------------------------\\
+
+    //Rutas para cursos
     Route::get('cursos/create', [CursoController::class, 'create'])->name('cursos.create');
     Route::post('cursos', [CursoController::class, 'store'])->name('cursos.store');
     Route::get('cursos/index', [CursoController::class, 'index'])->name('cursos.index');
     Route::get('cursos/{curso}/edit', [CursoController::class, 'edit'])->name('cursos.edit');
     Route::put('cursos{curso}', [CursoController::class, 'update'])->name('cursos.update');
+<<<<<<< HEAD
   //Routas para cursos del profesor inciado session 
     Route::get('cursos/miscursos', [CursoController::class, 'miscursos'])->name('cursos.miscursos');
     Route::post('cursos', [CursoController::class, 'asistencia'])->name('cursos.asistencia');
@@ -120,12 +187,19 @@ Route::middleware(['web'])->group(function () {
     Route::get('actividades/{actividad}/edit', [ActividadController::class,'edit'])->name('actividades.edit');
     Route::put('actividades{actividad}', [ActividadController::class,'update'])->name('actividades.update');
     //Routas para Docentes curso
+=======
+
+    //--------------------------------------------------------------------------------------------------------------------------\\
+
+    //Rutas para Docentes curso
+>>>>>>> 5ac3b337aa8b2a5c6efe413e39918c3b97e50427
     Route::get('docentecurso/create', [DocenteCursoController::class, 'create'])->name('docentecurso.create');
     Route::get('docentecurso/miscursos', [DocenteCursoController::class, 'miscursos'])->name('docentecurso.miscursos');
     Route::post('docentecurso', [DocenteCursoController::class, 'store'])->name('docentecurso.store');
     Route::get('docentecurso/index', [DocenteCursoController::class, 'index'])->name('docentecurso.index');
     Route::get('docentecurso/{curso}/edit', [DocenteCursoController::class, 'edit'])->name('docentecurso.edit');
     Route::put('docentecurso{curso}', [DocenteCursoController::class, 'update'])->name('docentecurso.update');
+<<<<<<< HEAD
      //Routas para materias
      Route::get('materias/create', [MateriaController::class, 'create'])->name('materias.create');
      Route::post('materias', [MateriaController::class, 'store'])->name('materias.store');
@@ -133,6 +207,13 @@ Route::middleware(['web'])->group(function () {
      Route::get('materias/{materias}/edit', [MateriaController::class, 'edit'])->name('materias.edit');
      Route::put('materias{materias}', [MateriaController::class, 'update'])->name('materias.update');
     //Routas para Pqrs
+=======
+    Route::post('docentecurso', [DocenteCursoController::class, 'crearplantillas'])->name('docentecurso.crearplantillas');
+
+    //--------------------------------------------------------------------------------------------------------------------------\\
+
+    //Rutas para Pqrs
+>>>>>>> 5ac3b337aa8b2a5c6efe413e39918c3b97e50427
     Route::get('pqrs/create', [PqrsController::class, 'create'])->name('pqrs.create');
     Route::post('pqrs', [PqrsController::class, 'store'])->name('pqrs.store');
     Route::get('pqrs/index', [PqrsController::class, 'index'])->name('pqrs.index');
@@ -156,12 +237,16 @@ Route::middleware(['web'])->group(function () {
     Route::get('graficas/pqrs', [PqrsController::class, 'vergrafica'])->name('pqrs.vergrafica');
 
 
-    Route::post('docentecurso', [DocenteCursoController::class, 'crearplantillas'])->name('docentecurso.crearplantillas');
-    Route::get('/', function () {
-        return view('welcome');
-    })->name('welcome');
+    //--------------------------------------------------------------------------------------------------------------------------\\
 
-    Auth::routes();
+
+    //--------------------------------------------------------------------------------------------------------------------------\\    
+
+    //Rutas del sistema
+
+    Route::get('/', [WelcomeController::class, 'welcome'])->name('welcome');
+
+    Auth::routes(['verify' => true]);
 
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 
@@ -172,12 +257,4 @@ Route::middleware(['web'])->group(function () {
     })->where([
         'lang' => 'en|es'
     ]);
-
-    //Exportaciones
-    //---Excel---
-    //UserExport
-    Route::get('exports/users', [UserController::class, 'export'])->name('usuarios.export');
-    Route::get('exports/usersTemplate', [UserController::class, 'template'])->name('usuarios.template');
-    Route::post('usuarios/index', [UserController::class, 'import'])->name('usuarios.import');
-
 });

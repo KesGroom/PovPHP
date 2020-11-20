@@ -28,16 +28,26 @@
 </head>
 
 <body class="scrollbarStyle">
+
+    <div id="contenedor_carga">
+        <div id="carga" class="displayRowCC">
+            <img src="{{ asset('storage/colegio/escudo.jpg') }}" alt="">
+        </div>
+    </div>
     <div id="app">
-        @include('layouts.partials.nav')
+        <div class="header">
+            @include('layouts.partials.nav')
+            @yield('nav')
+        </div>
         <main class="py-4">
             @yield('content')
         </main>
         @include('layouts.partials.footer')
     </div>
     {{-- Iconografía - Ion Icons(Secundario) --}}
-    <script type="module" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule="" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule="" src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     @yield('script')
 </body>
 

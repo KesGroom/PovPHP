@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Noticia;
 use App\Models\Permiso;
 use App\Models\Rol_has_permiso;
 use Illuminate\Http\Request;
@@ -25,7 +26,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public static function index()
     {
         $rol = Auth::user()->rol;
         $rhp = Rol_has_permiso::where('rol', $rol)->get();
