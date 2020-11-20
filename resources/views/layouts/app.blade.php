@@ -31,7 +31,7 @@
 
     <div id="contenedor_carga">
         <div id="carga" class="displayRowCC">
-            <img src="{{ asset('storage/colegio/escudo.jpg') }}" alt="">
+            <img src="http://imgfz.com/i/AMqIk9G.png" alt="">
         </div>
     </div>
     <div id="app">
