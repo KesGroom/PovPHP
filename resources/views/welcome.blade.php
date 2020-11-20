@@ -61,7 +61,7 @@
         <br /><br />
         {{ __('pov.lbllegado') }}
     </p>
-    <img src="{{ asset('storage/colegio/maria-cano-1.jpg') }}" alt="" />
+    <img src="http://imgfz.com/i/wg960Pq.jpeg" alt="" />
 </div>
 
 <div class="contenedorMV">
