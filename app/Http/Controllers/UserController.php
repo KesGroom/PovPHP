@@ -35,9 +35,8 @@ class UserController extends Controller
    */
   public function index()
   {
-    $usuarios = User::where('estado', 'activo')->paginate('15');
-    // $rhp = RolHasPermisoController::rhp();
-    return $usuarios;
+    $usuarios = User::where('estado', 'Activo')->paginate('15');
+    $rhp = RolHasPermisoController::rhp();
     return view('pages.usuarios.index', compact('usuarios', 'rhp'));
   }
 
