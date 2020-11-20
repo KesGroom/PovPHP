@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CursoSeeder::class);
         $this->call(AreaSeeder::class);
         $this->call(MateriaSeeder::class);
-        Noticia::factory(4)->create();
+        // Noticia::factory(4)->create();
         // $this->call(AcudienteSeeder::class);
         // $this->call(EstudianteSeeder::class);
         // $this->call(DocenteCursoSeeder::class);
