@@ -83,7 +83,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm sticky-top">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="{{ asset('storage/colegio/escudo.jpg') }}" alt="Escudo"
+                    <img src="{{ asset('img/escudo.jpg') }}" alt="Escudo"
                         style="width: 5rem; height: 3rem;">
                     <span class="navbar-brand mb-0 h1">María Cano IED</span>
                 </a>
