@@ -27,7 +27,7 @@
                     <li class="nav-item displayRowSbC">
                         <a class="nav-link" href="{{ route('editProfile', Auth::user()) }}">
                             @if (Auth::user()->foto_perfil == 'icon.png')
-                                <img src="{{ asset('img/icon.png') }}"
+                                <img src="{{ asset('img/Icon.png') }}"
                                     style="width: 2.5rem; height: 2.5rem; border-radius: 50%;" alt="">
                             @else
                                 <img src="{{ asset('storage/imgPerfil/' . Auth::user()->foto_perfil . '') }}"
