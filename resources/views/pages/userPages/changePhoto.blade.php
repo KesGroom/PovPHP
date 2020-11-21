@@ -10,10 +10,10 @@
             <ul class="list-group list-group-flush">
                 <li class="list-group-item displayRowSbC">
                     @if ($usuario->foto_perfil == 'icon.png')
-                    <img src="{{ asset('img/Icon.png') }}" class=" card-img-MC"
+                    <img src="{{ asset('img/Icon.png') }}" class=""
                         alt="FotoPerfilMariaCano">
                     @else
-                    <img src="{{ asset('storage/imgPerfil/' . $usuario->foto_perfil . '') }}" class=" card-img-MC"
+                    <img src="{{ asset('storage/imgPerfil/' . $usuario->foto_perfil . '') }}" class="card-img-MC"
                         alt="FotoPerfilMariaCano">
                     @endif
                     <div class="form-group">
