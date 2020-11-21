@@ -22,8 +22,13 @@
             @foreach ($latestNews as $new)
                 <li>
                     <div class="contenedor">
+                        @if ($new->id < 4)                           
+                        <img src="{{ asset('img/' . $new->imagen . '') }}" alt="{{ $new->titulo }}"
+                            class="imgCont">                            
+                        @else
                         <img src="{{ asset('storage/colegio/' . $new->imagen . '') }}" alt="{{ $new->titulo }}"
-                            class="imgCont">
+                            class="imgCont">                            
+                        @endif
                         <div class="contenido displayRowCC">
                             <div class="informacion displayColIniC">
                                 <p class="tituloC">{{ $new->titulo }}</p>

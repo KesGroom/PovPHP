@@ -97,8 +97,8 @@ class NoticiaController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'titulo' => 'required|min:10|max:50',
-            'subtitulo' => 'required|min:10|max:50',
+            'titulo' => 'required|min:10|max:255',
+            'subtitulo' => 'required|min:10|max:255',
             'info' => 'required|min:20|max:255',
         ]);
 
