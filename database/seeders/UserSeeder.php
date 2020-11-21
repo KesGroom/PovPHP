@@ -2,6 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Acudiente;
+use App\Models\Curso;
+use App\Models\Estudiante;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
@@ -91,6 +94,12 @@ class UserSeeder extends Seeder
         $carlos->rol = 4;
         $carlos->remember_token = Str::random(10);
         $carlos->save();
+
+        $acudiente = new Acudiente();
+        $acudiente->id = $carlos->id;
+        $acudiente->estado = 'Activo';
+        $acudiente->save();
+
         //Usuario Estudiante Cesar(Kevin)
         $cesar = new User();
         $cesar->id = '1623102839';
@@ -110,6 +119,15 @@ class UserSeeder extends Seeder
         $cesar->rol = 3;
         $cesar->remember_token = Str::random(10);
         $cesar->save();
+
+        $estudiante = new Estudiante();
+        $estudiante->id = $cesar->id;
+        $estudiante->curso = Curso::where([['estado', 'Activo'],['grado', 11]])->get()->random();
+        $estudiante->acudiente = $acudiente->id;
+        $estudiante->estado_servicio_social = 'Disponible';
+        $estudiante->estado = 'Activo';
+        $estudiante->tiempo_servicio = 0;
+        $estudiante->save();
 
 
     }

@@ -10,10 +10,10 @@
 @guest
     <div class="slider">
         <ul>
-            <li><img class="sliderGuest" src="{{ asset('storage/colegio/Colegio frontal.jpg') }}" alt=""></li>
-            <li><img class="sliderGuest" src="{{ asset('storage/colegio/Colegio ascensor.jpg') }}" alt=""></li>
-            <li><img class="sliderGuest" src="{{ asset('storage/colegio/Colegio ajedrez.jpg') }}" alt=""></li>
-            <li><img class="sliderGuest" src="{{ asset('storage/colegio/Colegio interior.jpg') }}" alt=""></li>
+            <li><img class="sliderGuest" src="{{ asset('img/Colegio frontal.jpg') }}" alt=""></li>
+            <li><img class="sliderGuest" src="{{ asset('img/Colegio ascensor.jpg') }}" alt=""></li>
+            <li><img class="sliderGuest" src="{{ asset('img/Colegio ajedrez.jpg') }}" alt=""></li>
+            <li><img class="sliderGuest" src="{{ asset('img/Colegio interior.jpg') }}" alt=""></li>
         </ul>
     </div>
 @else
