@@ -9,6 +9,7 @@ use App\Http\Controllers\CitaController;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\DocenteCursoController;
 use App\Http\Controllers\GradoController;
+use App\Http\Controllers\graficasController;
 use App\Http\Controllers\MateriaController;
 use App\Http\Controllers\PqrsController;
 use App\Http\Controllers\RegistroAsistenciaController;
@@ -142,8 +143,11 @@ Route::middleware(['web'])->group(function () {
     //Pruebas Ajax -- Graficas
     Route::post('materias/all', [MateriaController::class, 'all'])->name('materias.all');// prueba
     Route::post('graficas/pqrs', [PqrsController::class, 'graficar'])->name('graficas.pqrs');
+    //Metodos posts para graficas
+    Route::post('graficas/usuariosRol', [graficasController::class, 'graficarUsuariosPorRol'])->name('usuariosVerGrafica');
      // rutas para graficas
     Route::get('graficas/pqrs', [PqrsController::class, 'vergrafica'])->name('pqrs.vergrafica');
+    Route::get('graficas/usuarios', [graficasController::class, 'vergraficaUsuarios'])->name('usuariosVerGrafica');
 
 
     Route::post('docentecurso', [DocenteCursoController::class, 'crearplantillas'])->name('docentecurso.crearplantillas');
