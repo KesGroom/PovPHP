@@ -18,25 +18,6 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        //Usuario Coordinador Sebastián
-        $coor = new User();
-        $coor->id = '1000624349';
-        $coor->name = "Juan Sebastian";
-        $coor->apellido = "Parra Loaiza";
-        $coor->email = "admin@gmail.com";
-        $coor->email_verified_at = now();
-        $coor->fecha_nacimiento = "2002-10-14";
-        $coor->direccion = "Primera de mayo con 30";
-        $coor->celular = "310 792 9950";
-        $coor->telefono_fijo = "802 1646";
-        $coor->genero = "Masculino";
-        $coor->password = bcrypt("admin");
-        $coor->foto_perfil = "icon.png";
-        $coor->estado = "Activo";
-        $coor->tipo_documento= 'Cedula de ciudadania';
-        $coor->rol = 1;
-        $coor->remember_token = Str::random(10);
-        $coor->save();
         //Usuario Coordinador Luisa(Kevin)
         $luisa = new User();
         $luisa->id = '1001196239';
@@ -75,6 +56,25 @@ class UserSeeder extends Seeder
         $kevin->rol = 2;
         $kevin->remember_token = Str::random(10);
         $kevin->save();
+        //Usuario Coordinador Sebastián
+        $coor = new User();
+        $coor->id = '1000624349';
+        $coor->name = "Juan Sebastian";
+        $coor->apellido = "Parra Loaiza";
+        $coor->email = "admin@gmail.com";
+        $coor->email_verified_at = now();
+        $coor->fecha_nacimiento = "2002-10-14";
+        $coor->direccion = "Primera de mayo con 30";
+        $coor->celular = "310 792 9950";
+        $coor->telefono_fijo = "802 1646";
+        $coor->genero = "Masculino";
+        $coor->password = bcrypt("admin");
+        $coor->foto_perfil = "icon.png";
+        $coor->estado = "Activo";
+        $coor->tipo_documento= 'Cedula de ciudadania';
+        $coor->rol = 1;
+        $coor->remember_token = Str::random(10);
+        $coor->save();
         // //Usuario Acudiente Carlos(Kevin)
         // $carlos = new User();
         // $carlos->id = '16660323';
