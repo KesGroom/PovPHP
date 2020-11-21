@@ -75,59 +75,59 @@ class UserSeeder extends Seeder
         $kevin->rol = 2;
         $kevin->remember_token = Str::random(10);
         $kevin->save();
-        //Usuario Acudiente Carlos(Kevin)
-        $carlos = new User();
-        $carlos->id = '16660323';
-        $carlos->name = "Carlos Arturo";
-        $carlos->apellido = "Gutierrez Lora";
-        $carlos->email = "CarlosArturo@gmail.com";
-        $carlos->email_verified_at = now();
-        $carlos->fecha_nacimiento = "1989-05-19";
-        $carlos->direccion = "TV 29 #87B - 4 SUR";
-        $carlos->celular = "315 886 6007";
-        $carlos->telefono_fijo = "744 1016";
-        $carlos->genero = "Masculino";
-        $carlos->password = bcrypt("CaAr8858");
-        $carlos->foto_perfil = "icon.png";
-        $carlos->estado = "Activo";
-        $carlos->tipo_documento= 'Cedula de ciudadania';
-        $carlos->rol = 4;
-        $carlos->remember_token = Str::random(10);
-        $carlos->save();
+        // //Usuario Acudiente Carlos(Kevin)
+        // $carlos = new User();
+        // $carlos->id = '16660323';
+        // $carlos->name = "Carlos Arturo";
+        // $carlos->apellido = "Gutierrez Lora";
+        // $carlos->email = "CarlosArturo@gmail.com";
+        // $carlos->email_verified_at = now();
+        // $carlos->fecha_nacimiento = "1989-05-19";
+        // $carlos->direccion = "TV 29 #87B - 4 SUR";
+        // $carlos->celular = "315 886 6007";
+        // $carlos->telefono_fijo = "744 1016";
+        // $carlos->genero = "Masculino";
+        // $carlos->password = bcrypt("CaAr8858");
+        // $carlos->foto_perfil = "icon.png";
+        // $carlos->estado = "Activo";
+        // $carlos->tipo_documento= 'Cedula de ciudadania';
+        // $carlos->rol = 4;
+        // $carlos->remember_token = Str::random(10);
+        // $carlos->save();
 
-        $acudiente = new Acudiente();
-        $acudiente->id = $carlos->id;
-        $acudiente->estado = 'Activo';
-        $acudiente->save();
+        // $acudiente = new Acudiente();
+        // $acudiente->id = $carlos->id;
+        // $acudiente->estado = 'Activo';
+        // $acudiente->save();
 
-        //Usuario Estudiante Cesar(Kevin)
-        $cesar = new User();
-        $cesar->id = '1623102839';
-        $cesar->name = "Cesar Andres";
-        $cesar->apellido = "Gutierrez Lopez";
-        $cesar->email = "CesarAndres@gmail.com";
-        $cesar->email_verified_at = now();
-        $cesar->fecha_nacimiento = "2003-08-08";
-        $cesar->direccion = "TV 29 #87B - 4 SUR";
-        $cesar->celular = "317 699 7423";
-        $cesar->telefono_fijo = "744 1016";
-        $cesar->genero = "Masculino";
-        $cesar->password = bcrypt("Cesan88");
-        $cesar->foto_perfil = "icon.png";
-        $cesar->estado = "Activo";
-        $cesar->tipo_documento= 'Tarjeta de identidad';
-        $cesar->rol = 3;
-        $cesar->remember_token = Str::random(10);
-        $cesar->save();
+        // //Usuario Estudiante Cesar(Kevin)
+        // $cesar = new User();
+        // $cesar->id = '1623102839';
+        // $cesar->name = "Cesar Andres";
+        // $cesar->apellido = "Gutierrez Lopez";
+        // $cesar->email = "CesarAndres@gmail.com";
+        // $cesar->email_verified_at = now();
+        // $cesar->fecha_nacimiento = "2003-08-08";
+        // $cesar->direccion = "TV 29 #87B - 4 SUR";
+        // $cesar->celular = "317 699 7423";
+        // $cesar->telefono_fijo = "744 1016";
+        // $cesar->genero = "Masculino";
+        // $cesar->password = bcrypt("Cesan88");
+        // $cesar->foto_perfil = "icon.png";
+        // $cesar->estado = "Activo";
+        // $cesar->tipo_documento= 'Tarjeta de identidad';
+        // $cesar->rol = 3;
+        // $cesar->remember_token = Str::random(10);
+        // $cesar->save();
 
-        $estudiante = new Estudiante();
-        $estudiante->id = $cesar->id;
-        $estudiante->curso = Curso::where([['estado', 'Activo'],['grado', 11]])->get()->random();
-        $estudiante->acudiente = $acudiente->id;
-        $estudiante->estado_servicio_social = 'Disponible';
-        $estudiante->estado = 'Activo';
-        $estudiante->tiempo_servicio = 0;
-        $estudiante->save();
+        // $estudiante = new Estudiante();
+        // $estudiante->id = $cesar->id;
+        // $estudiante->curso = Curso::where([['estado', 'Activo'],['grado', 11]])->get()->random();
+        // $estudiante->acudiente = $acudiente->id;
+        // $estudiante->estado_servicio_social = 'Disponible';
+        // $estudiante->estado = 'Activo';
+        // $estudiante->tiempo_servicio = 0;
+        // $estudiante->save();
 
 
     }
