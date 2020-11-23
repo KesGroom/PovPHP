@@ -23,7 +23,7 @@ class RegistroAsistenciaController extends Controller
             $z = $h;
             $t = "B";
            
-            $observacion = $A.$o;
+            $observacion = $t.$o;
             $registroA = new Registro_asistencia();
             $registroA->estado = "Activo";
             $registroA->tema_trabajado= $request->tema_trabajado;

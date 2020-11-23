@@ -15,7 +15,7 @@
                 </div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('cursos.store') }}">
+                    <form method="POST" action="{{ route('cursosito.store') }}">
                         @csrf
                         <div class="form-group row">
                             <label for="curso" class="col-md-4 col-form-label text-md-right">curso</label>

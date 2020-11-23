@@ -15,7 +15,7 @@
                 </div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('atencion_areas.store') }}">
+                    <form method="POST" action="{{ route('atencion_areas.store') }}"  id="form1">
                         @csrf
                         <div class=" ">
                             <label for="diaSemana">Dia de la semana</label>
@@ -66,10 +66,35 @@
                                 </button>
                             </div>
                         </div>
+                        <input type="hidden" name="id" value="1">
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.5.1.js"integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="crossorigin="anonymous"></script>
+<script>
+     var area = document.getElementById(id);
+     var id = [];
+       $(document).ready(function(area){
+        $.ajax({
+            url:'DocenteArea',
+            method:'POST',
+            data:$('#form1').serialize()
+        }).done(function(res){
+            var arreglo = JSON.parse(res);
+          
+            for(var x= 0;x<arreglo.length;x++){
+               
+                id.push(arreglo[x].id);
+           
+            }
+            
+         alert(id);
+
+});
+
+});
+</script>
 @endsection

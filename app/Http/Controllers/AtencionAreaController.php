@@ -10,9 +10,9 @@ use Illuminate\View\View;
 class AtencionAreaController extends Controller
 {
     public function create(){
-        $users = DB::table('users')
-                ->where('votes', '<>', 100)
-                ->get();
+        // $users = DB::table('users')
+        //         ->where('votes', '<>', 100)
+        //         ->get();
         $area = Area::all();
        return view('atencion_areas.create', compact('area'));
     }
@@ -20,5 +20,12 @@ class AtencionAreaController extends Controller
  
         
     }
+    public function DocenteArea(Request $request){
+        $docenteMateria = DB::table('materias')
+        ->select('id')
+        ->where('area',$request->area)
+        ->get();
+        return  response(json_encode($docenteMateria),200);
+      }
 
 }

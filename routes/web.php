@@ -63,6 +63,7 @@ Route::middleware(['web'])->group(function () {
     Route::put('areas{area}', [AreaController::class, 'update'])->name('areas.update');
       //Routas para atencion Areas
       Route::get('atencion_areas/create', [AtencionAreaController::class, 'create'])->name('atencion_areas.create');
+      Route::post('atencion_areas/DocenteArea', [AtencionAreaController::class, 'DocenteArea'])->name('DocenteArea.create');
       Route::post('atencion_areas', [AtencionAreaController::class, 'store'])->name('atencion_areas.store');
       Route::get('atencion_areas/index', [AtencionAreaController::class, 'index'])->name('atencion_areas.index');
       Route::get('atencion_areas/{aa}/edit', [AtencionAreaController::class, 'edit'])->name('atencion_aa.edit');
@@ -84,7 +85,7 @@ Route::middleware(['web'])->group(function () {
 
     //Routas para cursos
     Route::get('cursos/create', [CursoController::class, 'create'])->name('cursos.create');
-    Route::post('cursos', [CursoController::class, 'store'])->name('cursos.store');
+    Route::post('cursosito', [CursoController::class, 'store'])->name('cursosito.store');
     Route::get('cursos/index', [CursoController::class, 'index'])->name('cursos.index');
     Route::get('cursos/{curso}/edit', [CursoController::class, 'edit'])->name('cursos.edit');
     Route::put('cursos{curso}', [CursoController::class, 'update'])->name('cursos.update');
@@ -110,6 +111,8 @@ Route::middleware(['web'])->group(function () {
     Route::post('actividades', [ActividadController::class,'store'])->name('actividades.store');
     Route::get('actividades/{actividad}/edit', [ActividadController::class,'edit'])->name('actividades.edit');
     Route::put('actividades{actividad}', [ActividadController::class,'update'])->name('actividades.update');
+    //Rutas para AgendaWeb
+
     //Routas para Docentes curso
     Route::get('docentecurso/create', [DocenteCursoController::class, 'create'])->name('docentecurso.create');
     Route::get('docentecurso/miscursos', [DocenteCursoController::class, 'miscursos'])->name('docentecurso.miscursos');
@@ -143,12 +146,21 @@ Route::middleware(['web'])->group(function () {
     //Pruebas Ajax -- Graficas
     Route::post('materias/all', [MateriaController::class, 'all'])->name('materias.all');// prueba
     Route::post('graficas/pqrs', [PqrsController::class, 'graficar'])->name('graficas.pqrs');
-    //Metodos posts para graficas
+    //Metodos posts para graficas Usuario
     Route::post('graficas/usuariosRol', [graficasController::class, 'graficarUsuariosPorRol'])->name('usuariosVerGrafica');
+    Route::post('graficas/usuariosMes', [graficasController::class, 'graficarUsuariosPorAño'])->name('usuariosVerGrafica');
+    Route::post('graficas/graficarGenero', [graficasController::class, 'graficarGenero'])->name('usuariosVerGrafica');
+    Route::post('graficas/graficarEstudiantesServicioSocial', [graficasController::class, 'graficarEstudiantes'])->name('usuariosVerGrafica');
+    //Metodos posts para graficas Cursos
+    Route::post('graficas/graficarCantidadEstudiantesCurso', [graficasController::class, 'graficarCantidadEstudiantesCurso'])->name('usuariosVerGrafica');
+    //Metodos post para graficas Asistencia
+    Route::post('graficas/AsistenciaTodos', [graficasController::class, 'graficarCantidadEstudiantesAsistenciaHoy'])->name('asistenciaTodosVerGrafica');
+
      // rutas para graficas
     Route::get('graficas/pqrs', [PqrsController::class, 'vergrafica'])->name('pqrs.vergrafica');
     Route::get('graficas/usuarios', [graficasController::class, 'vergraficaUsuarios'])->name('usuariosVerGrafica');
-
+    Route::get('graficas/cursos', [graficasController::class, 'vergraficaCursos'])->name('cursosVerGrafica');
+    Route::get('graficas/asitenciaTodos', [graficasController::class, 'vergraficaAsistenciaTodos'])->name('asistenciaVerGrafica');
 
     Route::post('docentecurso', [DocenteCursoController::class, 'crearplantillas'])->name('docentecurso.crearplantillas');
     Route::get('/', function () {

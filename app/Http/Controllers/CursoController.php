@@ -19,10 +19,14 @@ class CursoController extends Controller
 
     }
     public function store(Request $request){
+      $validatedData = $request->validate([
+        'curso' => 'required|min:1|max:4',
+        'salon' => 'required|min:1|max:3',
+      ]);
       $curso = new Curso();
       $curso->estado = "Activo";
-      $curso->curso = $request->curso;
-      $curso->salon = $request->salon;
+      $curso->curso = $validatedData['curso'];
+      $curso->salon = $validatedData['salon'];
       $curso->grado = $request->grado;
       $curso->save();
       $status = 'Se ha creado un Curso';
