@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\TemplateExport;
 use App\Exports\UserExport;
 use App\Exports\UserTemplate;
 use App\Imports\UsersImport;
@@ -319,7 +320,22 @@ class UserController extends Controller
   //Excel
   public function export()
   {
-    return Excel::download(new UserExport, 'usuarios.xlsx');
+    // return Excel::download(new UserExport, 'usuarios.xlsx');
+    return Excel::download(new TemplateExport(User::where('estado', 'Activo')->get(), [
+      'titulo' => [
+        'Tipo de documento',
+        'Número de documento',
+        'Nombre',
+        'Apellido',
+        'Correo electrónico',
+        'Fecha de nacimiento',
+        'Dirección',
+        'Celular',
+        'Telefono fijo',
+        'Genero',
+        'Rol',
+      ]
+    ]));
   }
   public function template()
   {
