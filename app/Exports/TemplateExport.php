@@ -23,6 +23,7 @@ class TemplateExport implements FromView
 
     public function view(): View
     {
+        return $this->headers;
         return view('exports.ExportTemplate', ['data' => $this->data, 'headers' => $this->headers]);
     }
 }
