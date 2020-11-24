@@ -335,7 +335,7 @@ class UserController extends Controller
         'Genero',
         'Rol',
       ]
-    ]));
+    ]), 'usuarios.xlsx');
   }
   public function template()
   {
