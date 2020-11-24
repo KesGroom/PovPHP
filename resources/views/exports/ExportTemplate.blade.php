@@ -2,19 +2,19 @@
     <thead>
         <tr>
             @forelse ($headers as $header)
-                <th>{{ $header['title'] }}</th>
+                <th>{{ $header['titulo'] }}</th>
             @empty
-            
+
             @endforelse
         </tr>
     </thead>
     <tbody>
         <tr>
-            @forelse ($data as $item)
+            {{-- @forelse ($data as $item)
                 <td>{{ $item->id }}</td>
             @empty
             <td>No hay datos</td>
-            @endforelse
+            @endforelse --}}
         </tr>
     </tbody>
 </table>
