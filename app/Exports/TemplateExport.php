@@ -23,6 +23,6 @@ class TemplateExport implements FromView
 
     public function view(): View
     {
-        return view('exports.ExportTemplate', compact('data', 'headers'));
+        return view('exports.ExportTemplate', ['data', 'headers']);
     }
 }
