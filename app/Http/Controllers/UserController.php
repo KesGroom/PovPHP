@@ -336,7 +336,6 @@ class UserController extends Controller
         'Rol',
       ]
     ];
-
     $collection = collect($titulos);
     return Excel::download(new TemplateExport(User::where('estado', 'Activo')->get(), $collection), 'usuarios.xlsx');
   }
