@@ -337,7 +337,7 @@ class UserController extends Controller
       ]
     ];
     $collection = collect($titulos);
-    return Excel::download(new TemplateExport($collection), 'usuarios.xlsx');
+    return Excel::download(new TemplateExport('Holi'), 'usuarios.xlsx');
   }
   public function template()
   {
