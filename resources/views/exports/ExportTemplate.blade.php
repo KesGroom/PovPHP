@@ -2,7 +2,7 @@
     <thead>
         <tr>
             @forelse ($headers as $header)
-                <th>{{ $header}}</th>
+                <th>{{ $header }}</th>
             @empty
 
             @endforelse
@@ -13,7 +13,7 @@
             @forelse ($data as $item)
                 <td>{{ $item->id }}</td>
             @empty
-            <td>No hay datos</td>
+                <td>No hay datos</td>
             @endforelse
         </tr>
     </tbody>
