@@ -1,11 +1,11 @@
 <table>
     <thead>
         <tr>
-            @forelse ($headers as $header)
-            <th>{{ $header }}</th>
-            @empty
-
-            @endforelse
+            @for ($i = 0; $i < Str::length($headers); $i++)
+                <th>
+                    {{$headers[$i]}}
+                </th>
+            @endfor
         </tr>
     </thead>
     <tbody>
