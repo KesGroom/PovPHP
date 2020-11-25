@@ -1,14 +1,14 @@
 <table>
     <thead>
         <tr>
-            @for ($i = 0; $i < Str::length($headers); $i++)
+            @for ($i = 0; $i < sizeof($headers); $i++)
                 <th>
                     {{$headers[$i]}}
                 </th>
             @endfor
         </tr>
     </thead>
-    {{-- <tbody>
+    <tbody>
         @forelse ($data as $item)
             <tr>
                 <td>{{ $item->id }}</td>
@@ -18,5 +18,5 @@
                 <td>No hay datos</td>
             </tr>
         @endforelse
-    </tbody> --}}
+    </tbody>
 </table>
