@@ -15,14 +15,14 @@ class TemplateExport implements FromView
     public $data;
     public $headers;
 
-    public function __construct($data, $headers)
+    public function __construct($headers)
     {
         $this->headers = $headers;
-        $this->data = $data;
+        // $this->data = $data;
     }
 
     public function view(): View
     {
-        return view('exports.ExportTemplate', ['data' => $this->data, 'headers' => $this->headers]);
+        return view('exports.ExportTemplate', ['headers' => $this->headers]);
     }
 }
