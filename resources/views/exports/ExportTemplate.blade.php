@@ -1,5 +1,5 @@
 <table>
-    <thead>
+    {{-- <thead>
         <tr>
             @forelse ($headers as $header)
                 <th>{{ $header }}</th>
@@ -7,7 +7,7 @@
 
             @endforelse
         </tr>
-    </thead>
+    </thead> --}}
     <tbody>
         <tr>
             @forelse ($data as $item)
