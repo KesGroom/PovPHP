@@ -2,7 +2,7 @@
     <thead>
         <tr>
             @forelse ($headers as $header)
-                <th>{{ $header->titulo}}</th>
+                <th>{{ $header}}</th>
             @empty
 
             @endforelse
