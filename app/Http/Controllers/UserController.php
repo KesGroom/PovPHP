@@ -321,24 +321,27 @@ class UserController extends Controller
   public function export()
   {
     // return Excel::download(new UserExport, 'usuarios.xlsx');
+    $titulos = [
+      'titulo' => [
+        'Tipo de documento',
+        'Número de documento',
+        'Nombre',
+        'Apellido',
+        'Correo electrónico',
+        'Fecha de nacimiento',
+        'Dirección',
+        'Celular',
+        'Telefono fijo',
+        'Genero',
+        'Rol',
+      ]
+    ];
+
+    $collection = collect($titulos);
     return Excel::download(
       new TemplateExport(
         User::where('estado', 'Activo')->get(),
-        [
-          'titulo' => [
-            'Tipo de documento',
-            'Número de documento',
-            'Nombre',
-            'Apellido',
-            'Correo electrónico',
-            'Fecha de nacimiento',
-            'Dirección',
-            'Celular',
-            'Telefono fijo',
-            'Genero',
-            'Rol',
-          ]
-        ]
+        $collection
       ),
       'usuarios.xlsx'
     );
