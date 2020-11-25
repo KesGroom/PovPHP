@@ -335,7 +335,7 @@ class UserController extends Controller
       'Rol',
     ];
     $collection = collect($titulos);
-    return Excel::download(new TemplateExport($titulos), 'usuarios.xlsx');
+    return Excel::download(new TemplateExport($titulos ), 'usuarios.xlsx');
   }
   public function template()
   {
