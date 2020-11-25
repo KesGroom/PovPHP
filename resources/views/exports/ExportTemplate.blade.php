@@ -1,20 +1,22 @@
 <table>
-    {{-- <thead>
+    <thead>
         <tr>
             @forelse ($headers as $header)
-                <th>{{ $header }}</th>
+            <th>{{ $header }}</th>
             @empty
 
             @endforelse
         </tr>
-    </thead> --}}
+    </thead>
     <tbody>
-        <tr>
-            @forelse ($data as $item)
+        @forelse ($data as $item)
+            <tr>
                 <td>{{ $item->id }}</td>
-            @empty
+            </tr>
+        @empty
+            <tr>
                 <td>No hay datos</td>
-            @endforelse
-        </tr>
+            </tr>
+        @endforelse
     </tbody>
 </table>
