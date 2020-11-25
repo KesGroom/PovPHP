@@ -8,7 +8,7 @@
             @endfor
         </tr>
     </thead>
-    <tbody>
+    {{-- <tbody>
         @forelse ($data as $item)
             <tr>
                 <td>{{ $item->id }}</td>
@@ -18,5 +18,5 @@
                 <td>No hay datos</td>
             </tr>
         @endforelse
-    </tbody>
+    </tbody> --}}
 </table>
