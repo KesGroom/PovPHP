@@ -18,13 +18,11 @@
                     <form method="POST" action="{{ route('atencion_areas.store') }}"  id="form1">
                         @csrf
                         <div class=" ">
-                            <label for="diaSemana">Dia de la semana</label>
-                            <select  class="form-control" id="diaSemana" name="diaSemana"  required>
-                                <option value="Lunes">Lunes<option>
-                                <option value="Martes">Martes<option>
-                                <option value="Miercoles">Miercoles<option>
-                                <option value="'Jueves">'Jueves<option>
-                                <option value="'Viernes">'Viernes<option>
+                            <label for="docentes">docentes</label>
+                            <select  class="form-control" id="docentes" name="docentes" required onchange="ddlselect();">
+                                @foreach ($docente as $docentes)
+                                <option value="{{$docentes->materia}}">{{$docentes->id}}Materia:{{$docentes->materia}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group row">
@@ -75,26 +73,37 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.js"integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="crossorigin="anonymous"></script>
 <script>
-     var area = document.getElementById(id);
-     var id = [];
-       $(document).ready(function(area){
+
+// function ddlselect(){
+//        var docentes = document.getElementById("docentes").value;
+    //   alert(docentes);
+   
+       $(document).ready(function(){
+   
         $.ajax({
             url:'DocenteArea',
             method:'POST',
-            data:$('#form1').serialize()
+            data:{
+                docentes:docentes,
+                _token:$('input[name=_token]').val()
+            
+            }
+            
+            // data:$('#form1').serialize()
         }).done(function(res){
+            alert(res);
             var arreglo = JSON.parse(res);
-          
             for(var x= 0;x<arreglo.length;x++){
                
-                id.push(arreglo[x].id);
            
             }
             
-         alert(id);
+       
 
 });
 
 });
+
+// }
 </script>
 @endsection
