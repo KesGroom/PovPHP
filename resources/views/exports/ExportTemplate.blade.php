@@ -3,20 +3,22 @@
         <tr>
             @for ($i = 0; $i < sizeof($headers); $i++)
                 <th>
-                    {{$headers[$i]}}
+                    {{ $headers[$i] }}
                 </th>
             @endfor
         </tr>
     </thead>
-    <tbody>
-        @forelse ($data as $item)
-            <tr>
-                <td>{{ $item->id }}</td>
-            </tr>
-        @empty
-            <tr>
-                <td>No hay datos</td>
-            </tr>
-        @endforelse
+    @if ($template == 'false')
+        <tbody>
+            @forelse ($data as $item)
+                @include('exports.items', [
+                'needed'=> $items,
+                ])
+            @empty
+                <tr>
+                    <td>No hay datos</td>
+                </tr>
+    @endforelse
     </tbody>
+    @endif
 </table>
