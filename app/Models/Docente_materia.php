@@ -9,4 +9,8 @@ class Docente_materia extends Model
 {
     use HasFactory;
     protected $table = 'docente_materia';
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User', 'id');
+    }
 }

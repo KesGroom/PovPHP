@@ -12,4 +12,8 @@ class CitaController extends Controller
     public function storeArea(Request $request){
 
     }
+    public function solitarCita(){
+
+      return view('citas.solicitar');
+    }
 }

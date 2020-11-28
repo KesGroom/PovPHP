@@ -21,8 +21,14 @@
                             <label for="docentes">docentes</label>
                             <select  class="form-control" id="docentes" name="docentes" required onchange="ddlselect();">
                                 @foreach ($docente as $docentes)
-                                <option value="{{$docentes->materia}}">{{$docentes->id}}Materia:{{$docentes->materia}}</option>
+                                <option value="{{$docentes->docente}}">{{$docentes->mate->nombre_materia}}--{{$docentes->usuario->name}}</option>
                                 @endforeach
+                            </select>
+                        </div>
+                        <div class=" ">
+                            <label for="Area">Area</label>
+                            <select  class="form-control" id="Area" name="Area" required >
+                             
                             </select>
                         </div>
                         <div class="form-group row">
@@ -52,9 +58,15 @@
                             </div>
                         </div>
                         <div class=" ">
-                            <label for="area">Dia de la semana</label>
-                            <select  class="form-control" id="area" name="area"  required>
-                                <option value="Lunes">Lunes<option>
+                            <label for="diaSemana">Dia de la semana</label>
+                            <select  class="form-control" id="diaSemana" name="diaSemana"  required>
+                                <option value="1">Lunes</option>
+                                <option value="2">Martes</option>
+                                <option value="3">Miercoles</option>  
+                                <option value="4">Jueves</option>
+                                <option value="5">Viernes</option>
+                                <option value="6">Sabado</option>
+                                <option value="7">Domingo</option>                           
                             </select>
                         </div>
                         <div class="form-group row mb-0">
@@ -74,27 +86,26 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js"integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="crossorigin="anonymous"></script>
 <script>
 
-// function ddlselect(){
-//        var docentes = document.getElementById("docentes").value;
-    //   alert(docentes);
-   
+function ddlselect(){
+       var docentes = document.getElementById("docentes").value;
+  
        $(document).ready(function(){
    
         $.ajax({
             url:'DocenteArea',
             method:'POST',
             data:{
-                docentes:docentes,
-                _token:$('input[name=_token]').val()
+                _token:$('input[name=_token]').val(),
+                docentes:docentes
             
             }
-            
             // data:$('#form1').serialize()
         }).done(function(res){
-            alert(res);
             var arreglo = JSON.parse(res);
             for(var x= 0;x<arreglo.length;x++){
-               
+                var todo = '<option' + " " + 'value="'+ arreglo[x].id + '"' + '>'+ arreglo[x].nombre_area +'</option>';
+                document.getElementById("Area").innerHTML = todo;
+               $('ContenidoArea').append(todo);
            
             }
             
@@ -104,6 +115,6 @@
 
 });
 
-// }
+}
 </script>
 @endsection
