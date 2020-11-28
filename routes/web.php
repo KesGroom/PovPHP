@@ -70,7 +70,7 @@ Route::middleware(['web'])->group(function () {
       Route::put('atencion_areas{aa}', [AtencionAreaController::class, 'update'])->name('atencion_aa.update');
   
       //Routas para citas
-      Route::get('citas/createArea', [CitaController::class, 'createArea'])->name('citas.createArea');
+      Route::get('citas/crearCita', [CitaController::class, 'crearCita'])->name('citas.crearCita');
       Route::get('citas/solitarCita', [CitaController::class, 'solitarCita'])->name('citas.solitarCita');
       Route::post('citas', [CitaController::class, 'storeArea'])->name('citas.storeArea');
       Route::get('citas/index', [CitaController::class, 'index'])->name('citas.index');
