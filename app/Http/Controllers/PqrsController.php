@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class PqrsController extends Controller
 {
     public function create(){
-        return view('pqrs.create');
+        return view('pages.pqrs.create');
     }
 
 
@@ -30,10 +30,10 @@ class PqrsController extends Controller
         $Queja = Pqrs::where('categoria','Queja')->get();
         $Reclamo = Pqrs::where('categoria','Reclamo')->get();
         $Sugerencia = Pqrs::where('categoria','Sugerencia')->get();
-        return view('pqrs.index' , compact('pqrs','Pregunta','Queja','Reclamo','Sugerencia'));
+        return view('pages.pqrs.index' , compact('pqrs','Pregunta','Queja','Reclamo','Sugerencia'));
     }
     public function responder(Pqrs $pqrs){
-        return view('pqrs.responder', compact('pqrs'));
+        return view('pages.pqrs.responder', compact('pqrs'));
 
     }
     public function update(Request $request,Pqrs $pqrs){
