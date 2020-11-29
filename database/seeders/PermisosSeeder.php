@@ -15,6 +15,7 @@ class PermisosSeeder extends Seeder
     public function run()
     {
         $url = "http://mariacanoied.herokuapp.com/home";
+        $home = "http://mariacanoied.herokuapp.com/pages/";
 
         /**
          * Permisos de control de usuarios
@@ -96,7 +97,7 @@ class PermisosSeeder extends Seeder
         $perLP = new Permiso();
         $perLP->nombre = "Lista de PQRS";
         $perLP->name = "List of queries";
-        $perLP->url = $url;
+        $perLP->url = $home.'pqrs/index';
         $perLP->permiso_padre = $perPqrs->id;
         $perLP->estado = 'Activo';
         $perLP->save();
