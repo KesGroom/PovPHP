@@ -17,8 +17,8 @@ class AddForeignKeyAtencionCursoTable extends Migration
             $table->string('docente');
             $table->foreign('docente')->references('id')->on('users')
                 ->onDelete('cascade')->onUpdate('cascade');
-            $table->integer('area')->unsigned();
-            $table->foreign('area')->references('id')->on('areas')
+            $table->integer('curso')->unsigned();
+            $table->foreign('curso')->references('id')->on('cursos')
                 ->onDelete('cascade')->onUpdate('cascade');
         });
     }
@@ -32,7 +32,7 @@ class AddForeignKeyAtencionCursoTable extends Migration
     {
         Schema::table('atencion_curso', function (Blueprint $table) {
             $table->dropForeign('atencion_curso_users_id_foreign');
-            $table->dropForeign('atencion_curso_areas_id_foreign');
+            $table->dropForeign('atencion_curso_cursos_id_foreign');
         });
     }
 }
