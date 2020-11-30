@@ -12,7 +12,7 @@ use App\Http\Controllers\GradoController;
 use App\Http\Controllers\NoticiaController;
 use App\Http\Controllers\PqrsController;
 use App\Http\Controllers\SalaServicioController;
-use App\Http\Controllers\ServicioSocialController;
+use App\Http\Controllers\ZonaServicioController;
 use App\Http\Controllers\UserController;
 use App\Models\Bitacora_servicio;
 use App\Models\Docente_curso;
@@ -85,24 +85,26 @@ Route::middleware(['web'])->group(function () {
 
 
     //Rutas para Servicio social
-    Route::get('zonas/create', [ServicioSocialController::class, 'create'])->name('zonas.create');
-    Route::get('zonas/index', [ServicioSocialController::class, 'index'])->name('zonas.index');
-    Route::post('zonas', [ServicioSocialController::class, 'store'])->name('zonas.store');
-    Route::get('zonas/{zona}/edit', [ServicioSocialController::class, 'edit'])->name('zonas.edit');
-    Route::post('zonas/{zona}', [ServicioSocialController::class, 'update'])->name('zonas.update');
+    Route::get('zonas/create', [ZonaServicioController::class, 'create'])->name('zonas.create');
+    Route::get('zonas/index', [ZonaServicioController::class, 'index'])->name('zonas.index');
+    Route::post('zonas', [ZonaServicioController::class, 'store'])->name('zonas.store');
+    Route::get('zonas/{zona}/edit', [ZonaServicioController::class, 'edit'])->name('zonas.edit');
+    Route::post('zonas/{zona}', [ZonaServicioController::class, 'update'])->name('zonas.update');
 
 
     
     //Rutas para bitacora social
-    Route::get('bitacora/create', [BitacoraServicioController::class, 'create'])->name('bitacora.create');
+    Route::get('bitacora/create{sala}', [BitacoraServicioController::class, 'create'])->name('bitacora.create');
     Route::get('bitacora/index', [BitacoraServicioController::class, 'index'])->name('bitacora.index');
-    Route::post('bitacora', [BitacoraServicioController::class, 'store'])->name('bitacora.store');
+    Route::post('bitacora/index{sala}', [BitacoraServicioController::class, 'store'])->name('bitacora.store');
     Route::get('bitacora/{bita}/edit', [BitacoraServicioController::class, 'edit'])->name('bitacora.edit');
     Route::post('bitacora/{bita}', [BitacoraServicioController::class, 'update'])->name('bitacora.update');
-
+    
     // Rutas para la sala de servicio 
     Route::get('sala/index', [SalaServicioController::class, 'index'])->name('sala.index');
-    Route::post('sala', [SalaServicioController::class, 'store'])->name('sala.store');
+    Route::put('sala/index{zona}', [SalaServicioController::class, 'store'])->name('sala.store');
+    Route::put('sala/index/aceptar{salas}', [SalaServicioController::class, 'aceptar'])->name('sala.aceptar');
+    Route::put('sala/index/rechazar{salas}', [SalaServicioController::class, 'rechazar'])->name('sala.rechazar');
 
 
     //Routas para Docentes curso

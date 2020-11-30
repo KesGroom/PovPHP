@@ -2,32 +2,29 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-                </div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('sala.store') }}">
-                        @csrf
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Estudiante</th>
+                <th>Zonas de servicio</th>
+                <th>Fecha de postulación</th>
+                <th>Estado</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach ($salas as $sala)
+        <tr>
+            <td>{{$sala->estu->user->name}}</td>
+            <td>{{$sala->zonaSS->nombre_zona}}</td>
+            <td>{{date('d-m-Y', strtotime($sala->created_at))}}</td>
+            <td>{{$sala->estado_servicio}}</td>
+            <td> @include('sala.aceptar') </td>
+            <td>@include('sala.rechazar')</td>
+        </tr>
+        @endforeach
+    </tbody>
+    </table>
 </div>
 @endsection
