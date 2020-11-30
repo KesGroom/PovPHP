@@ -105,7 +105,7 @@ class PermisosSeeder extends Seeder
         $perMP = new Permiso();
         $perMP->nombre = "Mis PQRS";
         $perMP->name = "My questions";
-        $perMP->url = $url;
+        $perMP->url = $home.'pqrs/create';
         $perMP->permiso_padre = $perPqrs->id;
         $perMP->estado = 'Activo';
         $perMP->save();
