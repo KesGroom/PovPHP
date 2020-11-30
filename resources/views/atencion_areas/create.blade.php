@@ -35,7 +35,7 @@
                             <label for="hora_inicio_atencion" class="col-md-4 col-form-label text-md-right">hora_inicio_atencion</label>
 
                             <div class="col-md-6">
-                                <input id="hora_inicio_atencion" type="time" class="form-control @error('hora_inicio_atencion') is-invalid @enderror" name="hora_inicio_atencion" value="{{ old('hora_inicio_atencion') }}" required autocomplete="hora_inicio_atencion" autofocus>
+                                <input id="hora_inicio_atencion" type="time" min="07:00" max="12:00" class="form-control @error('hora_inicio_atencion') is-invalid @enderror" name="hora_inicio_atencion" value="{{ old('hora_inicio_atencion') }}" required autocomplete="hora_inicio_atencion" autofocus>
 
                                 @error('hora_inicio_atencion')
                                     <span class="invalid-feedback" role="alert">
@@ -48,7 +48,7 @@
                             <label for="hora_final_atencion" class="col-md-4 col-form-label text-md-right">hora_final_atencion</label>
 
                             <div class="col-md-6">
-                                <input id="hora_final_atencion" type="time" class="form-control @error('hora_final_atencion') is-invalid @enderror" name="hora_final_atencion" value="{{ old('hora_final_atencion') }}" required autocomplete="hora_final_atencion" autofocus>
+                                <input id="hora_final_atencion" type="time" min="07:00" max="12:00"  class="form-control @error('hora_final_atencion') is-invalid @enderror" name="hora_final_atencion" value="{{ old('hora_final_atencion') }}" required autocomplete="hora_final_atencion" autofocus>
 
                                 @error('hora_final_atencion')
                                     <span class="invalid-feedback" role="alert">

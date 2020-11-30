@@ -20,11 +20,16 @@ class CitaController extends Controller
       $cita->save();
     }
     public function index(){
-      return view('citas.index')
+      return view('citas.index');
       
     }
     public function solitarCita(){
-
-      return view('citas.solicitar');
+      $citas_area = Cita::where('estado','Activo')
+      ->select('fecha_cita','atencion_area')
+      ->get();
+      $citas_area = Cita::where('estado','Activo')
+      ->select('fecha_cita','atencion_curso')
+      ->get();
+      return view('citas.solicitar', compact('citas_area','citas_area'));
     }
 }
