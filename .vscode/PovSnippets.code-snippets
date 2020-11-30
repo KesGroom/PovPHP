@@ -112,6 +112,13 @@
 			"$$9items_data = '$2';",
 			"return Excel::download(new TemplateExport($$6titulos, $3::where('estado', 'Activo')->get(), $$5template, $$10items_data), '$4.xlsx');"
 		]
+	},
+	"Pov Lang":{
+		"scope": "blade",
+		"prefix": "_povLang",
+		"body": [
+			"{{ __('pov.$1')}}"
+		]
 	}
 
 }

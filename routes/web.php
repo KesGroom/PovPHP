@@ -202,6 +202,7 @@ Route::middleware(['web'])->group(function () {
   Route::get('pages/pqrs/index', [PqrsController::class, 'index'])->name('pqrs.index');
   Route::get('pages/pqrs/{pqrs}/responder', [PqrsController::class, 'responder'])->name('pqrs.responder');
   Route::put('pages/pqrs{pqrs}', [PqrsController::class, 'update'])->name('pqrs.update');
+  Route::put('pages/pqrs/delete{pqrs}', [PqrsController::class, 'delete'])->name('pqrs.delete');
   
   //Routas para notas
   Route::post('notas/create', [RegistroNotaController::class, 'create'])->name('notas.create');

@@ -1,29 +1,41 @@
 @extends('layouts.app')
-
 @section('content')
+@section('nav')
+    @include('layouts.partials.dashNav')
+@endsection
+@if (session('status'))
+    @section('script')
+        @include('layouts.partials.alerts',[
+        'option' => session('status'),
+        ])
+    @endsection
+@endif
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
+                <div class="card-header">
+                    @if ($pqrs->respuesta)
+                        {{ __('pov.txtEditAnswer') }}
+                    @else
+                        {{ __('pov.txtResponder') }}
                     @endif
                 </div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('pqrs.update' , $pqrs) }}">
-              @method('PUT')
-                            @csrf
+                    <form method="POST" action="{{ route('pqrs.update', $pqrs) }}">
+                        @method('PUT')
+                        @csrf
                         <div class="form-group row">
-                            <label for="respuesta" class="col-md-4 col-form-label text-md-right">Respuesta</label>
+                            <label for="respuesta"
+                                class="col-md-12 col-form-label text-md-left">{{ __('pov.txtRespuesta') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="respuesta" type="text" class="form-control @error('respuesta') is-invalid @enderror" name="respuesta" value="{{ $pqrs->respuesta}}" required autocomplete="respuesta" autofocus>
-
+                            <div class="col-md-12">
+                                <textarea id="respuesta" rows="6"
+                                    class="form-control @error('respuesta') is-invalid @enderror" name="respuesta"
+                                    value="{{ $pqrs->respuesta }}" required autocomplete="respuesta"
+                                    autofocus>{{ $pqrs->respuesta }}
+                                </textarea>
                                 @error('respuesta')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -31,12 +43,14 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
+                        <div class="mt-4">
+                            <button type="submit" class="btn btn-MC btn-footer">
+                                @if ($pqrs->respuesta)
+                                    {{ __('pov.txtEditAnswer') }}
+                                @else
+                                    {{ __('pov.txtResponder') }}
+                                @endif
+                            </button>
                         </div>
                     </form>
                 </div>
