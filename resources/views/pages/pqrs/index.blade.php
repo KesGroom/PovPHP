@@ -11,6 +11,8 @@
     @endsection
 @endif
 <div class="container containerMain">
+    <div class="row">
+        <div class="col-md-12">
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
             <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
@@ -123,9 +125,12 @@
                         <p class="card-text">{{ $pqrss->asunto }}</p>
                     </div>
                     @if ($pqrss->respuesta)                        
-                    <div class="card-footer displayRowSbC">
-                        <div class="card-text">{{ __('pov.txtRespuesta')}} {{$pqrss->respuesta}}</div>
-                        <div class="card-text displayRowCC"><ion-icon name="school" class="mr-2"></ion-icon> {{$pqrss->coor->name}}</div>
+                    <div class="card-footer">
+                        <div class="displayRowSbC">
+                        <div class="card-text displayRowCC"><b class="mr-2">{{ __('pov.txtResponde')}}</b> {{$pqrss->coor->name}}</div>
+                        <div class="card-text displayRowCC"><b class="mr-2">{{ __('pov.txtDateReply')}}</b> {{ date('d/m/Y', strtotime($pqrss->updated_at)) }}</div>
+                        </div>
+                        <div class="card-text">{{$pqrss->respuesta}}</div>
                     </div>
                     @endif
                 </div>
@@ -140,6 +145,9 @@
                     </div>
                 </div>
             @endforelse
+            <div class="cont-links mt-4 displayRowCC">
+                {{ $pqrs->links() }}
+            </div>
         </div>
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
             @forelse ($Pregunta as $pqrss)
@@ -208,9 +216,12 @@
                         <p class="card-text">{{ $pqrss->asunto }}</p>
                     </div>
                     @if ($pqrss->respuesta)                        
-                    <div class="card-footer displayRowSbC">
-                        <div class="card-text">{{ __('pov.txtRespuesta')}} {{$pqrss->respuesta}}</div>
-                        <div class="card-text displayRowCC"><ion-icon name="school" class="mr-2"></ion-icon> {{$pqrss->coor->name}}</div>
+                    <div class="card-footer">
+                        <div class="displayRowSbC">
+                        <div class="card-text displayRowCC"><b class="mr-2">{{ __('pov.txtResponde')}}</b> {{$pqrss->coor->name}}</div>
+                        <div class="card-text displayRowCC"><b class="mr-2">{{ __('pov.txtDateReply')}}</b> {{ date('d/m/Y', strtotime($pqrss->updated_at)) }}</div>
+                        </div>
+                        <div class="card-text"> {{$pqrss->respuesta}}</div>
                     </div>
                     @endif
                 </div>
@@ -225,6 +236,9 @@
                     </div>
                 </div>
             @endforelse
+            <div class="cont-links mt-4 displayRowCC">
+                {{ $Pregunta->links() }}
+            </div>
         </div>
         <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
             @forelse ($Queja as $pqrss)
@@ -293,9 +307,12 @@
                         <p class="card-text">{{ $pqrss->asunto }}</p>
                     </div>
                     @if ($pqrss->respuesta)                        
-                    <div class="card-footer displayRowSbC">
-                        <div class="card-text">{{ __('pov.txtRespuesta')}} {{$pqrss->respuesta}}</div>
-                        <div class="card-text displayRowCC"><ion-icon name="school" class="mr-2"></ion-icon> {{$pqrss->coor->name}}</div>
+                    <div class="card-footer">
+                        <div class="displayRowSbC">
+                        <div class="card-text displayRowCC"><b class="mr-2">{{ __('pov.txtResponde')}}</b> {{$pqrss->coor->name}}</div>
+                        <div class="card-text displayRowCC"><b class="mr-2">{{ __('pov.txtDateReply')}}</b> {{ date('d/m/Y', strtotime($pqrss->updated_at)) }}</div>
+                        </div>
+                        <div class="card-text"> {{$pqrss->respuesta}}</div>
                     </div>
                     @endif
                 </div>
@@ -310,6 +327,9 @@
                     </div>
                 </div>
             @endforelse
+            <div class="cont-links mt-4 displayRowCC">
+                {{ $Queja->links() }}
+            </div>
         </div>
         <div class="tab-pane fade" id="reclamo" role="tabpanel" aria-labelledby="contact-tab">
             @forelse ($Reclamo as $pqrss)
@@ -378,9 +398,12 @@
                         <p class="card-text">{{ $pqrss->asunto }}</p>
                     </div>
                     @if ($pqrss->respuesta)                        
-                    <div class="card-footer displayRowSbC">
-                        <div class="card-text">{{ __('pov.txtRespuesta')}} {{$pqrss->respuesta}}</div>
-                        <div class="card-text displayRowCC"><ion-icon name="school" class="mr-2"></ion-icon> {{$pqrss->coor->name}}</div>
+                    <div class="card-footer">
+                        <div class="displayRowSbC">
+                        <div class="card-text displayRowCC"><b class="mr-2">{{ __('pov.txtResponde')}}</b> {{$pqrss->coor->name}}</div>
+                        <div class="card-text displayRowCC"><b class="mr-2">{{ __('pov.txtDateReply')}}</b> {{ date('d/m/Y', strtotime($pqrss->updated_at)) }}</div>
+                        </div>
+                        <div class="card-text"> {{$pqrss->respuesta}}</div>
                     </div>
                     @endif
                 </div>
@@ -395,6 +418,9 @@
                     </div>
                 </div>
             @endforelse
+            <div class="cont-links mt-4 displayRowCC">
+                {{ $Reclamo->links() }}
+            </div>
         </div>
         <div class="tab-pane fade" id="Sugerencia" role="tabpanel" aria-labelledby="contact-tab">
             @forelse ($Sugerencia as $pqrss)
@@ -463,9 +489,12 @@
                         <p class="card-text">{{ $pqrss->asunto }}</p>
                     </div>
                     @if ($pqrss->respuesta)                        
-                    <div class="card-footer displayRowSbC">
-                        <div class="card-text">{{ __('pov.txtRespuesta')}} {{$pqrss->respuesta}}</div>
-                        <div class="card-text displayRowCC"><ion-icon name="school" class="mr-2"></ion-icon> {{$pqrss->coor->name}}</div>
+                    <div class="card-footer">
+                        <div class="displayRowSbC">
+                        <div class="card-text displayRowCC"><b class="mr-2">{{ __('pov.txtResponde')}}</b> {{$pqrss->coor->name}}</div>
+                        <div class="card-text displayRowCC"><b class="mr-2">{{ __('pov.txtDateReply')}}</b> {{ date('d/m/Y', strtotime($pqrss->updated_at)) }}</div>
+                        </div>
+                        <div class="card-text"> {{$pqrss->respuesta}}</div>
                     </div>
                     @endif
                 </div>
@@ -480,9 +509,14 @@
                     </div>
                 </div>
             @endforelse
+            <div class="cont-links mt-4 displayRowCC">
+                {{ $Sugerencia->links() }}
+            </div>
         </div>
 
     </div>
+</div>
+</div>
 </div>
 
 @endsection

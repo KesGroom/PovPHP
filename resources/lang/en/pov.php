@@ -168,4 +168,6 @@ return [
     'AllPQRS' => 'All consultations',
     'txtResponder' => 'Reply',
     'txtEditAnswer' => 'Edit reply',
+    'txtResponde' => 'Reply to: ',
+    'txtDateReply' => 'Date of reply:',
 ];

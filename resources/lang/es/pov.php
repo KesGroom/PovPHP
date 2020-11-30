@@ -167,5 +167,7 @@ return [
     'AllPQRS' => 'Todas las PQRS',
     'txtResponder' => 'Responder',
     'txtEditAnswer' => 'Editar respuesta',
+    'txtResponde' => 'Responde: ',
+    'txtDateReply' => 'Fecha de respuesta:',
 
 ];

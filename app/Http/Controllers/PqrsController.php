@@ -51,13 +51,13 @@ class PqrsController extends Controller
         if ($validated) {     
             $rhp = RolHasPermisoController::rhp();
             //Consulta y contador de todos los pqrs
-            $pqrs = Pqrs::where('estado', 'Activo')->get();
+            $pqrs = Pqrs::where('estado', 'Activo')->paginate('10');
             $ctAll = Pqrs::where([['estado', 'Activo'], ['respuesta', null]])->count();
             //Consulta propia por categoria
-            $Pregunta = Pqrs::where([['estado' ,'Activo'],['categoria', 'Pregunta']])->get();
-            $Queja = Pqrs::where([['estado' ,'Activo'],['categoria', 'Queja']])->get();
-            $Reclamo = Pqrs::where([['estado' ,'Activo'],['categoria', 'Reclamo']])->get();
-            $Sugerencia = Pqrs::where([['estado' ,'Activo'],['categoria', 'Sugerencia']])->get();
+            $Pregunta = Pqrs::where([['estado' ,'Activo'],['categoria', 'Pregunta']])->paginate('10');
+            $Queja = Pqrs::where([['estado' ,'Activo'],['categoria', 'Queja']])->paginate('10');
+            $Reclamo = Pqrs::where([['estado' ,'Activo'],['categoria', 'Reclamo']])->paginate('10');
+            $Sugerencia = Pqrs::where([['estado' ,'Activo'],['categoria', 'Sugerencia']])->paginate('10');
 
             //Contadores por categoria
             $ctPregunta = Pqrs::where([['estado', 'Activo'], ['respuesta', null], ['categoria','Pregunta']])->count();
