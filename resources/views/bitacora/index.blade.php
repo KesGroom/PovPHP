@@ -21,14 +21,14 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($bi as $bitacora)
+            @foreach ($bi as $bita)
                 <tr>
-                    <td>{{ $bitacora->tiempo_prestado }}</td>
-                    <td>{{ $bitacora->observaciones }}</td>
-                    <td>{{ $bitacora->cantidad_labores }}</td>
-                    <td>{{ $bitacora->salaSS->estu->user->name }} {{ $bitacora->salaSS->estu->user->apellido }}</td>
-                    <td>{{ $bitacora->salaSS->zonaSS->nombre_zona }}</td>
-                    <td><a href={{ route('bitacora.edit', $bitacora) }}>Editar</a></td>
+                    <td>{{ $bita->tiempo_prestado }}</td>
+                    <td>{{ $bita->observaciones }}</td>
+                    <td>{{ $bita->cantidad_labores }}</td>
+                    <td>{{ $bita->salaSS->estu->user->name }} {{ $bita->salaSS->estu->user->apellido }}</td>
+                    <td>{{ $bita->salaSS->zonaSS->nombre_zona }}</td>
+                    <td><a href="{{ route('bitacora.edit', $bita) }}">Editar</a></td>
                     <td><a href="">Eliminar</a></td>
                 </tr>
             @endforeach

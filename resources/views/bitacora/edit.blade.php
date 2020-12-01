@@ -17,17 +17,14 @@
                     <div class="card-body">
                         <form method="POST" action="{{ route('bitacora.update', $bita) }}">
                             @csrf
-                            <div class="form-group row">
-                                <label for="tiempo_prestado"
-                                    class="col-md-12 col-form-label text-md-right">{{ $sala->estu->user->name }}({{ $sala->zonaSS->nombre_zona }})</label>
-                            </div>
+                         
                             <div class="form-group row">
                                 <label for="tiempo_prestado"
                                     class="col-md-4 col-form-label text-md-right">tiempo_prestado</label>
                                 <div class="col-md-6">
                                     <input id="tiempo_prestado" type="text"
                                         class="solo-numero form-control @error('tiempo_prestado') is-invalid @enderror"
-                                        name="tiempo_prestado" value="{{ old('tiempo_prestado') }}" required
+                                        name="tiempo_prestado" value="{{$bita->tiempo_prestado}}" required
                                         autocomplete="tiempo_prestado" autofocus>
 
                                     @error('tiempo_prestado')
@@ -43,7 +40,7 @@
                                 <div class="col-md-6">
                                     <input id="observaciones" type="text"
                                         class="form-control @error('observaciones') is-invalid @enderror"
-                                        name="observaciones" value="{{ old('observaciones') }}" required
+                                        name="observaciones" value="{{$bita->observaciones}}" required
                                         autocomplete="observaciones" autofocus>
 
                                     @error('observaciones')
@@ -59,7 +56,7 @@
                                 <div class="col-md-6">
                                     <input id="cantidad_labores" type="text"
                                         class="form-control @error('cantidad_labores') is-invalid @enderror"
-                                        name="cantidad_labores" value="{{ old('cantidad_labores') }}" required
+                                        name="cantidad_labores" value="{{$bita->cantidad_labores}}" required
                                         autocomplete="cantidad_labores" autofocus>
 
                                     @error('cantidad_labores')

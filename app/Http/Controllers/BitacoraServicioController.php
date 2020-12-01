@@ -45,10 +45,10 @@ class BitacoraServicioController extends Controller
         $bita->tiempo_prestado = $request->tiempo_prestado;
         $bita->observaciones = $request->observaciones;
         $bita->cantidad_labores = $request->cantidad_labores;
-        $bita->coordinador = $request->coordinador;
-        $bita->sala_servicio = $request->sala_servicio;
+        $bita->coordinador = Auth::user()->id;
+      
         $bita->save();
-        $status = 'Se ha creado una bitacora de servicio social';
+        $status = 'Se ha actualizado la bitacora de servicio social con exito';
         return back()->with(compact('status'));
       }
 }
