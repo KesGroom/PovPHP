@@ -7,6 +7,7 @@ use App\Http\Controllers\AcudienteController;
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\AtencionAreaController;
 use App\Http\Controllers\CitaController;
+use App\Http\Controllers\BitacoraServicioController;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\DocenteCursoController;
 use App\Http\Controllers\GradoController;
@@ -16,9 +17,13 @@ use App\Http\Controllers\MateriaController;
 use App\Http\Controllers\PqrsController;
 use App\Http\Controllers\RegistroAsistenciaController;
 use App\Http\Controllers\RegistroNotaController;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use App\Http\Controllers\SalaServicioController;
+use App\Http\Controllers\ZonaServicioController;
+use App\Http\Controllers\UserController;
+use App\Models\Bitacora_servicio;
+use App\Models\Docente_curso;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
@@ -133,14 +138,14 @@ Route::middleware(['web'])->group(function () {
   Route::get('pages/cursos/{curso}/edit', [CursoController::class, 'edit'])->name('cursos.edit');
   Route::put('pages/cursos{curso}', [CursoController::class, 'update'])->name('cursos.update');
   Route::put('pages/cursos/delete{curso}', [CursoController::class, 'delete'])->name('cursos.delete');
-  
-    //--Rutas para materias
-    Route::get('pages/materias/create', [MateriaController::class, 'create'])->name('materias.create');
-    Route::post('pages/materias', [MateriaController::class, 'store'])->name('materias.store');
-    Route::get('pages/materias/index', [MateriaController::class, 'index'])->name('materias.index');
-    Route::get('pages/materias/{materias}/edit', [MateriaController::class, 'edit'])->name('materias.edit');
-    Route::put('pages/materias{materias}', [MateriaController::class, 'update'])->name('materias.update');
-    Route::put('pages/materias/delete{materia}', [MateriaController::class, 'delete'])->name('materias.delete');
+
+  //--Rutas para materias
+  Route::get('pages/materias/create', [MateriaController::class, 'create'])->name('materias.create');
+  Route::post('pages/materias', [MateriaController::class, 'store'])->name('materias.store');
+  Route::get('pages/materias/index', [MateriaController::class, 'index'])->name('materias.index');
+  Route::get('pages/materias/{materias}/edit', [MateriaController::class, 'edit'])->name('materias.edit');
+  Route::put('pages/materias{materias}', [MateriaController::class, 'update'])->name('materias.update');
+  Route::put('pages/materias/delete{materia}', [MateriaController::class, 'delete'])->name('materias.delete');
 
   //--Rutas para Docentes curso
   Route::get('docentecurso/create', [DocenteCursoController::class, 'create'])->name('docentecurso.create');
@@ -182,7 +187,28 @@ Route::middleware(['web'])->group(function () {
 
   //---------------Rutas para la administración de servicio social ----------------------------------------------------------------------------------------\\
 
-  //Falta servicio social
+  //--Rutas para zona de servicio social
+  Route::get('zonas/create', [ZonaServicioController::class, 'create'])->name('zonas.create');
+  Route::get('zonas/index', [ZonaServicioController::class, 'index'])->name('zonas.index');
+  Route::post('zonas', [ZonaServicioController::class, 'store'])->name('zonas.store');
+  Route::get('zonas/{zona}/edit', [ZonaServicioController::class, 'edit'])->name('zonas.edit');
+  Route::post('zonas/{zona}', [ZonaServicioController::class, 'update'])->name('zonas.update');
+
+
+
+  //--Rutas para bitacora de servicio social
+  Route::get('bitacora/create{sala}', [BitacoraServicioController::class, 'create'])->name('bitacora.create');
+  Route::get('bitacora/index', [BitacoraServicioController::class, 'index'])->name('bitacora.index');
+  Route::post('bitacora/index{sala}', [BitacoraServicioController::class, 'store'])->name('bitacora.store');
+  Route::get('bitacora/{bita}/edit', [BitacoraServicioController::class, 'edit'])->name('bitacora.edit');
+  Route::post('bitacora/{bita}', [BitacoraServicioController::class, 'update'])->name('bitacora.update');
+
+  //--Rutas para la sala de servicio 
+  Route::get('sala/index', [SalaServicioController::class, 'index'])->name('sala.index');
+  Route::put('sala/index{zona}', [SalaServicioController::class, 'store'])->name('sala.store');
+  Route::put('sala/index/aceptar{salas}', [SalaServicioController::class, 'aceptar'])->name('sala.aceptar');
+  Route::put('sala/index/rechazar{salas}', [SalaServicioController::class, 'rechazar'])->name('sala.rechazar');
+
 
   //--------------------------------------------------------------------------------------------------------------------------\\
 
