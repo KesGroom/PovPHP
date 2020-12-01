@@ -31,27 +31,6 @@ class UserFactory extends Factory
         } else {
             $name = $this->faker->firstNameFemale();
         };
-
-        // //Generamos una fecha con faker para asignarla como fecha de nacimiento
-        // $fecha = $this->faker->date('Y-m-d','2012-01-01');
-        // //Se convierte la fecha a entero para calcular la edad del usuario(Se calcula según el año)
-        // //Fecha nacimiento
-        // $fechaEntero = strtotime($fecha);
-        // //Fecha actual
-        // $nowEntero = strtotime(now());
-        // //Se obtiene la edad del usuario
-        // $edad = date('Y', $nowEntero) - date('Y', $fechaEntero);
-        // //Según la edad del usaurio se le asigna un rol y un tipo de documento
-        // if ($edad >= 20) {
-        //     $rol = $this->faker->randomElement([1, 2, 4]);
-        //     $tipo = 'Cedula de ciudadania';
-        // } elseif ($edad >= 18 && $edad < 20) {
-        //     $rol = 3;
-        //     $tipo = 'Cedula de ciudadania';
-        // } elseif ($edad < 18 && $edad >= 7) {
-        //     $rol = 3;
-        //     $tipo = 'Tarjeta de identidad';
-        // }
         //Se returna al usuario creado
         return [
             'id' => $this->faker->numerify('1#########'),

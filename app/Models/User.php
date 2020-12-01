@@ -6,8 +6,9 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Notifications\MyResetPassword;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable;
     /**
@@ -23,9 +24,18 @@ class User extends Authenticatable
     }
 
     protected $fillable = [
-        "url",
+        "id",
+        "tipo_documento",
         'name',
+        'apellido',
         'email',
+        'fecha_nacimiento',
+        'direccion',
+        'telefono_fijo',
+        'celular',
+        'estado',
+        'foto_perfil',
+        'rol',
         'password',
     ];
 
@@ -47,4 +57,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new MyResetPassword($token));
+    }
 }

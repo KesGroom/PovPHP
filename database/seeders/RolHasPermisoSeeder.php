@@ -122,6 +122,18 @@ class RolHasPermisoSeeder extends Seeder
             $rhp->save();
         }
 
+        $noticias = Permiso::where('permiso_padre', 17)->get();
+        $rhp = new Rol_has_permiso();
+        $rhp->rol = $coor;
+        $rhp->permiso = 17;
+        $rhp->save();
+        foreach ($noticias as $noticia) {
+            $rhp = new Rol_has_permiso();
+            $rhp->rol = $coor;
+            $rhp->permiso = $noticia->id;
+            $rhp->save();
+        }
+
         $Portafolio = Permiso::where('permiso_padre', 20)->get();
         $rhp = new Rol_has_permiso();
         $rhp->rol = $acu;

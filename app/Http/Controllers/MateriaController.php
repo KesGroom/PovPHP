@@ -45,5 +45,10 @@ class MateriaController extends Controller
     public function all(Request $request){
         $materias = Materia::where('estado',"Activo")->get();
         return response(json_encode($materias),200);
+
+    }
+    public function getMaterias($id)
+    {
+      return Materia::where([['estado', 'Activo'], ['area', $id]])->select('id', 'nombre_materia')->get();
     }
 }

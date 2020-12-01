@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Estudiante;
+use App\Models\Noticia;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -23,6 +24,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CursoSeeder::class);
         $this->call(AreaSeeder::class);
         $this->call(MateriaSeeder::class);
+        // Noticia::factory(4)->create();
         $this->call(AcudienteSeeder::class);
         // $this->call(EstudianteSeeder::class);
         $this->call(DocenteCursoSeeder::class);
