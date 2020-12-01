@@ -119,6 +119,11 @@
 		"body": [
 			"{{ __('pov.$1')}}"
 		]
+	},
+	"RHP":{
+		"scope": "php",
+		"prefix": "_povrhp",
+		"body": "$$1rhp = RolHasPermisoController::rhp();",
 	}
 
 }

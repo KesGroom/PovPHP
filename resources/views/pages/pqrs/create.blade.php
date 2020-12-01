@@ -122,10 +122,10 @@
                     @if ($pqrs->respuesta)                        
                     <div class="card-footer">
                         <div class="displayRowSbC">
-                        <div class="card-text displayRowCC"><b class="mr-2">{{ __('pov.txtResponde')}}</b> {{$pqrss->coor->name}}</div>
-                        <div class="card-text displayRowCC"><b class="mr-2">{{ __('pov.txtDateReply')}}</b> {{ date('d/m/Y', strtotime($pqrss->updated_at)) }}</div>
+                        <div class="card-text displayRowCC"><b class="mr-2">{{ __('pov.txtResponde')}}</b> {{$pqrs->coor->name}}</div>
+                        <div class="card-text displayRowCC"><b class="mr-2">{{ __('pov.txtDateReply')}}</b> {{ date('d/m/Y', strtotime($pqrs->updated_at)) }}</div>
                         </div>
-                        <div class="card-text"> {{$pqrss->respuesta}}</div>
+                        <div class="card-text"> {{$pqrs->respuesta}}</div>
                     </div>
                     @endif
                 </div>
