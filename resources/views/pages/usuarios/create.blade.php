@@ -265,11 +265,11 @@
                                         class="col-md-4 col-form-label text-md-right">{{ __('pov.txtNivel') }}</label>
                                     <select class="form-control col-md-6" id="nivel" name="nivel_type">
                                         <option value="">{{ __('pov.select') }}</option>
-                                        <option value="Primaria">Primaria
+                                        <option value="Primaria">{{ __('pov.txtPrimaria')}}
                                         </option>
-                                        <option value="Secundaria">Secundaria
+                                        <option value="Secundaria">{{ __('pov.txtSecundaria')}}
                                         </option>
-                                        <option value="Media">Media
+                                        <option value="Media">{{ __('pov.txtMedia')}}
                                         </option>
                                     </select>
                                 </div>

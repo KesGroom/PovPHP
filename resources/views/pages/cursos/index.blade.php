@@ -1,26 +1,27 @@
 <div class="col-md-6">
-    @foreach ($areas as $area)
+    @foreach ($cursos as $curso)
         <div class="card mb-2 ">
             <div class="card-body displayRowSbC">
                 <div class="card-text displayRowCC">
-                    <ion-icon name="school" class="mr-4"></ion-icon>{{ $area->nombre_area }}
+                    <ion-icon name="people" class="mr-4"></ion-icon>{{ $curso->curso }}
+                    <b class="ml-2">({{ __('pov.txtSalon')}}: {{ $curso->salon }})</b>
                 </div>
                 <div class="displayRowCC">
-                    <a class="a-option" href="{{ route('areas.edit', $area) }}" title="{{ __('pov.edit') }}"><i
+                    <a class="a-option" href="{{ route('cursos.edit', $curso) }}" title="{{ __('pov.edit') }}"><i
                             class="far fa-edit"></i></a>
                     @include('layouts.forms.delete',[
-                    'class'=> 'areas',
+                    'class'=> 'cursos',
                     'icono'=> 'fa-trash-alt',
-                    'retorno' => $area,
+                    'retorno' => $curso,
                     ])
                 </div>
             </div>
         </div>
     @endforeach
     <div class='cont-links displayRowCC'>
-        {{ $areas->links() }}
+        {{ $cursos->links() }}
     </div>
 </div>
 <div class="col-md-6">
-    @include('pages.areas.create')
+    @include('pages.cursos.create')
 </div>

@@ -1,28 +1,34 @@
 @extends('layouts.app')
-
 @section('content')
+@section('nav')
+    @include('layouts.partials.dashNav')
+@endsection
+@if (session('status'))
+    @section('script')
+        @include('layouts.partials.alerts',[
+        'option' => session('status'),
+        ])
+    @endsection
+@endif
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+        <div class="col-md-6">
+            <div class="card mt-6">
+                <div class="card-header">
+                    <ion-icon name="school" class="mr-4"></ion-icon>{{ __('pov.edit') }}
                 </div>
-
                 <div class="card-body">
-                    <form method="POST" action="{{ route('areas.update' , $area) }}">
-              @method('PUT')
+                    <form method="POST" action="{{ route('areas.update', $area) }}">
+                        @method('PUT')
                         @csrf
                         <div class="form-group row">
-                            <label for="nombre_area" class="col-md-4 col-form-label text-md-right">Nombre area</label>
+                            <label for="nombre_area"
+                                class="col-md-12 mt-2 mb-2 col-form-label text-md-left">{{ __('pov.addArea') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="nombre_area" type="text" class="form-control @error('nombre_area') is-invalid @enderror" name="nombre_area" value="{{ $area->nombre_area}}" required autocomplete="nombre_area" autofocus>
+                            <div class="col-md-12 mb-4">
+                                <input id="nombre_area" type="text"
+                                    class="form-control @error('nombre_area') is-invalid @enderror" name="nombre_area"
+                                    value="{{ $area->nombre_area }}" required autocomplete="nombre_area" autofocus>
 
                                 @error('nombre_area')
                                     <span class="invalid-feedback" role="alert">
@@ -31,12 +37,10 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
+                        <div class="mt-2">
+                            <button type="submit" class="btn btn-MC btn-footer">
+                                {{ __('pov.edit') }}
+                            </button>
                         </div>
                     </form>
                 </div>

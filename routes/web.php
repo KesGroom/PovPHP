@@ -108,26 +108,39 @@ Route::middleware(['web'])->group(function () {
 
   //------Rutas de la gestión acádemica----------------------------------------------------------------------------------------\\
 
+  //--Ruta de acceso principal
+  Route::get('pages/administracion_academica/index', [AreaController::class, 'index'])->name('areas.index');
+
   //--Rutas para areas
   Route::get('pages/areas/create', [AreaController::class, 'create'])->name('areas.create');
   Route::post('pages/areas', [AreaController::class, 'store'])->name('areas.store');
-  Route::get('pages/areas/index', [AreaController::class, 'index'])->name('areas.index');
   Route::get('pages/areas/{area}/edit', [AreaController::class, 'edit'])->name('areas.edit');
   Route::put('pages/areas{area}', [AreaController::class, 'update'])->name('areas.update');
+  Route::put('pages/areas/delete{area}', [AreaController::class, 'delete'])->name('areas.delete');
 
   //--Rutas para Grado
-  Route::get('grados/create', [GradoController::class, 'create'])->name('grados.create');
-  Route::post('grados', [GradoController::class, 'store'])->name('grados.store');
-  Route::get('grados/index', [GradoController::class, 'index'])->name('grados.index');
-  Route::get('grados/{grado}/edit', [GradoController::class, 'edit'])->name('grados.edit');
-  Route::put('grados{grado}', [GradoController::class, 'update'])->name('grados.update');
+  Route::get('pages/grados/create', [GradoController::class, 'create'])->name('grados.create');
+  Route::post('pages/grados', [GradoController::class, 'store'])->name('grados.store');
+  Route::get('pages/grados/index', [GradoController::class, 'index'])->name('grados.index');
+  Route::get('pages/grados/{grado}/edit', [GradoController::class, 'edit'])->name('grados.edit');
+  Route::put('pages/grados{grado}', [GradoController::class, 'update'])->name('grados.update');
+  Route::put('pages/grados/delete{grado}', [GradoController::class, 'delete'])->name('grados.delete');
 
   //--Rutas para cursos
-  Route::get('cursos/create', [CursoController::class, 'create'])->name('cursos.create');
-  Route::post('cursos', [CursoController::class, 'store'])->name('cursos.store');
-  Route::get('cursos/index', [CursoController::class, 'index'])->name('cursos.index');
-  Route::get('cursos/{curso}/edit', [CursoController::class, 'edit'])->name('cursos.edit');
-  Route::put('cursos{curso}', [CursoController::class, 'update'])->name('cursos.update');
+  Route::get('pages/cursos/create', [CursoController::class, 'create'])->name('cursos.create');
+  Route::post('pages/cursos', [CursoController::class, 'store'])->name('cursos.store');
+  Route::get('pages/cursos/index', [CursoController::class, 'index'])->name('cursos.index');
+  Route::get('pages/cursos/{curso}/edit', [CursoController::class, 'edit'])->name('cursos.edit');
+  Route::put('pages/cursos{curso}', [CursoController::class, 'update'])->name('cursos.update');
+  Route::put('pages/cursos/delete{curso}', [CursoController::class, 'delete'])->name('cursos.delete');
+  
+    //--Rutas para materias
+    Route::get('pages/materias/create', [MateriaController::class, 'create'])->name('materias.create');
+    Route::post('pages/materias', [MateriaController::class, 'store'])->name('materias.store');
+    Route::get('pages/materias/index', [MateriaController::class, 'index'])->name('materias.index');
+    Route::get('pages/materias/{materias}/edit', [MateriaController::class, 'edit'])->name('materias.edit');
+    Route::put('pages/materias{materias}', [MateriaController::class, 'update'])->name('materias.update');
+    Route::put('pages/materias/delete{materia}', [MateriaController::class, 'delete'])->name('materias.delete');
 
   //--Rutas para Docentes curso
   Route::get('docentecurso/create', [DocenteCursoController::class, 'create'])->name('docentecurso.create');
@@ -136,13 +149,6 @@ Route::middleware(['web'])->group(function () {
   Route::get('docentecurso/index', [DocenteCursoController::class, 'index'])->name('docentecurso.index');
   Route::get('docentecurso/{curso}/edit', [DocenteCursoController::class, 'edit'])->name('docentecurso.edit');
   Route::put('docentecurso{curso}', [DocenteCursoController::class, 'update'])->name('docentecurso.update');
-
-  //--Rutas para materias
-  Route::get('materias/create', [MateriaController::class, 'create'])->name('materias.create');
-  Route::post('materias', [MateriaController::class, 'store'])->name('materias.store');
-  Route::get('materias/index', [MateriaController::class, 'index'])->name('materias.index');
-  Route::get('materias/{materias}/edit', [MateriaController::class, 'edit'])->name('materias.edit');
-  Route::put('materias{materias}', [MateriaController::class, 'update'])->name('materias.update');
 
   //---------------- Rutas para la administración de PQRS -----------------------------------------------------------------------------------------------\\
 

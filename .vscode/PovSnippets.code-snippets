@@ -124,6 +124,28 @@
 		"scope": "php",
 		"prefix": "_povrhp",
 		"body": "$$1rhp = RolHasPermisoController::rhp();",
+	},
+	"Delete Code":{
+		"scope": "php",
+		"prefix": "_povdelete",
+		"body": [
+			"public function delete($1 $$2)",
+			"{",
+			  "$$3->estado = 'Inactivo';",
+			  "$$4->save();",
+			  "$$5status = 'SwalDelete';",
+			  "return back()->with(compact('status'));",
+			"}",
+		]
+	},
+	"paginations":{
+		"scope": "blade",
+		"prefix": "_povpaginate",
+		"body": [
+			"<div class='cont-links displayRowCC'>",
+				"{{ $$1->links() }}",
+			"</div>"
+		]
 	}
 
 }
