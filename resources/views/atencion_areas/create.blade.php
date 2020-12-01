@@ -60,13 +60,13 @@
                         <div class=" ">
                             <label for="diaSemana">Dia de la semana</label>
                             <select  class="form-control" id="diaSemana" name="diaSemana"  required>
-                                <option value="1">Lunes</option>
-                                <option value="2">Martes</option>
-                                <option value="3">Miercoles</option>  
-                                <option value="4">Jueves</option>
-                                <option value="5">Viernes</option>
-                                <option value="6">Sabado</option>
-                                <option value="7">Domingo</option>                           
+                                <option value="Lunes">Lunes</option>
+                                <option value="Martes">Martes</option>
+                                <option value="Miercoles">Miercoles</option>  
+                                <option value="Jueves">Jueves</option>
+                                <option value="Viernes">Viernes</option>
+                                <option value="Sabado">Sabado</option>
+                                <option value="Domingo">Domingo</option>                           
                             </select>
                         </div>
                         <div class="form-group row mb-0">

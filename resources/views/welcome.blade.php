@@ -260,4 +260,38 @@
         </div>
 
     </div>
+    <form action="">
+        @csrf
+    </form>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="crossorigin="anonymous"></script>
+<script>
+    var d = new Date();
+    var hoy = new Date();
+    // d.setDate(5);
+    // alert(d);
+    for (let index = 5; index < 40; index+=7) {
+      d.setDate(index);
+    //   alert(d);
+      if (d == hoy) {
+        $(document).ready(function(){
+   
+   $.ajax({
+       url:'citas/reiniciar',
+       method:'POST',
+       data:{
+           _token:$('input[name=_token]').val()
+        //    docentes:docentes
+       
+       }
+       // data:$('#form1').serialize()
+   }).done(function(res){
+       var arreglo = JSON.parse(res);
+
+});
+
+});
+      }
+    }
+ 
+</script>
 @endsection

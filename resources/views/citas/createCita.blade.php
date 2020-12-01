@@ -25,19 +25,6 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('citas.storeArea') }}">
                         @csrf
-                        <div class="form-group row">
-                            <label for="hora" class="col-md-4 col-form-label text-md-right">hora</label>
-
-                            <div class="col-md-6">
-                                <input id="hora" type="time" class="form-control @error('hora') is-invalid @enderror" name="hora" value="{{ old('hora') }}" required autocomplete="hora" autofocus>
-
-                                @error('hora')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
                         <div>
                             <label for="tipo_atencion">Seleccione tipo de atencion</label>
                             <select  class="form-control" id="tipo_atencion" name="tipo_atencion" required onchange="ddlselect();">

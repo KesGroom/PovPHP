@@ -72,6 +72,9 @@ Route::middleware(['web'])->group(function () {
       //Routas para citas
       Route::get('citas/crearCita', [CitaController::class, 'crearCita'])->name('citas.crearCita');
       Route::get('citas/solitarCita', [CitaController::class, 'solitarCita'])->name('citas.solitarCita');
+      Route::post('citas/reiniciar', [CitaController::class, 'reiniciarCitas'])->name('citas.reiniciarCitas');
+      Route::post('citas/asuntoCita', [CitaController::class, 'asuntoCita'])->name('citas.asuntoCita');
+      Route::post('citas/AgendarCita', [CitaController::class, 'AgendarCita'])->name('citas.AgendarCita');
       Route::post('citas', [CitaController::class, 'storeArea'])->name('citas.storeArea');
       Route::get('citas/index', [CitaController::class, 'index'])->name('citas.index');
       Route::get('citas/{area}/edit', [CitaController::class, 'edit'])->name('citas.edit');
