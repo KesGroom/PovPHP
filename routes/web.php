@@ -10,12 +10,9 @@ use App\Http\Controllers\CitaController;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\DocenteCursoController;
 use App\Http\Controllers\GradoController;
-<<<<<<< HEAD
 use App\Http\Controllers\graficasController;
-=======
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\NoticiaController;
->>>>>>> 61c2e29fe719facca9fa059175cfe32e770c56ef
 use App\Http\Controllers\MateriaController;
 use App\Http\Controllers\PqrsController;
 use App\Http\Controllers\RegistroAsistenciaController;
