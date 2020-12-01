@@ -12,7 +12,8 @@ use Illuminate\View\View;
 class AtencionAreaController extends Controller
 {
     public function create(){
-       $docente = Docente_curso::where('estado','Activo')->get();
+       $docente = Docente_curso::where('estado','Activo')
+       ->get();
        return view('atencion_areas.create', compact('docente'));
     }
     public function store(Request $request){
@@ -43,5 +44,13 @@ class AtencionAreaController extends Controller
             ->get();
         return  response(json_encode($docenteArea),200);
       }
+      public function index(){
+        $AtencionArea =  Atencion_area::where('estado','Activo')
+        ->get();
+        return View('atencion_areas.index', compact('AtencionArea'));
+      }
+      public function edit(Atencion_area $atencion_area){
+        return view('atencion_areas.edit', compact('atencion_area'));
 
+    }
 }

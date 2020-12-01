@@ -21,7 +21,7 @@
                             <label for="docentes">docentes</label>
                             <select  class="form-control" id="docentes" name="docentes" required onchange="ddlselect();">
                                 @foreach ($docente as $docentes)
-                                <option value="{{$docentes->docente}}">{{$docentes->mate->nombre_materia}}--{{$docentes->usuario->name}}</option>
+                                <option value="{{$docentes->docente}}">{{$docentes->mate->nombre_materia}}--{{$docentes->usuario->name}}--{{$docentes->cur->curso}}</option>
                                 @endforeach
                             </select>
                         </div>
