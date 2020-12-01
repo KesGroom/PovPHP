@@ -159,14 +159,14 @@ class PermisosSeeder extends Seeder
         $perIG = new Permiso();
         $perIG->nombre = "Información general";
         $perIG->name = "General information";
-        $perIG->url = $url;
+        $perIG->url = $home.'administracion_academica/index';
         $perIG->permiso_padre = $perAA->id;
         $perIG->estado = 'Activo';
         $perIG->save();
 
         $perCur = new Permiso();
-        $perCur->nombre = "Cursos";
-        $perCur->name = "Courses";
+        $perCur->nombre = "Docentes";
+        $perCur->name = "Teachers";
         $perCur->url = $url;
         $perCur->permiso_padre = $perAA->id;
         $perCur->estado = 'Activo';
