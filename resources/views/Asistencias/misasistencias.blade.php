@@ -17,8 +17,7 @@ my id {{$id}}
     <div class=" ">
         <label for="id">Estudiante</label>
         <select  class="form-control" id="id" name="id" required>
-            @foreach ($estudiantes as $estudiante)
-          
+            @foreach ($estudiantes as $estudiante)     
             <option value="{{$estudiante->id}}">Cedula:{{$estudiante->user->id}},{{$estudiante->user->name}} {{$estudiante->user->apellido}}</option>
             @endforeach
         </select>

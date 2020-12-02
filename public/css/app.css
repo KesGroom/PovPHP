@@ -11987,3 +11987,11 @@ label[for=newFile]:hover {
   }
 }
 
+.a-option {
+  color: black;
+}
+
+.a-option:hover {
+  color: #b71c1c;
+}
+

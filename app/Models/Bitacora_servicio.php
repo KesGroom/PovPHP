@@ -9,4 +9,12 @@ class Bitacora_servicio extends Model
 {
     use HasFactory;
     protected $table = 'Bitacora_servicio';
+
+    public function salaSS(){
+        return $this->belongsTo('App\Models\Sala_servicio', 'sala_servicio');
+    }
+    public function coor(){
+        return $this->belongsTo('App\Models\User', 'coordinador');
+    }
 }
+

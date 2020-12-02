@@ -18,10 +18,9 @@ class NewsImport implements ToModel, WithHeadingRow
             'titulo'     => $row['titulo'],
             'subtitulo'     => $row['subtitulo'],
             'informacion'     => $row['informacion'],
-            'categoria' => '4',
             'coordinador' => Auth::user()->id,
             'estado' => 'Activo',
-            'imagen' => 'COlegio Frontal.jpg',
+            'imagen' => 'Colegio frontal.jpg',
         ]);
     }
 }

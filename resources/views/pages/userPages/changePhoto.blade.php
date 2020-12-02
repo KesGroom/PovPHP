@@ -9,8 +9,13 @@
             @method('put')
             <ul class="list-group list-group-flush">
                 <li class="list-group-item displayRowSbC">
-                    <img class="imgEditPerfil"
-                        src="{{ asset('storage/imgPerfil/' . $usuario->foto_perfil . '') }}" alt="">
+                    @if ($usuario->foto_perfil == 'icon.png')
+                    <img src="{{ asset('img/Icon.png') }}" class="imgEditPerfil"
+                        alt="FotoPerfilMariaCano">
+                    @else
+                    <img src="{{ asset('storage/imgPerfil/' . $usuario->foto_perfil . '') }}" class="imgEditPerfil"
+                        alt="FotoPerfilMariaCano">
+                    @endif
                     <div class="form-group">
                         <span class="newFile">
                             <input id="newFile" type="file" accept="image/*"
