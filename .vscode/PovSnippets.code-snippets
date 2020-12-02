@@ -102,5 +102,50 @@
 			"@endif",
 		],
 		"description": "Alerta de SW de modo toast"
+	},
+	"Exportar Excel":{
+		"scope": "php",
+		"prefix": "_povExport",
+		"body": [
+			"$$8titulos = [''];",
+			"$$7template = '$1';",
+			"$$9items_data = '$2';",
+			"return Excel::download(new TemplateExport($$6titulos, $3::where('estado', 'Activo')->get(), $$5template, $$10items_data), '$4.xlsx');"
+		]
+	},
+	"Pov Lang":{
+		"scope": "blade",
+		"prefix": "_povLang",
+		"body": [
+			"{{ __('pov.$1')}}"
+		]
+	},
+	"RHP":{
+		"scope": "php",
+		"prefix": "_povrhp",
+		"body": "$$1rhp = RolHasPermisoController::rhp();",
+	},
+	"Delete Code":{
+		"scope": "php",
+		"prefix": "_povdelete",
+		"body": [
+			"public function delete($1 $$2)",
+			"{",
+			  "$$3->estado = 'Inactivo';",
+			  "$$4->save();",
+			  "$$5status = 'SwalDelete';",
+			  "return back()->with(compact('status'));",
+			"}",
+		]
+	},
+	"paginations":{
+		"scope": "blade",
+		"prefix": "_povpaginate",
+		"body": [
+			"<div class='cont-links displayRowCC'>",
+				"{{ $$1->links() }}",
+			"</div>"
+		]
 	}
+
 }
