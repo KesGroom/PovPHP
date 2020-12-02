@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AcudienteController;
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\AtencionAreaController;
+use App\Http\Controllers\AtencionCursoController;
 use App\Http\Controllers\CitaController;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\DocenteCursoController;
@@ -19,6 +20,7 @@ use App\Http\Controllers\RegistroAsistenciaController;
 use App\Http\Controllers\RegistroNotaController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomeController;
+use App\Models\Atencion_curso;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -128,7 +130,9 @@ Route::middleware(['web'])->group(function () {
       Route::get('atencion_areas/index', [AtencionAreaController::class, 'index'])->name('atencion_areas.index');
       Route::get('atencion_areas/{aa}/edit', [AtencionAreaController::class, 'edit'])->name('atencion_aa.edit');
       Route::put('atencion_areas{aa}', [AtencionAreaController::class, 'update'])->name('atencion_aa.update');
-  
+    /// Rutas para antecion curso
+    Route::get('atencion_curso/create', [AtencionCursoController::class, 'create'])->name('atencion_curso.create');
+    Route::post('atencion_curso', [AtencionAreaController::class, 'store'])->name('atencion_curso.store');
       //Routas para citas
       Route::get('citas/crearCita', [CitaController::class, 'crearCita'])->name('citas.crearCita');
       Route::get('citas/solitarCita', [CitaController::class, 'solitarCita'])->name('citas.solitarCita');

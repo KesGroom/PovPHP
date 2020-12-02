@@ -49,8 +49,20 @@ class AtencionAreaController extends Controller
         ->get();
         return View('atencion_areas.index', compact('AtencionArea'));
       }
-      public function edit(Atencion_area $atencion_area){
-        return view('atencion_areas.edit', compact('atencion_area'));
-
+      public function edit(Atencion_area $aa){
+        $docente = Docente_curso::where('estado','Activo')
+        ->get();
+        return view('atencion_areas.edit', compact('aa','docente'));
     }
+    public function update(Request $request,Atencion_area $aa){
+
+    $aa->diaSemana = $request->diaSemana;
+    $aa->hora_inicio_atencion = $request->hora_inicio_atencion;
+    $aa->hora_final_atencion = $request->hora_final_atencion;
+    $aa->docente   = $request->docentes;
+    $aa->Area  = $request->Area;
+    $aa->save();
+    $status = 'Se ha actualizado la atencion area';
+    return back()->with(compact('status'));
+  }
 }

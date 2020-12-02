@@ -21,4 +21,8 @@ class Docente_curso extends Model
     {
         return $this->belongsTo('App\Models\Materia', 'materia');
     }
+    public function are()
+    {
+        return $this->belongsTo('App\Models\Area', 'area');
+    }
 }
