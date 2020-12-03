@@ -9,14 +9,10 @@
 <th>Acciones</th>
     </thead>
     <tbody>
-        @foreach ($cursos as $curso)
+        @foreach ($citasArea as $item)
             <tr>
-                <td>{{$curso->curso}}</td>
-                <td>{{$curso->salon}}</td>
-                <td>{{$curso->grados->id}}</td>
-                <td><a href="{{route('cursos.edit',$curso)}}">Editar</a>
-                  
-                 </td>
+                <td>{{$item->asunto}}</td>
+                <td>{{$curso->acudiente}}</td>
             </tr>
         @endforeach
 

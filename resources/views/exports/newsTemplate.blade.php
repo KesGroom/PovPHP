@@ -1,9 +1,0 @@
-<table>
-    <thead>
-    <tr>
-        <th>Titulo</th>
-        <th>Subtitulo</th>
-        <th>Informacion</th>
-    </tr>
-    </thead>
-</table>

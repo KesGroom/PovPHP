@@ -15,6 +15,7 @@ class PermisosSeeder extends Seeder
     public function run()
     {
         $url = "http://mariacanoied.herokuapp.com/home";
+        $home = "http://mariacanoied.herokuapp.com/pages/";
 
         /**
          * Permisos de control de usuarios
@@ -96,7 +97,7 @@ class PermisosSeeder extends Seeder
         $perLP = new Permiso();
         $perLP->nombre = "Lista de PQRS";
         $perLP->name = "List of queries";
-        $perLP->url = $url;
+        $perLP->url = $home.'pqrs/index';
         $perLP->permiso_padre = $perPqrs->id;
         $perLP->estado = 'Activo';
         $perLP->save();
@@ -104,7 +105,7 @@ class PermisosSeeder extends Seeder
         $perMP = new Permiso();
         $perMP->nombre = "Mis PQRS";
         $perMP->name = "My questions";
-        $perMP->url = $url;
+        $perMP->url = $home.'pqrs/create';
         $perMP->permiso_padre = $perPqrs->id;
         $perMP->estado = 'Activo';
         $perMP->save();
@@ -158,14 +159,14 @@ class PermisosSeeder extends Seeder
         $perIG = new Permiso();
         $perIG->nombre = "Información general";
         $perIG->name = "General information";
-        $perIG->url = $url;
+        $perIG->url = $home.'administracion_academica/index';
         $perIG->permiso_padre = $perAA->id;
         $perIG->estado = 'Activo';
         $perIG->save();
 
         $perCur = new Permiso();
-        $perCur->nombre = "Cursos";
-        $perCur->name = "Courses";
+        $perCur->nombre = "Docentes";
+        $perCur->name = "Teachers";
         $perCur->url = $url;
         $perCur->permiso_padre = $perAA->id;
         $perCur->estado = 'Activo';

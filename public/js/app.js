@@ -40686,57 +40686,6 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ "./resources/js/Alertas.js":
-/*!*********************************!*\
-  !*** ./resources/js/Alertas.js ***!
-  \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function AlertaPopUp(title, text, icon) {
-  Swal.fire({
-    title: title,
-    text: text,
-    icon: icon,
-    showConfirmButton: false,
-    timer: 6500,
-    timerProgressBar: true
-  });
-}
-
-;
-
-function AlertaPopUpBtn(title, text, icon, btnText) {
-  Swal.fire({
-    title: title,
-    text: text,
-    icon: icon,
-    confirmButtonText: btnText
-  });
-}
-
-;
-
-function AlertaToast(title, icon) {
-  Swal.fire({
-    title: title,
-    icon: icon,
-    toast: true,
-    showConfirmButton: false,
-    timer: 3000,
-    timerProgressBar: true,
-    position: 'bottom-end',
-    onOpen: function onOpen(toast) {
-      toast.addEventListener('mouseenter', Swal.stopTimer);
-      toast.addEventListener('mouseleave', Swal.resumeTimer);
-    }
-  });
-}
-
-;
-
-/***/ }),
-
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -40749,8 +40698,6 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 __webpack_require__(/*! ./jquery.numeric */ "./resources/js/jquery.numeric.js");
 
 __webpack_require__(/*! ./solo-numero */ "./resources/js/solo-numero.js");
-
-__webpack_require__(/*! ./Alertas */ "./resources/js/Alertas.js");
 
 window.Swal = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
 

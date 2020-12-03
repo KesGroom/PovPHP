@@ -1,5 +1,4 @@
-@extends('layouts.app')
-@section('content')
+
 <h1>Grafica para pqrs sin responder</h1>
     <div class="row col-6">
         <canvas id="myChart" width="350" height="350"></canvas>
@@ -74,4 +73,4 @@ var myChart = new Chart(ctx, {
     });
   
 </script>
-@endsection
+

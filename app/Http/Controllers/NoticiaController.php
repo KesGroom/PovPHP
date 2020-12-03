@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exports\NewsExport;
 use App\Exports\NewsTemplate;
+use App\Exports\TemplateExport;
 use App\Imports\NewsImport;
 use App\Models\Categoria_noticia;
 use App\Models\Noticia;
@@ -97,8 +98,8 @@ class NoticiaController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'titulo' => 'required|min:10|max:50',
-            'subtitulo' => 'required|min:10|max:50',
+            'titulo' => 'required|min:10|max:255',
+            'subtitulo' => 'required|min:10|max:255',
             'info' => 'required|min:20|max:255',
         ]);
 
@@ -175,11 +176,29 @@ class NoticiaController extends Controller
 
     public function export()
     {
-        return Excel::download(new NewsExport, 'Noticias.xlsx');
+        $titulos = [
+            'Titulo',
+            'Subtitulo',
+            'Informacion',
+            'Publicado por',
+            'Fecha de publicacion',
+        ];
+        $template = 'false';
+        $items_data = 'news';
+        return Excel::download(new TemplateExport($titulos, Noticia::where('estado', 'Activo')->get(), $template, $items_data), 'noticias.xlsx');
     }
     public function template()
     {
-        return Excel::download(new NewsTemplate, 'Plantilla_noticias.xlsx');
+        $titulos = [
+            'Titulo',
+            'Subtitulo',
+            'Informacion',
+            'Publicado por',
+            'Fecha de publicacion',
+        ];
+        $template = 'true';
+        $items_data = 'news';
+        return Excel::download(new TemplateExport($titulos, Noticia::where('estado', 'Activo')->get(), $template, $items_data), 'Plantilla_noticias.xlsx');
     }
 
     public function import(Request $request)

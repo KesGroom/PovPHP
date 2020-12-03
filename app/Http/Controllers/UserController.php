@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\TemplateExport;
 use App\Exports\UserExport;
 use App\Exports\UserTemplate;
 use App\Imports\UsersImport;
@@ -35,7 +36,7 @@ class UserController extends Controller
    */
   public function index()
   {
-    $usuarios = User::where('estado', 'activo')->paginate('15');
+    $usuarios = User::where('estado', 'Activo')->paginate('15');
     $rhp = RolHasPermisoController::rhp();
     return view('pages.usuarios.index', compact('usuarios', 'rhp'));
   }
@@ -319,11 +320,41 @@ class UserController extends Controller
   //Excel
   public function export()
   {
-    return Excel::download(new UserExport, 'usuarios.xlsx');
+    $titulos = [
+      'Tipo de documento',
+      'Número de documento',
+      'Nombre',
+      'Apellido',
+      'Correo electrónico',
+      'Fecha de nacimiento',
+      'Dirección',
+      'Celular',
+      'Telefono fijo',
+      'Genero',
+      'Rol',
+    ];
+    $template = 'false';
+    $items_data = 'users';
+    return Excel::download(new TemplateExport($titulos, User::where('estado', 'Activo')->get(), $template, $items_data), 'usuarios.xlsx');
   }
   public function template()
   {
-    return Excel::download(new UserTemplate, 'Plantilla_usuarios.xlsx');
+    $titulos = [
+    'Tipo de documento',
+    'Numero de documento',
+    'Nombre',
+    'Apellido',
+    'Correo electronico',
+    'Fecha de nacimiento',
+    'Direccion',
+    'Celular',
+    'Telefono fijo',
+    'Genero',
+    'Rol',
+  ];
+    $template = 'true';
+    $items_data = 'users';
+    return Excel::download(new TemplateExport($titulos, User::where('estado', 'Activo')->get(), $template, $items_data), 'Plantilla_usuarios.xlsx');
   }
   public function import(Request $request)
   {

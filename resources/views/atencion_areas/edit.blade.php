@@ -15,11 +15,16 @@
                 </div>
 
                 <div class="card-body">
+<<<<<<< HEAD
                     <form method="POST" action="{{ route('atencion_aa.update', $aa) }}">
+=======
+                    <form method="POST" action="{{ route('atencion_aa.update' ,$aa) }}">
+                        @method("PUT")
+>>>>>>> 3fb1315c72c64102600154062a6b7866fd6f313e
                         @csrf
-                        @method('put')
                             <label for="docentes">docentes</label>
                             <select  class="form-control" id="docentes" name="docentes" required onchange="ddlselect();">
+                                <option selected="true" value="{{$aa->docente}}">{{$aa->user->name}}</option>
                                 @foreach ($docente as $docentes)
                                 <option value="{{$docentes->docente}}">{{$docentes->mate->nombre_materia}}--{{$docentes->usuario->name}}--{{$docentes->cur->curso}}</option>
                                 @endforeach
@@ -28,14 +33,14 @@
                         <div class=" ">
                             <label for="Area">Area</label>
                             <select  class="form-control" id="Area" name="Area" required >
-                             
+                                <option selected="true" value="{{$aa->area}}">{{$aa->are->nombre_area}}</option>
                             </select>
                         </div>
                         <div class="form-group row">
                             <label for="hora_inicio_atencion" class="col-md-4 col-form-label text-md-right">hora_inicio_atencion</label>
 
                             <div class="col-md-6">
-                                <input id="hora_inicio_atencion" type="time" min="07:00" max="12:00" class="form-control @error('hora_inicio_atencion') is-invalid @enderror" name="hora_inicio_atencion" value="{{ old('hora_inicio_atencion') }}" required autocomplete="hora_inicio_atencion" autofocus>
+                                <input id="hora_inicio_atencion" type="time" min="07:00" max="12:00" class="form-control @error('hora_inicio_atencion') is-invalid @enderror" name="hora_inicio_atencion" value="{{ $aa->hora_inicio_atencion }}" required autocomplete="hora_inicio_atencion" autofocus>
 
                                 @error('hora_inicio_atencion')
                                     <span class="invalid-feedback" role="alert">
@@ -48,7 +53,7 @@
                             <label for="hora_final_atencion" class="col-md-4 col-form-label text-md-right">hora_final_atencion</label>
 
                             <div class="col-md-6">
-                                <input id="hora_final_atencion" type="time" min="07:00" max="12:00"  class="form-control @error('hora_final_atencion') is-invalid @enderror" name="hora_final_atencion" value="{{ old('hora_final_atencion') }}" required autocomplete="hora_final_atencion" autofocus>
+                                <input id="hora_final_atencion" type="time" min="07:00" max="12:00"  class="form-control @error('hora_final_atencion') is-invalid @enderror" name="hora_final_atencion" value="{{ $aa->hora_final_atencion }}" required autocomplete="hora_final_atencion" autofocus>
 
                                 @error('hora_final_atencion')
                                     <span class="invalid-feedback" role="alert">
@@ -60,6 +65,7 @@
                         <div class=" ">
                             <label for="diaSemana">Dia de la semana</label>
                             <select  class="form-control" id="diaSemana" name="diaSemana"  required>
+                                <option value="{{$aa->diaSemana}}">{{$aa->diaSemana}}</option>
                                 <option value="Lunes">Lunes</option>
                                 <option value="Martes">Martes</option>
                                 <option value="Miercoles">Miercoles</option>  
@@ -92,7 +98,7 @@ function ddlselect(){
        $(document).ready(function(){
    
         $.ajax({
-            url:'DocenteArea',
+            url:"{{route('DocenteArea.create')}}",
             method:'POST',
             data:{
                 _token:$('input[name=_token]').val(),

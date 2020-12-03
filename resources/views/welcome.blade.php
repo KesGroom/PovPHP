@@ -10,10 +10,10 @@
 @guest
     <div class="slider">
         <ul>
-            <li><img class="sliderGuest" src="{{ asset('storage/colegio/Colegio frontal.jpg') }}" alt=""></li>
-            <li><img class="sliderGuest" src="{{ asset('storage/colegio/Colegio ascensor.jpg') }}" alt=""></li>
-            <li><img class="sliderGuest" src="{{ asset('storage/colegio/Colegio ajedrez.jpg') }}" alt=""></li>
-            <li><img class="sliderGuest" src="{{ asset('storage/colegio/Colegio interior.jpg') }}" alt=""></li>
+            <li><img class="sliderGuest" src="{{ asset('img/Colegio frontal.jpg') }}" alt=""></li>
+            <li><img class="sliderGuest" src="{{ asset('img/Colegio ascensor.jpg') }}" alt=""></li>
+            <li><img class="sliderGuest" src="{{ asset('img/Colegio ajedrez.jpg') }}" alt=""></li>
+            <li><img class="sliderGuest" src="{{ asset('img/Colegio interior.jpg') }}" alt=""></li>
         </ul>
     </div>
 @else
@@ -22,8 +22,13 @@
             @foreach ($latestNews as $new)
                 <li>
                     <div class="contenedor">
+                        @if ($new->id < 4)                           
+                        <img src="{{ asset('img/' . $new->imagen . '') }}" alt="{{ $new->titulo }}"
+                            class="imgCont">                            
+                        @else
                         <img src="{{ asset('storage/colegio/' . $new->imagen . '') }}" alt="{{ $new->titulo }}"
-                            class="imgCont">
+                            class="imgCont">                            
+                        @endif
                         <div class="contenido displayRowCC">
                             <div class="informacion displayColIniC">
                                 <p class="tituloC">{{ $new->titulo }}</p>
@@ -61,7 +66,7 @@
         <br /><br />
         {{ __('pov.lbllegado') }}
     </p>
-    <img src="{{ asset('storage/colegio/maria-cano-1.jpg') }}" alt="" />
+    <img src="{{ asset('img/maria-cano-1.jpg') }}" alt="" />
 </div>
 
 <div class="contenedorMV">

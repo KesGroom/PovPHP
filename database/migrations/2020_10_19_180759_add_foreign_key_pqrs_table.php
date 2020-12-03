@@ -14,7 +14,7 @@ class AddForeignKeyPqrsTable extends Migration
     public function up()
     {
         Schema::table('pqrs', function (Blueprint $table) {
-            $table->string('coordinador');
+            $table->string('coordinador')->nullable();
             $table->foreign('coordinador')->references('id')->on('users')
                 ->onDelete('cascade')->onUpdate('cascade');
 
