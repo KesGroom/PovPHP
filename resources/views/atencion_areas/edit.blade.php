@@ -15,7 +15,7 @@
                 </div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('atencion_aa.update' ,$atencion_area) }}" id="form1">
+                    <form method="POST" action="{{ route('atencion_aa.update', $aa) }}">
                         @csrf
                         @method('put')
                             <label for="docentes">docentes</label>

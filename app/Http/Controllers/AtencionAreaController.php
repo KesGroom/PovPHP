@@ -49,8 +49,11 @@ class AtencionAreaController extends Controller
         ->get();
         return View('atencion_areas.index', compact('AtencionArea'));
       }
-      public function edit(Atencion_area $atencion_area){
-        return view('atencion_areas.edit', compact('atencion_area'));
+      public function edit(Atencion_area $aa){
+        return view('atencion_areas.edit', compact('aa'));
+
+    }
+    public function update(Atencion_area $AtencionArea, Request $request){
 
     }
 }
