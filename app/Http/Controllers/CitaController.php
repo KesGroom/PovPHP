@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Atencion_area;
+use App\Models\Atencion_curso;
 use App\Models\Cita;
 use Facade\FlareClient\View;
 use Illuminate\Http\Request;
@@ -13,14 +14,33 @@ class CitaController extends Controller
 {
     public function crearCita(){
       $atencion_area = Atencion_area::where('estado','Activo')->get();
-       return view('citas.createCita', compact('atencion_area'));
+      $atencion_curso = Atencion_curso::where('estado','Activo')->get();
+       return view('citas.createCita', compact('atencion_area','atencion_curso'));
     }
     public function storeArea(Request $request){
+     if ($request->tipo_atencion == 1) {
+      $atecionStatus = 'Debe seleccionar Tipo de atencion';
+      return back()->with(compact('atecionStatus'));
+     }
+     if ($request->tipo_atencion == 2) {
       $cita = new Cita();
       $cita->estado = "Activo";
       $cita->fecha_cita = $request->hora;
       $cita->atencion_area = $request->atencion_area;
       $cita->save();
+      $status = 'se ha registrado Tipo de atencion';
+      return back()->with(compact('status'));
+     }
+     if ($request->tipo_atencion == 3) {
+      $cita = new Cita();
+      $cita->estado = "Activo";
+      $cita->fecha_cita = $request->hora;
+      $cita->atencion_curso  = $request->atencion_curso ;
+      $cita->save();
+      $status = 'se ha registrado Tipo de atencion';
+      return back()->with(compact('status'));
+     }
+    
     }
     public function index(){
       $citasArea = Cita::where([

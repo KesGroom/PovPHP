@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
         $this->call(NoticiaSeeder::class);
         // Noticia::factory(4)->create();
         $this->call(AcudienteSeeder::class);
-        // $this->call(EstudianteSeeder::class);
+        $this->call(EstudianteSeeder::class);
         $this->call(DocenteCursoSeeder::class);
     }
 }

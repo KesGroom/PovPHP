@@ -4,6 +4,7 @@ use App\Exports\UserExport;
 use App\Http\Controllers\ActividadController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AcudienteController;
+use App\Http\Controllers\AgendaWebController;
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\AtencionAreaController;
 use App\Http\Controllers\AtencionCursoController;
@@ -376,7 +377,13 @@ Route::middleware(['web'])->group(function () {
   Route::post('actividades', [ActividadController::class, 'store'])->name('actividades.store');
   Route::get('actividades/{actividad}/edit', [ActividadController::class, 'edit'])->name('actividades.edit');
   Route::put('actividades{actividad}', [ActividadController::class, 'update'])->name('actividades.update');
+  //------------------ Rutas para el registro de Agenda web --------------------------------------------------------------------------\\
 
+  Route::post('agendaWeb/index', [AgendaWebController::class, 'index'])->name('agendaWeb.index');
+  Route::post('agendaWeb/create', [AgendaWebController::class, 'create'])->name('agendaWeb.create');
+  Route::post('agendaWeb', [AgendaWebController::class, 'store'])->name('agendaWeb.store');
+  Route::get('agendaWeb/{agenda}/edit', [AgendaWebController::class, 'edit'])->name('agendaWeb.edit');
+  Route::put('agendaWeb{agenda}', [AgendaWebController::class, 'update'])->name('agenda.update');
   //--------------------------------------------------------------------------------------------------------------------------\\
 
   //Rutas para Pqrs
