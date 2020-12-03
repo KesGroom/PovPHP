@@ -15,12 +15,15 @@
                 </div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('atencion_curso.store') }}"  id="form1">
+                    <form method="POST" action="{{ route('atencion_ac.update',$ac) }}"  id="form1">
+                        @method("PUT")
                         @csrf
                         <div class=" ">
                             <label for="docentes">docentes</label>
                             <select  class="form-control" id="docentes" name="docentes" required onchange="ddlselect();">
+                                <option value="{{$ac->user->id}}">{{$ac->user->name}} {{$ac->user->apellido}}
                                 @foreach ($docente as $docentes)
+                                
                                 <option value="{{$docentes->id}}">{{$docentes->name}} {{$docentes->apellido}}
                                    
                                 </option>
@@ -31,14 +34,14 @@
                         <div class=" ">
                             <label for="Area">Area</label>
                             <select  class="form-control selectores" id="Area" name="Area" required >
-                             
+                                <option selected="true" value="{{$ac->area}}">{{$ac->cur->curso}}</option>
                             </select>
                         </div>
                         <div class="form-group row">
                             <label for="hora_inicio_atencion" class="col-md-4 col-form-label text-md-right">hora_inicio_atencion</label>
 
                             <div class="col-md-6">
-                                <input id="hora_inicio_atencion" type="time" min="07:00" max="12:00" class="form-control @error('hora_inicio_atencion') is-invalid @enderror" name="hora_inicio_atencion" value="{{ old('hora_inicio_atencion') }}" required autocomplete="hora_inicio_atencion" autofocus>
+                                <input id="hora_inicio_atencion" type="time" min="07:00" max="12:00" class="form-control @error('hora_inicio_atencion') is-invalid @enderror" name="hora_inicio_atencion" value="{{ $ac->hora_inicio_atencion}}" required autocomplete="hora_inicio_atencion" autofocus>
 
                                 @error('hora_inicio_atencion')
                                     <span class="invalid-feedback" role="alert">
@@ -51,7 +54,7 @@
                             <label for="hora_final_atencion" class="col-md-4 col-form-label text-md-right">hora_final_atencion</label>
 
                             <div class="col-md-6">
-                                <input id="hora_final_atencion" type="time" min="07:00" max="12:00"  class="form-control @error('hora_final_atencion') is-invalid @enderror" name="hora_final_atencion" value="{{ old('hora_final_atencion') }}" required autocomplete="hora_final_atencion" autofocus>
+                                <input id="hora_final_atencion" type="time" min="07:00" max="12:00"  class="form-control @error('hora_final_atencion') is-invalid @enderror" name="hora_final_atencion" value="{{ $ac->hora_final_atencion }}" required autocomplete="hora_final_atencion" autofocus>
 
                                 @error('hora_final_atencion')
                                     <span class="invalid-feedback" role="alert">
@@ -63,6 +66,7 @@
                         <div class=" ">
                             <label for="diaSemana">Dia de la semana</label>
                             <select  class="form-control" id="diaSemana" name="diaSemana"  required>
+                                <option  value="{{$ac->diaSemana}}">{{$ac->diaSemana}}</option>
                                 <option value="Lunes">Lunes</option>
                                 <option value="Martes">Martes</option>
                                 <option value="Miercoles">Miercoles</option>  
@@ -91,7 +95,7 @@
 
 function ddlselect(){
        var docentes = document.getElementById("docentes").value;
-  
+       jQuery('.selectores').empty();
        $(document).ready(function(){
    
         $.ajax({
@@ -104,6 +108,7 @@ function ddlselect(){
             }
             // data:$('#form1').serialize()
         }).done(function(res){
+           
             var arreglo = JSON.parse(res);
             for(var x= 0;x<arreglo.length;x++){
                 var todo = '<option' + " " + 'value="'+ arreglo[x].id + '"' + '>'+ arreglo[x].curso +'</option>';

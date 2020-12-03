@@ -55,7 +55,7 @@ class AtencionAreaController extends Controller
         return view('atencion_areas.edit', compact('aa','docente'));
     }
     public function update(Request $request,Atencion_area $aa){
-
+    
     $aa->diaSemana = $request->diaSemana;
     $aa->hora_inicio_atencion = $request->hora_inicio_atencion;
     $aa->hora_final_atencion = $request->hora_final_atencion;

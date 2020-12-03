@@ -137,7 +137,11 @@ Route::middleware(['web'])->group(function () {
       Route::put('atencion_areas{aa}', [AtencionAreaController::class, 'update'])->name('atencion_aa.update');
     /// Rutas para antecion curso
     Route::get('atencion_curso/create', [AtencionCursoController::class, 'create'])->name('atencion_curso.create');
-    Route::post('atencion_curso', [AtencionAreaController::class, 'store'])->name('atencion_curso.store');
+    Route::post('atencion_curso', [AtencionCursoController::class, 'store'])->name('atencion_curso.store');
+    Route::post('atencion_curso/DocenteCurso', [AtencionCursoController::class, 'DocenteCurso'])->name('DocenteCurso.create');
+    Route::get('atencion_curso/index', [AtencionCursoController::class, 'index'])->name('atencion_curso.index');
+    Route::get('atencion_curso/{ac}/edit', [AtencionCursoController::class, 'edit'])->name('atencion_ac.edit');
+    Route::put('atencion_curso{ac}', [AtencionCursoController::class, 'update'])->name('atencion_ac.update');
       //Routas para citas
       Route::get('citas/crearCita', [CitaController::class, 'crearCita'])->name('citas.crearCita');
       Route::get('citas/solitarCita', [CitaController::class, 'solitarCita'])->name('citas.solitarCita');
@@ -146,6 +150,7 @@ Route::middleware(['web'])->group(function () {
       Route::post('citas/AgendarCita', [CitaController::class, 'AgendarCita'])->name('citas.AgendarCita');
       Route::post('citas', [CitaController::class, 'storeArea'])->name('citas.storeArea');
       Route::get('citas/index', [CitaController::class, 'index'])->name('citas.index');
+      Route::get('citas/miscitas', [CitaController::class, 'miscitas'])->name('citas.miscitas');
       Route::get('citas/{area}/edit', [CitaController::class, 'edit'])->name('citas.edit');
       Route::put('citas{area}', [CitaController::class, 'update'])->name('citas.update');
   
