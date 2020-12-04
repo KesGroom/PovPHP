@@ -36,7 +36,14 @@
                         <input id="docente_curso" type="hidden" class="form-control @error('docente_curso') is-invalid @enderror" name="docente_curso" value="{{$curso}}" required autocomplete="docente_curso" autofocus readonly>
                         <input id="id" type="hidden" class="form-control @error('id') is-invalid @enderror" name="id" value="{{$item->id}}" required autofocus readonly>
                         <input id="tc" type="hidden" class="form-control @error('tc') is-invalid @enderror" name="tc" value="{{$tc->curso}}" required autocomplete="tc" autofocus readonly>
-                          <button type="submit" class="btn btn-primary">Agendar Web</button>
+                          <button type="submit" class="btn btn-primary">crear Agendar Web</button>
+                      </form>
+                      <form method="POST" action="{{route('agendaWeb.create')}}">
+                        @csrf
+                        <input id="docente_curso" type="hidden" class="form-control @error('docente_curso') is-invalid @enderror" name="docente_curso" value="{{$curso}}" required autocomplete="docente_curso" autofocus readonly>
+                        <input id="id" type="hidden" class="form-control @error('id') is-invalid @enderror" name="id" value="{{$item->id}}" required autofocus readonly>
+                        <input id="tc" type="hidden" class="form-control @error('tc') is-invalid @enderror" name="tc" value="{{$tc->curso}}" required autocomplete="tc" autofocus readonly>
+                          <button type="submit" class="btn btn-primary">editar agendar Web</button>
                       </form>
                   </td>
               </tr>

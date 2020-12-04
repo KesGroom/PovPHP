@@ -50,17 +50,9 @@ class AtencionAreaController extends Controller
         return View('atencion_areas.index', compact('AtencionArea'));
       }
       public function edit(Atencion_area $aa){
-<<<<<<< HEAD
-        return view('atencion_areas.edit', compact('aa'));
-
-    }
-    public function update(Atencion_area $AtencionArea, Request $request){
-
-=======
         $docente = Docente_curso::where('estado','Activo')
         ->get();
         return view('atencion_areas.edit', compact('aa','docente'));
->>>>>>> 3fb1315c72c64102600154062a6b7866fd6f313e
     }
     public function update(Request $request,Atencion_area $aa){
     

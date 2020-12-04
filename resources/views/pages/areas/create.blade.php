@@ -1,3 +1,5 @@
+@extends('layouts.app')
+@section('content')
 <div class="card">
     <div class="card-header displayRowIniC">
         <ion-icon name="school" class="mr-4"></ion-icon>{{ __('pov.registerArea') }}
@@ -27,3 +29,4 @@
         </form>
     </div>
 </div>
+@endsection

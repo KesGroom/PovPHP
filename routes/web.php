@@ -358,7 +358,7 @@ Route::middleware(['web'])->group(function () {
 
   //--Rutas para registro de asistencia y obligatorio el de cursos
   Route::post('asistencias', [RegistroAsistenciaController::class, 'store'])->name('asistencias.store');
-  Route::get('asistencias/index', [RegistroAsistenciaController::class, 'index'])->name('asistencias.index');
+  Route::post('asistencias/index', [RegistroAsistenciaController::class, 'index'])->name('asistencias.index');
   Route::post('asistencias/asistenciasEstudiante', [RegistroAsistenciaController::class, 'asistenciasEstudiante'])->name('asistencias.asistenciasEstudiante');
   Route::get('asistencias/{estudiante}/edit', [RegistroAsistenciaController::class, 'edit'])->name('asistencias.edit');
   Route::put('asistencias{estudiante}', [RegistroAsistenciaController::class, 'update'])->name('asistencias.update');

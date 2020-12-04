@@ -24,14 +24,15 @@
     </div>
  </td>
  <td>
-     <textarea id="B{{$item->id}}" maxlength="100" name="B{{$item->id}}"  rows="1"></textarea>
+     <textarea id="B{{$item->id}}" maxlength="100" name="B{{$item->id}}"rows="1"  required></textarea>
  </td>
 
     </tr>
     {{-- inptus para registrar estudiante --}}
     <input id="estudiante_id" type="hidden" class="form-control @error('estudiante_id') is-invalid @enderror" name="estudiante_id" value="{{$item->id}}" required autocomplete="curso" autofocus  readonly>
     <input id="tc" type="hidden" class="form-control @error('tc') is-invalid @enderror" name="tc" value="{{$tc}}" required autocomplete="curso" autofocus  readonly>
-    {{-- <input id="docente_curso" type="hidden" class="form-control @error('docente_curso') is-invalid @enderror" name="docente_curso" value="{{$docente_curso}}" required autocomplete="curso" autofocus  readonly> --}}
+    <input id="docente_curso" type="hidden" class="form-control @error('docente_curso') is-invalid @enderror" name="docente_curso" value="{{$docente_curso}}" required autocomplete="curso" autofocus  readonly>
+    <input id="actividad" type="hidden" class="form-control @error('actividad') is-invalid @enderror" name="actividad" value="{{$id}}" required autocomplete="curso" autofocus  readonly>
       @endforeach  
     </tbody>
 </table>
