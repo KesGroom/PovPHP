@@ -66,7 +66,7 @@ class PermisosSeeder extends Seeder
         $perZS = new Permiso();
         $perZS->nombre = "Zonas de servicio";
         $perZS->name = "Service areas";
-        $perZS->url = $url;
+        $perZS->url = $home.'zonas/index';
         $perZS->permiso_padre = $perServ->id;
         $perZS->estado = 'Activo';
         $perZS->save();
@@ -74,7 +74,7 @@ class PermisosSeeder extends Seeder
         $perBS = new Permiso();
         $perBS->nombre = "Bitácoras de servicio";
         $perBS->name = "Service logs";
-        $perBS->url = $url;
+        $perBS->url = $home.'bitacora/index';
         $perBS->permiso_padre = $perServ->id;
         $perBS->estado = 'Activo';
         $perBS->save();

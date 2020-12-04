@@ -63,138 +63,6 @@ Route::middleware(['web'])->group(function () {
     return back()->with('status', 'verification-link-sent');
   })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
-  //Rutas para control del usuario de sesión
-  Route::get('pages/userPages/{usuario}/editProfile', [UserController::class, 'editProfile'])->name('editProfile')->middleware(['auth', 'password.confirm']);
-  Route::put('pages/userPages/changePhoto{usuarios}', [UserController::class, 'updatePhoto'])->name('userPages.updatePhoto');
-  Route::put('pages/userPages/changeInfo{usuario}', [UserController::class, 'updateInfo'])->name('userPages.updateInfo');
-  Route::put('pages/userPages/changePass{usuarioPass}', [UserController::class, 'updatePass'])->name('userPages.updatePass');
-
-  //--------------------------------------------------------------------------------------------------------------------------\\
-
-  //Rotas para Acudiente
-  Route::get('acudientes/create', [AcudienteController::class, 'create'])->name('acudientes.create');
-  Route::post('acudientes', [AcudienteController::class, 'store'])->name('acudientes.store');
-  Route::get('acudientes/index', [AcudienteController::class, 'index'])->name('acudientes.index');
-
-  //--------------------------------------------------------------------------------------------------------------------------\\
-
-  //Rutas para Usuarios
-  Route::get('pages/usuarios/create', [UserController::class, 'create'])->name('usuarios.create');
-  Route::post('pages/usuarios/create', [UserController::class, 'store'])->name('usuarios.store');
-  Route::get('pages/usuarios/index', [UserController::class, 'index'])->name('usuarios.index');
-  Route::get('pages/usuarios/recovery', [UserController::class, 'recovery'])->name('usuarios.recovery');
-  Route::put('pages/usuarios/recovery/restore{usuario}', [UserController::class, 'restore'])->name('usuarios.restore');
-  Route::get('pages/usuarios/index{usuario}', [UserController::class, 'indexRol'])->name('usuarios.indexRol');
-  Route::put('pages/usuarios/index/resetPhoto{usuario}', [UserController::class, 'photoReset'])->name('usuarios.photoReset');
-  Route::put('pages/usuarios/delete{usuario}', [UserController::class, 'delete'])->name('usuarios.delete');
-  Route::get('pages/usuarios/{usuario}/edit', [UserController::class, 'edit'])->name('usuarios.edit');
-  Route::put('pages/usuarios/{usuario}/edit', [UserController::class, 'update'])->name('usuarios.update');
-  //---Excel---
-  Route::get('exports/users', [UserController::class, 'export'])->name('usuarios.export');
-  Route::get('exports/usersTemplate', [UserController::class, 'template'])->name('usuarios.template');
-  Route::post('usuarios/index', [UserController::class, 'import'])->name('usuarios.import');
-  //---Buscador---
-  Route::get('usuarios/buscador', [UserController::class, 'searchList']);
-  Route::get('usuarios/UserResult', [UserController::class, 'searchList']);
-
-  //--------------------------------------------------------------------------------------------------------------------------\\
-
-  //Rutas para noticias
-  Route::get('pages/news/create', [NoticiaController::class, 'create'])->name('news.create');
-  Route::get('pages/news/index', [NoticiaController::class, 'index'])->name('news.index');
-  Route::get('pages/news/recovery', [NoticiaController::class, 'recovery'])->name('news.recovery');
-  Route::put('pages/news/recovery/restore{noticia}', [NoticiaController::class, 'restore'])->name('news.restore');
-  Route::get('pages/news/{noticia}/edit', [NoticiaController::class, 'edit'])->name('news.edit');
-  Route::post('pages/news/create', [NoticiaController::class, 'store'])->name('news.store');
-  Route::put('pages/news/delete{new}', [NoticiaController::class, 'delete'])->name('news.delete');
-  Route::put('pages/news{noticia}', [NoticiaController::class, 'update'])->name('news.update');
-  //---Buscador---
-  Route::get('news/buscador', [NoticiaController::class, 'searchList']);
-  Route::get('news/newsResult', [NoticiaController::class, 'searchList']);
-  //---Excel---
-  Route::get('exports/news', [NoticiaController::class, 'export'])->name('news.export');
-  Route::get('exports/newsTemplate', [NoticiaController::class, 'template'])->name('news.template');
-  Route::post('news/index', [NoticiaController::class, 'import'])->name('news.import');
-
-  Route::get('mail/index', [MailController::class, 'layout'])->name('mail.layout');
-  Route::post('mail/index/mail', [MailController::class, 'postulacion'])->name('mail.postular');
-  Route::post('mail/index/rees{user}', [MailController::class, 'replace'])->name('mail.rees');
-
-  //--------------------------------------------------------------------------------------------------------------------------\\
-
-  //Rutas para Areas
-  Route::get('areas/create', [AreaController::class, 'create'])->name('areas.create');
-  Route::post('areas', [AreaController::class, 'store'])->name('areas.store');
-  Route::get('areas/index', [AreaController::class, 'index'])->name('areas.index');
-  Route::get('areas/{area}/edit', [AreaController::class, 'edit'])->name('areas.edit');
-
-  Route::put('areas{area}', [AreaController::class, 'update'])->name('areas.update');
-  //Routas para atencion Areas
-  Route::get('atencion_areas/create', [AtencionAreaController::class, 'create'])->name('atencion_areas.create');
-  Route::post('atencion_areas/DocenteArea', [AtencionAreaController::class, 'DocenteArea'])->name('DocenteArea.create');
-  Route::post('atencion_areas', [AtencionAreaController::class, 'store'])->name('atencion_areas.store');
-  Route::get('atencion_areas/index', [AtencionAreaController::class, 'index'])->name('atencion_areas.index');
-  Route::get('atencion_areas/{aa}/edit', [AtencionAreaController::class, 'edit'])->name('atencion_aa.edit');
-  Route::put('atencion_areas{aa}', [AtencionAreaController::class, 'update'])->name('atencion_aa.update');
-  /// Rutas para antecion curso
-  Route::get('atencion_curso/create', [AtencionCursoController::class, 'create'])->name('atencion_curso.create');
-  Route::post('atencion_curso', [AtencionCursoController::class, 'store'])->name('atencion_curso.store');
-  Route::post('atencion_curso/DocenteCurso', [AtencionCursoController::class, 'DocenteCurso'])->name('DocenteCurso.create');
-  Route::get('atencion_curso/index', [AtencionCursoController::class, 'index'])->name('atencion_curso.index');
-  Route::get('atencion_curso/{ac}/edit', [AtencionCursoController::class, 'edit'])->name('atencion_ac.edit');
-  Route::put('atencion_curso{ac}', [AtencionCursoController::class, 'update'])->name('atencion_ac.update');
-  //Routas para citas
-  Route::get('citas/crearCita', [CitaController::class, 'crearCita'])->name('citas.crearCita');
-  Route::get('citas/solitarCita', [CitaController::class, 'solitarCita'])->name('citas.solitarCita');
-  Route::post('citas/reiniciar', [CitaController::class, 'reiniciarCitas'])->name('citas.reiniciarCitas');
-  Route::post('citas/asuntoCita', [CitaController::class, 'asuntoCita'])->name('citas.asuntoCita');
-  Route::post('citas/AgendarCita', [CitaController::class, 'AgendarCita'])->name('citas.AgendarCita');
-  Route::post('citas', [CitaController::class, 'storeArea'])->name('citas.storeArea');
-  Route::get('citas/index', [CitaController::class, 'index'])->name('citas.index');
-  Route::get('citas/miscitas', [CitaController::class, 'miscitas'])->name('citas.miscitas');
-  Route::get('citas/{area}/edit', [CitaController::class, 'edit'])->name('citas.edit');
-  Route::put('citas{area}', [CitaController::class, 'update'])->name('citas.update');
-
-  //Routas para Grado
-  //--------------------------------------------------------------------------------------------------------------------------\\
-
-  //Rutas para Grado
-  Route::get('grados/create', [GradoController::class, 'create'])->name('grados.create');
-  Route::post('grados', [GradoController::class, 'store'])->name('grados.store');
-  Route::get('grados/index', [GradoController::class, 'index'])->name('grados.index');
-  Route::get('grados/{grado}/edit', [GradoController::class, 'edit'])->name('grados.edit');
-  Route::put('grados{grado}', [GradoController::class, 'update'])->name('grados.update');
-
-  //--------------------------------------------------------------------------------------------------------------------------\\
-
-  //Rutas para cursos
-  Route::get('cursos/create', [CursoController::class, 'create'])->name('cursos.create');
-  Route::post('cursosito', [CursoController::class, 'store'])->name('cursosito.store');
-  Route::get('cursos/index', [CursoController::class, 'index'])->name('cursos.index');
-  Route::get('cursos/{curso}/edit', [CursoController::class, 'edit'])->name('cursos.edit');
-  Route::put('cursos{curso}', [CursoController::class, 'update'])->name('cursos.update');
-  //Routas para cursos del profesor inciado session 
-  Route::get('cursos/miscursos', [CursoController::class, 'miscursos'])->name('cursos.miscursos');
-  Route::post('cursos', [CursoController::class, 'asistencia'])->name('cursos.asistencia');
-  Route::get('cursos/verestudiante', [CursoController::class, 'verestudiante'])->name('cursos.verestudiante');
-
-  //Routas para registro de asistencia y obligatorio el de cursos
-  Route::get('/email/verify', function () {
-    return view('auth.verify-email');
-  })->middleware(['auth'])->name('verification.notice');
-
-  Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-    $request->fulfill();
-
-    return redirect('/home');
-  })->middleware(['auth', 'signed'])->name('verification.verify');
-
-  Route::post('/email/verification-notification', function (Request $request) {
-    $request->user()->sendEmailVerificationNotification();
-
-    return back()->with('status', 'verification-link-sent');
-  })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
-
   //---------- Rutas para control del usuario de sesión ----------------------------------------------------------------------------------\\
 
   Route::get('pages/userPages/{usuario}/editProfile', [UserController::class, 'editProfile'])->name('editProfile')->middleware(['auth', 'password.confirm']);
@@ -303,19 +171,31 @@ Route::middleware(['web'])->group(function () {
 
   //------------------- Rutas para la administración de citas ------------------------------------------------------------------------------------\\
 
-  //--Rutas para atencion Areas
+  //Routas para atencion Areas
   Route::get('pages/atencion_areas/create', [AtencionAreaController::class, 'create'])->name('atencion_areas.create');
+  Route::post('pages/atencion_areas/DocenteArea', [AtencionAreaController::class, 'DocenteArea'])->name('DocenteArea.create');
   Route::post('pages/atencion_areas', [AtencionAreaController::class, 'store'])->name('atencion_areas.store');
   Route::get('pages/atencion_areas/index', [AtencionAreaController::class, 'index'])->name('atencion_areas.index');
   Route::get('pages/atencion_areas/{aa}/edit', [AtencionAreaController::class, 'edit'])->name('atencion_aa.edit');
   Route::put('pages/atencion_areas{aa}', [AtencionAreaController::class, 'update'])->name('atencion_aa.update');
-
-  //--Rutas para citas
-  Route::get('pages/citas/createArea', [CitaController::class, 'createArea'])->name('citas.createArea');
-  Route::post('pages/citas', [CitaController::class, 'storeArea'])->name('citas.storeArea');
-  Route::get('pages/citas/index', [CitaController::class, 'index'])->name('citas.index');
-  Route::get('pages/citas/{area}/edit', [CitaController::class, 'edit'])->name('citas.edit');
-  Route::put('pages/citas{area}', [CitaController::class, 'update'])->name('citas.update');
+  /// Rutas para antecion curso
+  Route::get('pages/atencion_curso/create', [AtencionCursoController::class, 'create'])->name('atencion_curso.create');
+  Route::post('pages/atencion_curso', [AtencionCursoController::class, 'store'])->name('atencion_curso.store');
+  Route::post('pages/atencion_curso/DocenteCurso', [AtencionCursoController::class, 'DocenteCurso'])->name('DocenteCurso.create');
+  Route::get('pages/atencion_curso/index', [AtencionCursoController::class, 'index'])->name('atencion_curso.index');
+  Route::get('pages/atencion_curso/{ac}/edit', [AtencionCursoController::class, 'edit'])->name('atencion_ac.edit');
+  Route::put('pages/atencion_curso{ac}', [AtencionCursoController::class, 'update'])->name('atencion_ac.update');
+  //Routas para citas
+  Route::get('citas/crearCita', [CitaController::class, 'crearCita'])->name('citas.crearCita');
+  Route::get('citas/solitarCita', [CitaController::class, 'solitarCita'])->name('citas.solitarCita');
+  Route::post('citas/reiniciar', [CitaController::class, 'reiniciarCitas'])->name('citas.reiniciarCitas');
+  Route::post('citas/asuntoCita', [CitaController::class, 'asuntoCita'])->name('citas.asuntoCita');
+  Route::post('citas/AgendarCita', [CitaController::class, 'AgendarCita'])->name('citas.AgendarCita');
+  Route::post('citas', [CitaController::class, 'storeArea'])->name('citas.storeArea');
+  Route::get('citas/index', [CitaController::class, 'index'])->name('citas.index');
+  Route::get('citas/miscitas', [CitaController::class, 'miscitas'])->name('citas.miscitas');
+  Route::get('citas/{area}/edit', [CitaController::class, 'edit'])->name('citas.edit');
+  Route::put('citas{area}', [CitaController::class, 'update'])->name('citas.update');
 
   //--------------------------------------------------------------------------------------------------------------------------\\
 
