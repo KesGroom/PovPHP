@@ -231,4 +231,5 @@ return [
 
     'txtPostPro' => 'Revisión de postulación en proceso',
 
+    'txtPersonalizar' => 'Personalizar',
 ];
