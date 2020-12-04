@@ -227,5 +227,15 @@ return [
     'txtObservaciones' => 'Comments',
     'txtLaboresRealizadas' => 'Work done',
     'txtZonaServicio' => 'Service area',
-    'tltRegisterBit' => 'Add new log'
+    'tltRegisterBit' => 'Add new log',
+    'txtPostPro' => 'Application review in process',
+    'txtNoEnter' => 'Cannot apply to any area currently',
+    'txtReturnService' => 'You are currently in service so you cannot apply to other service areas, upon completion of your service you will be re-established access to this page.',
+    'txtCompleteServ' => 'Compulsory social service has been completed',
+    'txtCompleteP1' => 'You have completed the 120 hours of mandatory social service, so you cannot apply again to service areas.',
+    'txtCompleteP2' => 'We invite you to download your social service certificate by going to your log history.',
+    'txtEstadoServ' => 'State of service',
+    'txtAnimation' => "Keep it up, you'll soon make it!",
+    'txtHistoryServ' => 'Service History',
+    'txtRegistra' => 'Registered by',
 ];

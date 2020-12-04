@@ -139,15 +139,13 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    <div class="card-text"><i class="fas fa-people-carry mr-2"></i>No puede aplicar a ninguna zona
-                        actualmente
+                    <div class="card-text"><i class="fas fa-people-carry mr-2"></i>
+                        {{ __('pov.txtNoEnter')}}
                     </div>
                 </div>
                 <div class="card-body">
                     <div class="card-text">
-                        Usted se encuentra en servicio actualmente por lo que no puede aplicar a otras zonas de
-                        servicio,
-                        culminado su servicio se le reestablecerá el acceso a esta página.
+                        {{ __('pov.txtReturnService')}}
                     </div>
                 </div>
                 <div class="mt-2">
@@ -162,14 +160,19 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    <div class="card-text"><i class="fas fa-people-carry mr-2"></i>No puede aplicar a ninguna zona
-                        actualmente
+                    <div class="card-text"><i class="fas fa-people-carry mr-2"></i>
+                        {{ __('pov.txtCompleteServ')}}
                     </div>
                 </div>
                 <div class="card-body">
                     <div class="card-text">
-
+                        {{ __('pov.txtCompleteP1')}}
+                        <br>
+                        {{ __('pov.txtCompleteP2')}}
                     </div>
+                </div>
+                <div class="mt-2">
+                    <a href="{{ route('bitacora.index') }}" class="btn btn-MC btn-footer">{{ __('pov.txtVerBita') }}</a>
                 </div>
             </div>
         </div>

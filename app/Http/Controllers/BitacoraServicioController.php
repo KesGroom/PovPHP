@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Bitacora_servicio;
 use App\Models\Estudiante;
 use App\Models\Sala_servicio;
+use App\Models\User;
+use App\Models\Zona_servicio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -21,7 +23,9 @@ class BitacoraServicioController extends Controller
         if ($validated) {
             if (Auth::user()->rol != 3) {
                 $rhp = RolHasPermisoController::rhp();
-                return view('pages.bitacora.create', compact('sala', 'rhp'));
+                $zona = Zona_servicio::where('id', $sala->zona_servicio)->first();
+                $max = $zona->tiempo_servicio - $sala->tiempo_servicio;
+                return view('pages.bitacora.create', compact('sala', 'rhp', 'max'));
             }
         } else {
             return WelcomeController::welcome();
@@ -40,12 +44,13 @@ class BitacoraServicioController extends Controller
                 $salas = Sala_servicio::where([['estado', 'Activo'], ['estado_servicio', 'Aceptado'], ['estudiante', Auth::user()->id]])->first();
                 $estu = Estudiante::where('id', Auth::user()->id)->first();
                 $bit = DB::table('bitacora_servicio')
-                ->join('sala_servicio', 'sala_servicio.id', '=', 'bitacora_servicio.sala_servicio')
-                ->join('users', 'users.id', '=', 'bitacora_servicio.coordinador')
-                ->join('zona_servicio', 'zona_servicio.id', '=', 'sala_servicio.zona_servicio')
-                ->select('bitacora_servicio.*', 'zona_servicio.nombre_zona', 'users.name', 'users.apellido')
-                ->where([['sala_servicio.estado', 'Activo'], ['bitacora_servicio.estado', 'Activo'], ['sala_servicio.estudiante', Auth::user()->id]])
-                ->get();
+                    ->join('sala_servicio', 'sala_servicio.id', '=', 'bitacora_servicio.sala_servicio')
+                    ->join('users', 'users.id', '=', 'bitacora_servicio.coordinador')
+                    ->join('zona_servicio', 'zona_servicio.id', '=', 'sala_servicio.zona_servicio')
+                    ->select('bitacora_servicio.*', 'zona_servicio.nombre_zona', 'users.name', 'users.apellido')
+                    ->where([['sala_servicio.estado', 'Activo'], ['bitacora_servicio.estado', 'Activo'], ['sala_servicio.estudiante', Auth::user()->id]])
+                    ->orderBy('bitacora_servicio.created_at', 'desc')
+                    ->get();
                 $restante = 120 - $estu->tiempo_servicio;
                 $horas = [
                     $estu->tiempo_servicio,
@@ -109,6 +114,24 @@ class BitacoraServicioController extends Controller
 
         $newTime = $sala->tiempo_servicio + $request->tiempo_prestado;
         $sala->tiempo_servicio = $newTime;
+        $estudiante = Estudiante::where('id', $sala->estudiante)->first();
+        $timeVal = $estudiante->tiempo_servicio + $sala->tiempo_servicio;
+        $zona = Zona_servicio::where('id', $sala->zona_servicio)->first();
+        if ($sala->tiempo_servicio >= $zona->tiempo_servicio || $timeVal >= 120) {
+            $zona->cupos = $zona->cupos + 1;
+            $zona->save();
+            $sala->estado_servicio = 'Terminado';
+            if ($timeVal >= 120) {
+                $timeVal = 120;
+                $estudiante->tiempo_servicio = $timeVal;
+                $estudiante->estado_servicio_social = 'Completado';
+            } else {
+                $estudiante->tiempo_servicio = $timeVal;
+                $estudiante->estado_servicio_social = 'Disponible';
+            }
+            $estudiante->save();
+        }
+        
         $sala->save();
 
         $status = 'SwalCreate';
@@ -149,5 +172,14 @@ class BitacoraServicioController extends Controller
 
         $status = 'SwalDelete';
         return back()->with(compact('status'));
+    }
+
+    public function certificado(User $user){
+        if (!Auth::user()) {return WelcomeController::welcome();}
+        $validated= PermisoController::validatedPermit('Servicio social');
+        if ($validated) {
+            $rhp = RolHasPermisoController::rhp();
+            return view('pages.bitacora.certificado', compact('rhp', 'user')); 
+        } else {return WelcomeController::welcome();}
     }
 }

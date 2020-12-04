@@ -19,7 +19,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-text">Estado de servicio: {{ $estu->estado_servicio_social }}</div>
+                        <div class="card-text">{{ __('pov.txtEstadoServ') }}: {{ $estu->estado_servicio_social }}</div>
                     </div>
                     <div class="card-body">
                         <canvas id="timeService" width="400" height="400"></canvas>
@@ -28,9 +28,17 @@
                             {{ __('pov.txtHours') }}
                         </div>
                     </div>
-                    <div class="card-footer displayRowCC">
-                        Continúa así, pronto lo lograrás!
-                    </div>
+                    @if ($estu->estado_servicio_social == 'Completado')
+                        <div class="mt-2">
+                            <a href="{{ route('bitacora.certificado', Auth::user()) }}" class="btn btn-MC btn-footer">
+                                Ver certificado
+                            </a>
+                        </div>
+                    @else
+                        <div class="card-footer displayRowCC">
+                            {{ __('pov.txtAnimation') }}
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -39,12 +47,12 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card mb-2">
-                    <div class="card-header">Historial de servicio</div>
+                    <div class="card-header">{{ __('pov.txtHistoryServ') }}</div>
                 </div>
                 @forelse ($bit as $bitacora)
-                    <div class="card">
+                    <div class="card mb-2">
                         <div class="card-header displayRowSbC">
-                            <div class="card-text">Zona de servicio: {{ $bitacora->nombre_zona }}</div>
+                            <div class="card-text">{{ __('pov.txtZonaServicio') }}: {{ $bitacora->nombre_zona }}</div>
                             <div class="card-text">{{ __('pov.txtFechaRegistro') }}:
                                 {{ date('d/m/Y', strtotime($bitacora->created_at)) }}
                             </div>
@@ -58,9 +66,11 @@
                         </div>
                         <div class="card-footer displayRowSbC">
                             <div class="card-text">{{ __('pov.txtRegistra') }}: {{ $bitacora->name }}
-                                {{ $bitacora->apellido }}</div>
+                                {{ $bitacora->apellido }}
+                            </div>
                             <div class="card-text">{{ __('pov.txtTiempoPrestado') }}: {{ $bitacora->tiempo_prestado }}
-                                {{ __('pov.txtHours') }}</div>
+                                {{ __('pov.txtHours') }}
+                            </div>
                         </div>
                     </div>
                 @empty
@@ -74,6 +84,20 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
     crossorigin="anonymous"></script>
+
+@if (session('lang') == 'es')
+    <script>
+        var Prestado = 'Prestado',
+            Restante = 'Restante';
+
+    </script>
+@else
+    <script>
+        var Prestado = 'Provided',
+            Restante = 'Remaining';
+
+    </script>
+@endif
 <script>
     var data = @json($horas, JSON_PRETTY_PRINT);
     var ctx = document.getElementById('timeService').getContext('2d');
@@ -85,13 +109,12 @@
                 backgroundColor: [
                     'rgba(0, 255, 0, 0.3)',
                     'rgba(255, 5, 5, 0.3)'
-
                 ]
             }],
 
             labels: [
-                'Prestado',
-                'Restante'
+                Prestado,
+                Restante
             ],
 
         }

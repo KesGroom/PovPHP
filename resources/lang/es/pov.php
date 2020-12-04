@@ -228,7 +228,14 @@ return [
     'txtLaboresRealizadas' => 'Labores Realizadas',
     'txtZonaServicio' => 'Zona de servicio',
     'tltRegisterBit' => 'Añadir nueva bitácora',
-
     'txtPostPro' => 'Revisión de postulación en proceso',
-
+    'txtNoEnter' => 'No puede aplicar a ninguna zona actualmente',
+    'txtReturnService' => 'Usted se encuentra en servicio actualmente por lo que no puede aplicar a otras zonas de servicio, culminado su servicio se le reestablecerá el acceso a esta página.',
+    'txtCompleteServ' => 'El servicio social obligatorio ha sido completado',
+    'txtCompleteP1' => 'Usted ha completado las 120 horas de servicio social obligatorio, por ende no podrá aplicar nuevamente a zonas de servicio.',
+    'txtCompleteP2' => 'Le invitamos a descargar su certificado de servicio social en dirigiendose a su historial de bitacoras.',
+    'txtEstadoServ' => 'Estado de servicio',
+    'txtAnimation' => '¡Continúa así, pronto lo lograrás!',
+    'txtHistoryServ' => 'Historial de servicio',
+    'txtRegistra' => 'Registrado por',
 ];

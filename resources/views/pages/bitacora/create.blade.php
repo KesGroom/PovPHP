@@ -30,12 +30,11 @@
                         @csrf
                         <div class="form-group row">
                             <label for="tiempo_prestado"
-                                class="col-md-12 col-form-label text-md-left">{{ __('pov.txtTiempoPrestado')}}</label>
+                                class="col-md-12 col-form-label text-md-left">{{ __('pov.txtTiempoPrestado') }}</label>
                             <div class="col-md-12">
-                                <input id="tiempo_prestado" type="text"
+                                <input id="tiempo_prestado" type="number" min="0" max="{{ $max }}"
                                     class="solo-numero form-control @error('tiempo_prestado') is-invalid @enderror"
-                                    name="tiempo_prestado" value="{{ old('tiempo_prestado') }}" required
-                                    autocomplete="tiempo_prestado" autofocus>
+                                    name="tiempo_prestado" value="1" required autocomplete="tiempo_prestado" autofocus>
 
                                 @error('tiempo_prestado')
                                     <span class="invalid-feedback" role="alert">
@@ -65,8 +64,8 @@
                             <div class="col-md-12">
                                 <textarea id="observaciones" rows="2"
                                     class="form-control @error('observaciones') is-invalid @enderror"
-                                    name="observaciones" value="{{ old('observaciones') }}"
-                                    autocomplete="observaciones" autofocus></textarea>
+                                    name="observaciones" value="{{ old('observaciones') }}" autocomplete="observaciones"
+                                    autofocus></textarea>
 
                                 @error('observaciones')
                                     <span class="invalid-feedback" role="alert">

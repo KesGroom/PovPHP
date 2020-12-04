@@ -206,6 +206,7 @@ Route::middleware(['web'])->group(function () {
   Route::get('pages/bitacora/{bita}/edit', [BitacoraServicioController::class, 'edit'])->name('bitacora.edit');
   Route::post('pages/bitacora/{bita}', [BitacoraServicioController::class, 'update'])->name('bitacora.update');
   Route::put('pages/bitacora/delete{bita}', [BitacoraServicioController::class, 'delete'])->name('bitacora.delete');
+  Route::get('pages/bitacora/{name}/certificado', [BitacoraServicioController::class, 'certificado'])->name('bitacora.certificado');
 
   //--Rutas para la sala de servicio 
   Route::get('pages/sala/index', [SalaServicioController::class, 'index'])->name('sala.index');
