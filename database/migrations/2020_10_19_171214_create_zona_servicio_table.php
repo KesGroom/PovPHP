@@ -15,7 +15,7 @@ class CreateZonaServicioTable extends Migration
     {
         Schema::create('zona_servicio', function (Blueprint $table) {
             $table->increments('id');
-            $table->enum('estado', ['Activo', 'Inactivo']);
+            $table->enum('estado', ['Activo', 'Inactivo', 'Bloqueado']);
             $table->string('nombre_zona', 50);
             $table->string('lugar', 50);
             $table->string('encargado', 100);

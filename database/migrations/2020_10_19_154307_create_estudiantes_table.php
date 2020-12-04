@@ -15,7 +15,7 @@ class CreateEstudiantesTable extends Migration
     {
         Schema::create('estudiantes', function (Blueprint $table) {
             $table->enum('estado', ['Activo', 'Inactivo']);
-            $table->enum('estado_servicio_social',['Disponible', 'En servicio', 'No aplica']);
+            $table->enum('estado_servicio_social',['Disponible', 'En servicio', 'No aplica', 'Completado']);
             $table->integer('tiempo_servicio');
             $table->timestamps();
         });

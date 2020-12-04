@@ -19,6 +19,7 @@
         'templateExcel' => route('news.template') ,
         'restore' => route('news.recovery') ,
         'add' => route('news.create'),
+        'optionalBtn' => 'false',
         ])
     </div>
     <div class="container" id="resultado">

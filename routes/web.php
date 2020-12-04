@@ -188,27 +188,31 @@ Route::middleware(['web'])->group(function () {
   //---------------Rutas para la administración de servicio social ----------------------------------------------------------------------------------------\\
 
   //--Rutas para zona de servicio social
-  Route::get('zonas/create', [ZonaServicioController::class, 'create'])->name('zonas.create');
-  Route::get('zonas/index', [ZonaServicioController::class, 'index'])->name('zonas.index');
-  Route::post('zonas', [ZonaServicioController::class, 'store'])->name('zonas.store');
-  Route::get('zonas/{zona}/edit', [ZonaServicioController::class, 'edit'])->name('zonas.edit');
-  Route::post('zonas/{zona}', [ZonaServicioController::class, 'update'])->name('zonas.update');
-
+  Route::get('pages/zonas/create', [ZonaServicioController::class, 'create'])->name('zonas.create');
+  Route::get('pages/zonas/index', [ZonaServicioController::class, 'index'])->name('zonas.index');
+  Route::post('pages/zonas', [ZonaServicioController::class, 'store'])->name('zonas.store');
+  Route::get('pages/zonas/{zona}/edit', [ZonaServicioController::class, 'edit'])->name('zonas.edit');
+  Route::post('pages/zonas/{zona}', [ZonaServicioController::class, 'update'])->name('zonas.update');
+  Route::put('pages/zonas/delete{zona}', [ZonaServicioController::class, 'delete'])->name('zonas.delete');
+  Route::put('pages/zonas/index/block{zona}', [ZonaServicioController::class, 'block'])->name('zonas.block');
+  Route::put('pages/zonas/index/unblock{zona}', [ZonaServicioController::class, 'unblock'])->name('zonas.unblock');
 
 
   //--Rutas para bitacora de servicio social
-  Route::get('bitacora/create{sala}', [BitacoraServicioController::class, 'create'])->name('bitacora.create');
-  Route::get('bitacora/index', [BitacoraServicioController::class, 'index'])->name('bitacora.index');
-  Route::post('bitacora/index{sala}', [BitacoraServicioController::class, 'store'])->name('bitacora.store');
-  Route::get('bitacora/{bita}/edit', [BitacoraServicioController::class, 'edit'])->name('bitacora.edit');
-  Route::post('bitacora/{bita}', [BitacoraServicioController::class, 'update'])->name('bitacora.update');
+  Route::get('pages/bitacora/create{sala}', [BitacoraServicioController::class, 'create'])->name('bitacora.create');
+  Route::get('pages/bitacora/index', [BitacoraServicioController::class, 'index'])->name('bitacora.index');
+  Route::get('pages/bitacora/index{id}', [BitacoraServicioController::class, 'indexBit'])->name('bitacora.indexBit');
+  Route::post('pages/bitacora/index{sala}', [BitacoraServicioController::class, 'store'])->name('bitacora.store');
+  Route::get('pages/bitacora/{bita}/edit', [BitacoraServicioController::class, 'edit'])->name('bitacora.edit');
+  Route::post('pages/bitacora/{bita}', [BitacoraServicioController::class, 'update'])->name('bitacora.update');
+  Route::put('pages/bitacora/delete{bita}', [BitacoraServicioController::class, 'delete'])->name('bitacora.delete');
 
   //--Rutas para la sala de servicio 
-  Route::get('sala/index', [SalaServicioController::class, 'index'])->name('sala.index');
-  Route::put('sala/index{zona}', [SalaServicioController::class, 'store'])->name('sala.store');
-  Route::put('sala/index/aceptar{salas}', [SalaServicioController::class, 'aceptar'])->name('sala.aceptar');
-  Route::put('sala/index/rechazar{salas}', [SalaServicioController::class, 'rechazar'])->name('sala.rechazar');
-
+  Route::get('pages/sala/index', [SalaServicioController::class, 'index'])->name('sala.index');
+  Route::put('pages/sala/index{zona}', [SalaServicioController::class, 'store'])->name('sala.store');
+  Route::put('pages/sala/index/aceptar{salas}', [SalaServicioController::class, 'aceptar'])->name('sala.aceptar');
+  Route::put('pages/sala/index/rechazar{salas}', [SalaServicioController::class, 'rechazar'])->name('sala.rechazar');
+  Route::put('pages/sala/delete{salas}', [SalaServicioController::class, 'delete'])->name('sala.delete');
 
   //--------------------------------------------------------------------------------------------------------------------------\\
 

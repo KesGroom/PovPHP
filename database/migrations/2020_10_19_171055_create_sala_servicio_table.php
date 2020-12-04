@@ -17,6 +17,7 @@ class CreateSalaServicioTable extends Migration
             $table->increments('id');
             $table->enum('estado', ['Activo', 'Inactivo']);
             $table->enum('estado_servicio', ['Aceptado', 'En espera', 'Rechazado', 'Terminado']);
+            $table->integer('tiempo_servicio');
             $table->timestamps();
         });
     }

@@ -28,6 +28,7 @@
     'templateExcel' => route('usuarios.template') ,
     'restore' => route('usuarios.recovery') ,
     'add' => route('usuarios.create'),
+    'optionalBtn' => 'false',
     ])
     <div class="cont-card-img-table" id="resultado">
     </div>

@@ -63,6 +63,32 @@
         </script>
     @endif
     @break
+    @case('SwalBlock')
+    @if (session('lang') == 'es')
+        <script>
+            AlertaToast('Se ha bloqueado correctamente', 'success');
+
+        </script>
+    @else
+        <script>
+            AlertaToast('It has been correctly blocked', 'success');
+
+        </script>
+    @endif
+    @break
+    @case('SwalUnblock')
+    @if (session('lang') == 'es')
+        <script>
+            AlertaToast('Se ha desbloqueado correctamente', 'success');
+
+        </script>
+    @else
+        <script>
+            AlertaToast('It has been correctly unlocked', 'success');
+
+        </script>
+    @endif
+    @break
     @case('SwalCreate')
     @if (session('lang') == 'es')
         <script>
@@ -85,6 +111,45 @@
     @else
         <script>
             AlertaToast('Restoration successfully completed', 'success');
+
+        </script>
+    @endif
+    @break
+    @case('SwalPostulation')
+    @if (session('lang') == 'es')
+        <script>
+            AlertaToast('Se ha postulado satisfactoriamente', 'success');
+
+        </script>
+    @else
+        <script>
+            AlertaToast('You have successfully applied', 'success');
+
+        </script>
+    @endif
+    @break
+    @case('SwalRejected')
+    @if (session('lang') == 'es')
+        <script>
+            AlertaToast('El estudiante ha sido rechazado', 'success');
+
+        </script>
+    @else
+        <script>
+            AlertaToast('Student has been rejected', 'success');
+
+        </script>
+    @endif
+    @break
+    @case('SwalAccept')
+    @if (session('lang') == 'es')
+        <script>
+            AlertaToast('El estudiante ha sido aceptado', 'success');
+
+        </script>
+    @else
+        <script>
+            AlertaToast('Student has been accepted', 'success');
 
         </script>
     @endif

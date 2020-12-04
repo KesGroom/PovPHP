@@ -1,3 +1,9 @@
+<style>
+    .PC-secundario .PC-button {
+        width: 100% !important;
+    }
+
+</style>
 <div class="panel-control displayColIniC">
     <div class="PC-principal displayRowSbC">
         <h2 class="mt-4 mb-4">{{ $tituloPC }}</h2>
@@ -14,11 +20,14 @@
             {{ $addElement }}
         </a>
     </div>
-    <div class="PC-secundario displayRowEndC">
-        <a href="" class="PC-button filter displayRowCC">
-            <ion-icon name="filter"></ion-icon>
-            {{ __('pov.filter') }}
-        </a>
+
+    <div class="PC-secundario displayRowSbC">
+        @if ($optionalBtn == 'true')
+            <a href="{{ $optionalRoute }}" class="PC-button filter displayRowCC">
+                <ion-icon name="{{ $optionalIcon }}"></ion-icon>
+                {{ $optionalText }}
+            </a>
+        @endif
         <a href="" class="PC-button graphic displayRowCC">
             <ion-icon name="pie-chart"></ion-icon>
             {{ __('pov.graphic') }}

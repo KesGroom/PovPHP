@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBitacoraServicioTable extends Migration
+class CreateComponentesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateBitacoraServicioTable extends Migration
      */
     public function up()
     {
-        Schema::create('bitacora_servicio', function (Blueprint $table) {
+        Schema::create('componentes', function (Blueprint $table) {
             $table->increments('id');
-            $table->enum('estado', ['Activo', 'Inactivo']);
-            $table->integer('tiempo_prestado');
-            $table->text('observaciones')->nullable();
-            $table->string('labores');
+            $table->enum('reloj', ['off', 'analogo', 'digital']);
+            $table->enum('fecha', ['off', 'fecha1', 'fecha2']);
+            $table->enum('frases', ['off', 'on']);
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateBitacoraServicioTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bitacora_servicio');
+        Schema::dropIfExists('componentes');
     }
 }

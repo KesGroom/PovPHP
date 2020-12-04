@@ -40,7 +40,7 @@ class PqrsController extends Controller
         $pqrs->acudiente = Auth::user()->id;
         $pqrs->coordinador = null;
         $pqrs->save();
-        $status = 'Se ha creado una nueva pqrs';
+        $status = 'SwalCreate';
         return back()->with(compact('status'));
     }
 
@@ -83,7 +83,7 @@ class PqrsController extends Controller
         $pqrs->respuesta = $request->respuesta;
         $pqrs->coordinador = Auth::user()->id;
         $pqrs->save();
-        $status = 'Se ha respondido  el pqrs';
+        $status = 'SwalUpdate';
         return back()->with(compact('status'));
     }
 

@@ -190,7 +190,7 @@ class UserController extends Controller
         $usuario->save();
         break;
     }
-    event(new Registered($usuario));
+    // event(new Registered($usuario));
     $status = 'SwalCreate';
     return back()->with(compact('status'));
   }
