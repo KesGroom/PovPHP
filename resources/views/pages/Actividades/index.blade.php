@@ -1,5 +1,15 @@
 @extends('layouts.app')
 @section('content')
+@section('nav')
+@include('layouts.partials.dashNav')
+@endsection
+@if (session('status'))
+@section('script')
+@include('layouts.partials.alerts',[
+'option' => session('status'),
+])
+@endsection
+@endif
 <h1>id : {{$curso}}</h1>
 <h1>curso : {{$tc->curso}}</h1>
 <table class="table">

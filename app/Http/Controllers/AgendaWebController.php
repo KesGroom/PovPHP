@@ -16,7 +16,8 @@ class AgendaWebController extends Controller
         )->get();
         $tc = $request->tc;
         $docente_curso = $request->docente_curso;
-        return view('AgendaWeb.create', compact('estudiante','tc','docente_curso'));
+        $rhp = RolHasPermisoController::rhp();
+        return view('pages.AgendaWeb.create', compact('estudiante','tc','docente_curso','rhp'));
 
     }
     public function store(Request $request){

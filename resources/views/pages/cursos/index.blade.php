@@ -1,3 +1,15 @@
+@extends('layouts.app')
+@section('content')
+@section('nav')
+@include('layouts.partials.dashNav')
+@endsection
+@if (session('status'))
+@section('script')
+@include('layouts.partials.alerts',[
+'option' => session('status'),
+])
+@endsection
+@endif
 <div class="col-md-6">
     @foreach ($cursos as $curso)
         <div class="card mb-2 ">
@@ -25,3 +37,4 @@
 <div class="col-md-6">
     @include('pages.cursos.create')
 </div>
+@endsection

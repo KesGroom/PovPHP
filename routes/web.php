@@ -265,7 +265,7 @@ Route::middleware(['web'])->group(function () {
   //------------------ Rutas para el registro de Agenda web --------------------------------------------------------------------------\\
 
   Route::post('pages/agendaWeb/index', [AgendaWebController::class, 'index'])->name('agendaWeb.index');
-  Route::post('pages/agendaWeb/create', [AgendaWebController::class, 'create'])->name('agendaWeb.create');
+  Route::get('pages/agendaWeb/create', [AgendaWebController::class, 'create'])->name('agendaWeb.create');
   Route::post('pages/agendaWeb', [AgendaWebController::class, 'store'])->name('agendaWeb.store');
   Route::get('pages/agendaWeb/{agenda}/edit', [AgendaWebController::class, 'edit'])->name('agendaWeb.edit');
   Route::put('pages/agendaWeb{agenda}', [AgendaWebController::class, 'update'])->name('agenda.update');
