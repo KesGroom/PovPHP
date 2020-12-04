@@ -59,10 +59,7 @@ class BitacoraServicioController extends Controller
                 return view('pages.bitacora.index', compact('bit', 'salas', 'rhp', 'estu', 'horas'));
             } else {
                 $salas = Sala_servicio::where([['estado', 'Activo'], ['estado_servicio', 'Aceptado']])->orderBy('tiempo_servicio', 'desc')->paginate('7');
-                $bi = DB::table('bitacora_servicio')
-                ->where('estado', 'Activo')
-                ->orderBy('created_at', 'desc')
-                ->get();
+                $bi = Bitacora_servicio::where('estado', 'Activo')->get();
                 return view('pages.bitacora.index', compact('bi', 'salas', 'rhp'));
             }
         } else {
@@ -80,10 +77,7 @@ class BitacoraServicioController extends Controller
             $rhp = RolHasPermisoController::rhp();
             if (Auth::user()->rol != 3) {
                 $salas = Sala_servicio::where([['estado', 'Activo'], ['estado_servicio', 'Aceptado']])->orderBy('tiempo_servicio', 'desc')->paginate('7');
-                $bi = DB::table('bitacora_servicio')
-                ->where([['estado', 'Activo'], ['sala_servicio', $id]])
-                ->orderBy('created_at', 'desc')
-                ->get();
+                $bi = Bitacora_servicio::where([['estado', 'Activo'], ['sala_servicio', $id]])->orderBy('created_at', 'desc')->get();
                 return view('pages.bitacora.index', compact('bi', 'salas', 'rhp'));
             }
         } else {

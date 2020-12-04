@@ -125,13 +125,13 @@ class PermisosSeeder extends Seeder
         $perCit->save();
 
         /* Permisos hijo */
-        // $perRC = new Permiso();
-        // $perRC->nombre = "Registrar cita";
-        // $perRC->name = "Register appointment";
-        // $perRC->url = $url;
-        // $perRC->permiso_padre = $perCit->id;
-        // $perRC->estado = 'Activo';
-        // $perRC->save();
+        $perRC = new Permiso();
+        $perRC->nombre = "Registrar cita";
+        $perRC->name = "Register appointment";
+        $perRC->url = $url;
+        $perRC->permiso_padre = $perCit->id;
+        $perRC->estado = 'Activo';
+        $perRC->save();
       
         $perCC = new Permiso();
         $perCC->nombre = "Consultar citas";
