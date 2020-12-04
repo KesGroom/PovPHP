@@ -9,4 +9,9 @@ class Cita extends Model
 {
     use HasFactory;
     protected $table = 'citas';
+    public function AtencionDeArea()
+    {
+        return $this->belongsTo('App\Models\Atencion_area','atencion_area');
+    }
+   
 }

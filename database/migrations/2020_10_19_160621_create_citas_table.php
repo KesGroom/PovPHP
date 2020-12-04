@@ -16,7 +16,7 @@ class CreateCitasTable extends Migration
         Schema::create('citas', function (Blueprint $table) {
             $table->increments('id');
             $table->enum('estado', ['Activo', 'Inactivo']);
-            $table->date('fecha_cita')->nullable();
+            $table->time('fecha_cita')->nullable();
             $table->text('asunto')->nullable();
             $table->timestamps();
         });

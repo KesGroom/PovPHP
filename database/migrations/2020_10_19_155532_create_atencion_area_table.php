@@ -16,7 +16,7 @@ class CreateAtencionAreaTable extends Migration
         Schema::create('atencion_area', function (Blueprint $table) {
             $table->increments('id');
             $table->enum('estado', ['Activo', 'Inactivo']);
-            $table->integer('diaSemana');
+            $table->string('diaSemana');
             $table->time('hora_inicio_atencion');
             $table->time('hora_final_atencion');
             $table->timestamps();

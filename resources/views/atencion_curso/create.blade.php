@@ -15,19 +15,22 @@
                 </div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('atencion_areas.store') }}"  id="form1">
+                    <form method="POST" action="{{ route('atencion_curso.store') }}"  id="form1">
                         @csrf
                         <div class=" ">
                             <label for="docentes">docentes</label>
                             <select  class="form-control" id="docentes" name="docentes" required onchange="ddlselect();">
                                 @foreach ($docente as $docentes)
-                                <option value="{{$docentes->docente}}">{{$docentes->mate->nombre_materia}}--{{$docentes->usuario->name}}--{{$docentes->cur->curso}}</option>
+                                <option value="{{$docentes->id}}">{{$docentes->name}} {{$docentes->apellido}}
+                                   
+                                </option>
                                 @endforeach
                             </select>
                         </div>
+                        
                         <div class=" ">
                             <label for="Area">Area</label>
-                            <select  class="form-control" id="Area" name="Area" required >
+                            <select  class="form-control selectores" id="Area" name="Area" required >
                              
                             </select>
                         </div>
@@ -92,7 +95,7 @@ function ddlselect(){
        $(document).ready(function(){
    
         $.ajax({
-            url:'DocenteArea',
+            url:"{{route('DocenteCurso.create')}}",
             method:'POST',
             data:{
                 _token:$('input[name=_token]').val(),
@@ -103,9 +106,9 @@ function ddlselect(){
         }).done(function(res){
             var arreglo = JSON.parse(res);
             for(var x= 0;x<arreglo.length;x++){
-                var todo = '<option' + " " + 'value="'+ arreglo[x].id + '"' + '>'+ arreglo[x].nombre_area +'</option>';
-                document.getElementById("Area").innerHTML = todo;
-               $('ContenidoArea').append(todo);
+                var todo = '<option' + " " + 'value="'+ arreglo[x].id + '"' + '>'+ arreglo[x].curso +'</option>';
+            //    var pepe = document.getElementById("Area").innerHTML = todo;
+               $(".selectores").append(todo);
            
             }
             

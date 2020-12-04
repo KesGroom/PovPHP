@@ -15,15 +15,15 @@
                 </div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('citas.storeArea') }}">
+                    <form method="POST" action="{{ route('cursosito.store') }}">
                         @csrf
                         <div class="form-group row">
-                            <label for="fecha_cita" class="col-md-4 col-form-label text-md-right">fecha_cita</label>
+                            <label for="curso" class="col-md-4 col-form-label text-md-right">curso</label>
 
                             <div class="col-md-6">
-                                <input id="fecha_cita" type="date" class="form-control @error('fecha_cita') is-invalid @enderror" name="fecha_cita" value="{{ old('fecha_cita') }}" required autocomplete="fecha_cita" autofocus>
+                                <input id="curso" type="text" class="form-control @error('curso') is-invalid @enderror" name="curso" value="{{ old('curso') }}" required autocomplete="curso" autofocus>
 
-                                @error('fecha_cita')
+                                @error('curso')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -43,21 +43,13 @@
                                 @enderror
                             </div>
                         </div>
-                        <form action="trataformulario.php" method="POST">   
-                            Nombre: <input type="text" name="nombre"><br>   
-                            Apellidos: <input type="text" name="apellidos"><br>   
-                            Email: <input type="text" name="email"> <br>   
-                            Cerveza: <br>   
-                            <select multiple name="cerveza">    
-                            <option value="SanMiguel">San Miguel</option>    
-                            <option value="Mahou">Mahou</option>    
-                            <option value="Heineken">Heineken</option>    
-                            <option value="Carlsberg">Carlsberg</option>    
-                            <option value="Aguila">Aguila</option>   
-                            ...   
-                            </select><br>   
-                            <input type="submit" value="Enviar datos!" > 
-                            </form>
+                        <div class=" ">
+                            <label for="grado">Grado</label>
+                            <select  class="form-control" id="grado" name="grado" required>
+                                @foreach ($grados as $grado)
+                                <option value="{{$grado->id}}">{{$grado->nombre_grado}}<option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">

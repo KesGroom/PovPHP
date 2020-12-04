@@ -14,7 +14,7 @@ class AddForeignKeyCitasTable extends Migration
     public function up()
     {
         Schema::table('citas', function (Blueprint $table) {
-            $table->string('acudiente');
+            $table->string('acudiente')->nullable();
             $table->foreign('acudiente')->references('id')->on('acudientes')
                 ->onDelete('cascade')->onUpdate('cascade');
 
