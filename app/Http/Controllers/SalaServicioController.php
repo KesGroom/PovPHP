@@ -15,7 +15,7 @@ class SalaServicioController extends Controller
     if (!Auth::user()) {
       return WelcomeController::welcome();
     }
-    $validated = PermisoController::validatedPermit('Servicio Social');
+    $validated = PermisoController::validatedPermit('Servicio social');
     if ($validated) {
       if (Auth::user()->rol != 3) {
         $rhp = RolHasPermisoController::rhp();
