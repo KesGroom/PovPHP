@@ -1,4 +1,4 @@
-<div class="footer">
+<div class="footer" style="z-index: 100000;">
     <div class="redes">
         <a href="https://es-la.facebook.com/pages/Colegio-Mar%C3%ADa-Cano-IED/693807994342789" target="_blank" class="red-block facebook">
             <i class="fab fa-facebook-square"></i> Facebook</a>
