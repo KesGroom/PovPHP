@@ -6,18 +6,28 @@ use App\Models\Atencion_curso;
 use App\Models\Docente_curso;
 use Facade\FlareClient\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class AtencionCursoController extends Controller
 {
   public function create()
   {
-    $docente = DB::table('docente_curso')
-      ->join('users', 'docente_curso.docente', '=', 'users.id')
-      ->select('users.id', 'users.name', 'users.apellido')
-      ->groupBy('users.id', 'users.name', 'users.apellido')
-      ->get();
-    return view('pages.atencion_curso.create', compact('docente'));
+    if (!Auth::user()) {
+      return WelcomeController::welcome();
+    }
+    $validated = PermisoController::validatedPermit('Citas');
+    if ($validated) {
+      $rhp = RolHasPermisoController::rhp();
+      $docente = DB::table('docente_curso')
+        ->join('users', 'docente_curso.docente', '=', 'users.id')
+        ->select('users.id', 'users.name', 'users.apellido')
+        ->groupBy('users.id', 'users.name', 'users.apellido')
+        ->get();
+      return view('pages.atencion_curso.create', compact('docente', 'rhp'));
+    } else {
+      return WelcomeController::welcome();
+    }
   }
   public function DocenteCurso(Request $request)
   {
@@ -44,22 +54,39 @@ class AtencionCursoController extends Controller
   }
   public function index()
   {
-    $AtencionCurso =  Atencion_curso::where('estado', 'Activo')
-      ->get();
-    return View('pages.atencion_curso.index', compact('AtencionCurso'));
+    if (!Auth::user()) {
+      return WelcomeController::welcome();
+    }
+    $validated = PermisoController::validatedPermit('Citas');
+    if ($validated) {
+      $rhp = RolHasPermisoController::rhp();
+      $AtencionCurso =  Atencion_curso::where('estado', 'Activo')
+        ->get();
+      return View('pages.atencion_curso.index', compact('AtencionCurso', 'rhp'));
+    } else {
+      return WelcomeController::welcome();
+    }
   }
   public function edit(Atencion_curso $ac)
   {
-    $docente = DB::table('docente_curso')
-      ->join('users', 'docente_curso.docente', '=', 'users.id')
-      ->select('users.id', 'users.name', 'users.apellido')
-      ->groupBy('users.id', 'users.name', 'users.apellido')
-      ->get();
-    return view('pages.atencion_curso.edit', compact('ac', 'docente'));
+    if (!Auth::user()) {
+      return WelcomeController::welcome();
+    }
+    $validated = PermisoController::validatedPermit('Citas');
+    if ($validated) {
+      $rhp = RolHasPermisoController::rhp();
+      $docente = DB::table('docente_curso')
+        ->join('users', 'docente_curso.docente', '=', 'users.id')
+        ->select('users.id', 'users.name', 'users.apellido')
+        ->groupBy('users.id', 'users.name', 'users.apellido')
+        ->get();
+      return view('pages.atencion_curso.edit', compact('ac', 'docente'));
+    } else {
+      return WelcomeController::welcome();
+    }
   }
   public function update(Request $request, Atencion_curso $ac)
   {
-
     $ac->diaSemana = $request->diaSemana;
     $ac->hora_inicio_atencion = $request->hora_inicio_atencion;
     $ac->hora_final_atencion = $request->hora_final_atencion;

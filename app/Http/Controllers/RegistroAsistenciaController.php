@@ -35,7 +35,7 @@ class RegistroAsistenciaController extends Controller
             $registroA->save();
         }
     }
-    
+
     public function index(Request $request)
     {
         $valiable = $request->docente_curso;

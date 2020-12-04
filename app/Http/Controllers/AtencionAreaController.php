@@ -6,6 +6,7 @@ use App\Models\Area;
 use App\Models\Atencion_area;
 use App\Models\Docente_curso;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
@@ -13,9 +14,18 @@ class AtencionAreaController extends Controller
 {
   public function create()
   {
-    $docente = Docente_curso::where('estado', 'Activo')
-      ->get();
-    return view('pages.atencion_areas.create', compact('docente'));
+    if (!Auth::user()) {
+      return WelcomeController::welcome();
+    }
+    $validated = PermisoController::validatedPermit('Citas');
+    if ($validated) {
+      $rhp = RolHasPermisoController::rhp();
+      $docente = Docente_curso::where('estado', 'Activo')
+        ->get();
+      return view('pages.atencion_areas.create', compact('docente', 'rhp'));
+    } else {
+      return WelcomeController::welcome();
+    }
   }
   public function store(Request $request)
   {
@@ -28,9 +38,8 @@ class AtencionAreaController extends Controller
     $atencion_area->docente   = $request->docentes;
     $atencion_area->Area  = $request->Area;
     $atencion_area->save();
-    //   $status = 'Se ha registrado un nuevo acudiente';
-    //   return back()->with(compact('status'));
-
+    $status = 'SwalCreate';
+    return back()->with(compact('status'));
   }
   public function DocenteArea(Request $request)
   {
@@ -49,15 +58,33 @@ class AtencionAreaController extends Controller
   }
   public function index()
   {
-    $AtencionArea =  Atencion_area::where('estado', 'Activo')
-      ->get();
-    return View('pages.atencion_areas.index', compact('AtencionArea'));
+    if (!Auth::user()) {
+      return WelcomeController::welcome();
+    }
+    $validated = PermisoController::validatedPermit('Citas');
+    if ($validated) {
+      $rhp = RolHasPermisoController::rhp();
+      $AtencionArea =  Atencion_area::where('estado', 'Activo')
+        ->get();
+      return View('pages.atencion_areas.index', compact('AtencionArea', 'rhp'));
+    } else {
+      return WelcomeController::welcome();
+    }
   }
   public function edit(Atencion_area $aa)
   {
-    $docente = Docente_curso::where('estado', 'Activo')
-      ->get();
-    return view('pages.atencion_areas.edit', compact('aa', 'docente'));
+    if (!Auth::user()) {
+      return WelcomeController::welcome();
+    }
+    $validated = PermisoController::validatedPermit('Citas');
+    if ($validated) {
+      $rhp = RolHasPermisoController::rhp();
+      $docente = Docente_curso::where('estado', 'Activo')
+        ->get();
+      return view('pages.atencion_areas.edit', compact('aa', 'docente', 'rhp'));
+    } else {
+      return WelcomeController::welcome();
+    }
   }
   public function update(Request $request, Atencion_area $aa)
   {
