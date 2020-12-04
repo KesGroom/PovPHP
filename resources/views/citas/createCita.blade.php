@@ -21,17 +21,29 @@
                         </div>
                     @endif
                 </div>
-
+                <div class="card-body">
+                    @if (session('atecionStatus'))
+                        <div class="alert alert-danger" role="alert">
+                            {{ session('atecionStatus') }}
+                        </div>
+                    @endif
+                </div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('citas.storeArea') }}">
                         @csrf
                         <div>
                             <label for="tipo_atencion">Seleccione tipo de atencion</label>
-                            <select  class="form-control" id="tipo_atencion" name="tipo_atencion" required onchange="ddlselect();">
+                            <select  class="form-control @error('tipo_atencion') is-invalid @enderror" id="tipo_atencion" name="tipo_atencion" required onchange="ddlselect();">
                                 <option value="1">-Seleccione uno-</option>
                                <option value="2">Atencion por area</option>
                                <option value="3">Atencion por curso</option>
+                               @error('tipo_atencion')
+                               <span class="invalid-feedback" role="alert">
+                                   <strong>{{ $message }}</strong>
+                               </span>
+                        @enderror
                             </select>
+                           
                         </div>
                         <div class="form-group row atencionArea" id="Area">
                             <label for="atencion_area">atencion Area</label>
@@ -42,8 +54,11 @@
                             </select>
                         </div>
                         <div class="form-group row atencionCurso" id="curso">
-                            <label for="atencion_curso">atencion curso</label>
-                           Atencion Curso
+                            <label for="atencion_curso">atencion Curso</label>
+                            <select  class="form-control" id="atencion_curso" name="atencion_curso" required >
+                                @foreach ($atencion_curso as $item)
+                                <option value="{{$item->id}}"><strong>hora inicio atencion:</strong>  {{$item->hora_inicio_atencion}} <strong>hora final atencion:</strong>    {{$item->hora_final_atencion}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group row mb-0">
