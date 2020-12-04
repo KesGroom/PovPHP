@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Bitacora_servicio extends Model
 {
     use HasFactory;
-    protected $table = 'Bitacora_servicio';
+    protected $table = 'bitacora_servicio';
 
     public function salaSS(){
         return $this->belongsTo('App\Models\Sala_servicio', 'sala_servicio');
