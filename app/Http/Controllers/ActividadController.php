@@ -10,7 +10,22 @@ use Illuminate\Support\Facades\DB;
 
 class ActividadController extends Controller
 {
-    public function index(Request $request)
+    public function index()
+    {
+        if (!Auth::user()) {
+            return WelcomeController::welcome();
+        }
+        $validated = PermisoController::validatedPermit('Portafolio');
+        if ($validated) {
+            $rhp = RolHasPermisoController::rhp();
+            // $
+            // $Actividad = Actividad::where('docente_curso', )
+            return view('Actividades.index', compact('Actividad', 'curso', 'tc', 'rhp'));
+        } else {
+            return WelcomeController::welcome();
+        }
+    }
+    public function index2(Request $request)
     {
         if (!Auth::user()) {
             return WelcomeController::welcome();

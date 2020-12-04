@@ -257,8 +257,8 @@ Route::middleware(['web'])->group(function () {
 
   //------------------ Rutas para el registro de actividades --------------------------------------------------------------------------\\
 
-  Route::post('pages/actividades/index', [ActividadController::class, 'index'])->name('actividades.index');
-  Route::post('pages/actividades/create', [ActividadController::class, 'create'])->name('actividades.create');
+  Route::get('pages/actividades/index', [ActividadController::class, 'index'])->name('actividades.index');
+  Route::get('pages/actividades/create', [ActividadController::class, 'create'])->name('actividades.create');
   Route::post('pages/actividades', [ActividadController::class, 'store'])->name('actividades.store');
   Route::get('pages/actividades/{actividad}/edit', [ActividadController::class, 'edit'])->name('actividades.edit');
   Route::put('pages/actividades{actividad}', [ActividadController::class, 'update'])->name('actividades.update');
