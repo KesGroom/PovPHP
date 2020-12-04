@@ -13,8 +13,15 @@ return [
     */
 
     'login' => 'Login',
-    'txtQuienes' => 'Who we are?',
-    'txtGaleria' => 'Gallery',
+    'txtQuienes' => 'Our history',
+    'txtGaleria' => 'Mission and vision',
+    'txtSimbolos' => 'Institutional symbols',
+    'txtTituloHistoria' => 'History of institution',
+    'txtHistoria' => 'As of 2004, the Ministry of Education established that due to the great demand for places it was necessary to expand coverage, which is why a leased Headquarters was opened located in a school called "Nuevo Colegio San Isidro", said headquarters to start in operation as an official institution, it was added to the Alfredo Iriarte school for approximately three years. In 2007, the construction of the “El rosal” Headquarters of the Alfredo Iriarte School began, a building projected to be delivered in October of this year with coverage for 3,600 students on both days. In order to move students and provide the best comfort for their teaching and learning process.
+    In January 2008, the D and E headquarters of Alfredo Iriarte became the school created by the SED "Colegio Maria Cano I.E.D", a name that comes from the honor of Maria de los Angeles Cano Marquez.
+    At that time with the direction of the lawyer Pilar Villota Ojeda as rector of the institution, inherent and important aspects for an educational establishment such as school hymn, symbols, uniforms among others, are built for organizational purposes at the headquarters of the neighborhood San José continued to operate the secondary school and the middle school on both days, in Providencia Alta, San Isidro headquarters for early childhood and primary school.
+    In 2010, the robotics project proposal led by teacher Diana Carolina Prada was selected to participate in the national school robotics congress in Corferias, in this same year alliances were established with the Chamber of Commerce, beginning the implementation of the HERMES project through which the coexistence processes have been strengthened under the leadership of the teacher Andrea Espinoza.
+    For the year 2013 in the Saber 11 tests. The school was located at a high level with one of its sessions and began with photography workshops, led by the counselor Daniel Gutierrez. The sports processes were strengthened with the creation of the schools, the basketball led by German Triana Villamil and Victor Angel Garcia began, obtaining significant achievements in the district championships and intercollegiate tests Supérate 2014, 2015, 2016.',
     'txtContactenos' => 'Contact Us',
     'txtDash' => 'Dashboard',
     'txtNoticias' => 'News',
@@ -22,8 +29,8 @@ return [
     'back' => 'Return',
     'logout' => 'Logout',
     'lblMaríaCanoBiography' => 'María Cano Biography',
-    'lblBiografia' => 'María de los Angeles Cano M\u00e1rquez (Medellín 1887-April 26, 1967) La Flor del Trabajo, the first female political leader in Colombia, led the fight for the fundamental civil rights of the population and for the rights of salaried workers; He led the call and agitation of workers strikes, collaborated in the dissemination of socialist ideas and participated in a decessive way in the founding of the Revolutionary Socialist Party.',
-    'lbllegado' => 'His legacy today frames the philosophy and spirit of our institution.',
+    'lblBiografia' => 'The name of the school MARIA CANO I.E.D, comes in honor of a leading woman who fought for the rights of the people, especially women. Her legacy today frames the philosophy and spirit of our institution. María de los Angeles Cano M\u00e1rquez (Medellín 1887-April 26, 1967) La Flor del Trabajo, the first female political leader in Colombia, led the fight for the fundamental civil rights of the population and for the rights of salaried workers; He led the call and agitation of workers strikes, collaborated in the dissemination of socialist ideas and participated in a decessive way in the founding of the Revolutionary Socialist Party.',
+    'lbllegado' => 'sIn 1945, women suffragettes offered her a tribute in Medellín. Recently defeated by Nazism, he said: "A new world emerges today from the epic of freedom, nourished with blood, with tears and with torture. It is a duty to respond to the call of history. We have Colombia to respond. They are growing wider and wider. the horizons of freedom, justice and peace. Today as yesterday, I am a soldier of the world',
     'titleMisión' => 'Mission',
     'txtMission' => 'The María Cano IED school offers a quality education that promotes the integral formation of students starting from interdisciplinarity, where artistic expression and culture gives an added value to the development of communicative, civic, cognitive and social-emotional competences, in such a way that the student is a agent of change in your community, according to your life project.',
     'Vision' => 'Vision',

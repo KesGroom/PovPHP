@@ -54,7 +54,7 @@
 @endguest
 
 <!-- Quienes somos -->
-<div class="seccion" id="Quienes">
+<div class="seccion" id="Biografía María Cano">
     <hr class="separador" />
     <h2 class="tituloSeccionR center-align">{{ __('pov.txtQuienes') }}</h2>
 </div>
@@ -68,6 +68,18 @@
     </p>
     <img src="{{ asset('img/maria-cano-1.jpg') }}" alt="" />
 </div>
+<h3 class="tituloQuienes mt-4">{{ __('pov.txtTituloHistoria') }}</h3>
+
+<div class="biografia">
+    <p>{{ __('pov.txtHistoria') }}
+    </p>
+</div>
+
+
+<div class="seccion mt-4" id="Mision">
+    <h2 class="tituloSeccionL">{{ __('pov.txtGaleria') }}</h2>
+    <div class="separador"></div>
+</div>
 
 <div class="contenedorMV">
     <div class="mision">
@@ -78,6 +90,11 @@
         <h3 class="tituloQuienes">{{ __('pov.Vision') }}</h3>
         <p class="center-align">{{ __('pov.txtVision') }}</p>
     </div>
+</div>
+<br><br><br>
+<div class="seccion" id="Símbolos institucionales">
+    <hr class="separador" />
+    <h2 class="tituloSeccionR center-align">{{ __('pov.txtSimbolos') }}</h2>
 </div>
 
 <h3 class="tituloQuienes mt-4">{{ __('pov.titleAnthem') }}</h3>
@@ -135,18 +152,11 @@
     </div>
 </div>
 
-<div class="seccion mt-4" id="Galeria">
-    <h2 class="tituloSeccionL">{{ __('pov.txtGaleria') }}</h2>
-    <div class="separador"></div>
-</div>
 
-<div class="galeria">
-    <h3 class="text-center mt-4 mb-4">Proximamente</h3>
-</div>
 
 <div class="seccion" id="Contacto">
+    <h3 class="tituloSeccionL">{{ __('pov.txtContactenos') }}</h3>
     <hr class="separador" />
-    <h3 class="tituloSeccionR">{{ __('pov.txtContactenos') }}</h3>
 </div>
 
 <!-- Contactenos -->

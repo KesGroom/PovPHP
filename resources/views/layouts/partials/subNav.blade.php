@@ -2,11 +2,14 @@
 
 </style>
 <div class="enlaces">
-    <a href="#Quienes">
+    <a href="#Biografía María Cano">
         <ion-icon name="people"></ion-icon> {{ __('pov.txtQuienes') }}
     </a>
-    <a href="#Galeria">
-        <ion-icon name="images"></ion-icon> {{ __('pov.txtGaleria') }}
+    <a href="#Mision">
+        <ion-icon name=""></ion-icon> {{ __('pov.txtGaleria') }}
+    </a>
+    <a href="#Símbolos institucionales">
+        <ion-icon name=""></ion-icon> {{ __('pov.txtSimbolos') }}
     </a>
     <a href="#Contacto">
         <ion-icon name="mail"></ion-icon> {{ __('pov.txtContactenos') }}
@@ -14,9 +17,6 @@
     @guest
 
     @else
-        <a href="{{ route('mail.layout') }}">
-            <ion-icon name="newspaper"></ion-icon> {{ __('pov.txtNoticias') }}
-        </a>
         <a href="{{ route('home') }}">
             <ion-icon name="desktop"></ion-icon> {{ __('pov.txtDash') }}
         </a>

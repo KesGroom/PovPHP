@@ -14,8 +14,10 @@ return [
     */
 
     'login' => 'Iniciar sesión',
-    'txtQuienes' => '¿Quiénes somos?',
-    'txtGaleria' => 'Galería',
+    'txtQuienes' => 'Nuestra historia',
+    'txtGaleria' => 'Misión y visión',
+    'txtSimbolos' => 'Símbolos institucionales',
+    'txtTituloHistoria' => 'Historia del Colegio',
     'txtContactenos' => 'Contactenos',
     'txtDash' => 'Panel de control',
     'txtNoticias' => 'Noticias',
@@ -23,8 +25,13 @@ return [
     'back' => 'Regresar',
     'logout' => 'Cerrar Sesión',
     'lblMaríaCanoBiography' => 'Biografía María Cano',
-    'lblBiografia' => 'María de los Angeles Cano Márquez (Medellín 1887-abril 26 de 1967) La flor del Trabajo, primera mujer líder política en Colombía, dirigió  la lucha por los derechos civiles fundamentales de la población y por los  derechos de los trabajadores asalariados; encabezó la convocatoria y   agitación de las huelgas obreras, colaboró en la difusión de las ideas   socialistas y participó en forma decesiva en la fundación del Partido   Socialista Revolucionario.',
-    'lbllegado' => 'Su legado hoy enmarca la filosofía y el espíritu de nuestra institución.',
+    'lblBiografia' => 'El nombre del colegio MARIA CANO I.E.D, viene en honor a una mujer líder que luchó por los derechos de la gente, especialmente de las mujeres. Su legado hoy enmarca la filosofía y el espíritu de nuestra institución. María de los Angeles Cano Márquez (Medellín 1887-abril 26 de 1967) La flor del Trabajo, primera mujer líder política en Colombía, dirigió  la lucha por los derechos civiles fundamentales de la población y por los  derechos de los trabajadores asalariados; encabezó la convocatoria y   agitación de las huelgas obreras, colaboró en la difusión de las ideas   socialistas y participó en forma decesiva en la fundación del Partido   Socialista Revolucionario.',
+    'lbllegado' => 'En 1945, las mujeres sufragistas le ofrecieron un homenaje en Medellín. Recién derrotado el nazismos, dijo: "Un nuevo mundo surge hoy de la epopeya de la libertad, nutrida con sangre, con llanto y con tortura. Es un deber responder al llamado de la historia. Tenemos que Colombia responda. Cada vez son más amplios los horizontesde libertad, de justicia y de paz. hoy como ayer, soy un soldado del mundo"',
+    'txtHistoria' => 'A partir del año 2004, la Secretaría de Educación estableció que bajo la gran demanda de cupos era necesario ampliar la cobertura, motivo por el cual se abrió una Sede en arrendamiento ubicada en un colegio llamado “Nuevo Colegio San Isidro”, dicha sede para iniciar en funcionamiento como institución de carácter oficial, fue agregada al colegio Alfredo Iriarte durante aproximadamente tres años. En el año 2007 inicia la construcción de la Sede “El rosal” del Colegio Alfredo Iriarte, edificación proyectada para ser entregada en octubre de este mismo año con cobertura para 3.600 estudiantes en ambas jornadas. Con el fin de trasladar estudiantes y brindar la mejor comodidad para su proceso de enseñanza y aprendizaje.
+    En enero de 2008 las sedes D y E del Alfredo Iriarte pasan a formar el colegio creado por la SED ”Colegio Maria Cano I.E.D” nombre que proviene en honor  a Maria de los Angeles Cano Marquez.
+    En aquella época con la dirección de la licenciada Pilar Villota Ojeda como rectora de la institución, se construyen aspectos inherentes e importantes para un establecimiento educativo tales como himno del colegio, símbolos, uniformes entre otros, para efectos de organización en la sede de la barrio San José continuo funcionando la basica secundaria y la media en ambas jornadas, en Providencia Alta sede San Isidro primera infancia y básica primaria.
+    En el año 2010 la propuesta del proyecto de robótica liderado por la docente Diana Carolina Prada fue seleccionado para participar en el congreso nacional de robótica escolar en Corferias, en este mismo año se establecen alianzas con la Cámara de Comercio, dando inicio a la implementación del proyecto HERMES a través del cual se a fortalecido los procesos de convivencia bajo el liderazgo de la docente Andrea Espinoza.
+    Para el año 2013 en las pruebas Saber 11. El colegio quedó ubicado en nivel alto con unas de sus jornadas y se inició con talleres de fotografía, liderados por el orientador Daniel Gutierrez. Se fortalecieron los procesos deportivos con la creación de las escuelas, se inicia el baloncesto liderado por German Triana Villamil y Victor Angel Garcia, obteniendo logros significativos en los campeonatos distritales y pruebas de intercolegiados Supérate 2014, 2015, 2016.',
     'titleMisión' => 'Misión',
     'txtMission' => 'El colegio María Cano I.E.D ofrece una educación de calidad que promueve la formación integral de los estudiantes a partir de la interdisciplinariedad, donde la expresión artística y cultura da un valor agregado al desarrollo de las competencias comunicativa, ciudadana, cognitiva y socioemocional, de tal forma que el estudiante sea un agente de cambio en su comunidad, conforme a su proyecto de vida.',
     'Vision' => 'Visión',
@@ -238,4 +245,6 @@ return [
     'txtAnimation' => '¡Continúa así, pronto lo lograrás!',
     'txtHistoryServ' => 'Historial de servicio',
     'txtRegistra' => 'Registrado por',
+
+    'txtPersonalizar' => 'Personalizar',
 ];
