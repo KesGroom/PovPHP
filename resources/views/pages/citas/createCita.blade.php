@@ -1,6 +1,4 @@
-@extends('layouts.app')
 
-@section('content')
 <style>
     .atencionArea{
         visibility: hidden;

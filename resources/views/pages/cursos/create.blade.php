@@ -1,3 +1,4 @@
+
 <div class="card">
     <div class="card-header"><ion-icon name="people" class="mr-4"></ion-icon>{{ __('pov.registerCurso') }}</div>
     <div class="card-body">
