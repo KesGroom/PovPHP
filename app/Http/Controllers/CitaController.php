@@ -15,7 +15,7 @@ class CitaController extends Controller
     public function crearCita(){
       $atencion_area = Atencion_area::where('estado','Activo')->get();
       $atencion_curso = Atencion_curso::where('estado','Activo')->get();
-       return view('citas.createCita', compact('atencion_area','atencion_curso'));
+       return view('pages.citas.createCita', compact('atencion_area','atencion_curso'));
     }
     public function storeArea(Request $request){
      if ($request->tipo_atencion == 1) {
@@ -47,7 +47,7 @@ class CitaController extends Controller
     ['estado', '=', 'Activo'],
     ['atencion_curso', '=', null],
 ])->get();
-      return view('citas.index', compact('citasArea'));
+      return view('pages.citas.index', compact('citasArea'));
       
     }
     public function solitarCita(){
@@ -64,11 +64,11 @@ class CitaController extends Controller
       // $citas_curso = Cita::where('estado','Activo')
       // ->select('fecha_cita','atencion_curso')
       // ->get();
-      return view('citas.solicitar', compact('citas_area'));
+      return view('pages.citas.solicitar', compact('citas_area'));
     }
     public function asuntoCita(Request $request){
       $id_cita = $request->id_cita;
-      return view('citas.asunto',compact('id_cita'));
+      return view('pages.citas.asunto',compact('id_cita'));
     }
     public function AgendarCita(Request $request){
       //Dede haber iniciado sesion con el acudiente 
@@ -90,7 +90,7 @@ class CitaController extends Controller
             ->join('users', 'users.id', '=', 'atencion_area.docente')
             ->select('atencion_area.hora_inicio_atencion','atencion_area.hora_final_atencion','atencion_area.diaSemana','users.name','users.apellido','citas.id')
             ->get();
-      return view('citas.solicitar', compact('citas_area'));
+      return view('pages.citas.solicitar', compact('citas_area'));
     }
     public function reiniciarCitas(Request $request){
       $affected = DB::table('citas')
@@ -105,7 +105,7 @@ class CitaController extends Controller
         ['acudiente',Auth::user()->id],
         ['estado', '=', 'Activo'],
     ])->get();
-       return view('citas.miscitas', compact('citas'));
+       return view('pages.citas.miscitas', compact('citas'));
     }
     
 }
