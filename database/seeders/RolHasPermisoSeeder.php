@@ -161,6 +161,7 @@ class RolHasPermisoSeeder extends Seeder
             $rhp->permiso = $actividad->id;
             $rhp->save();
         }
+        
         $agenda = Permiso::where('permiso_padre', 22)->get();
         $rhp = new Rol_has_permiso();
         $rhp->rol = $acu;

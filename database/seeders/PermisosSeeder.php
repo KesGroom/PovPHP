@@ -125,18 +125,18 @@ class PermisosSeeder extends Seeder
         $perCit->save();
 
         /* Permisos hijo */
-        $perRC = new Permiso();
-        $perRC->nombre = "Registrar cita";
-        $perRC->name = "Register appointment";
-        $perRC->url = $url;
-        $perRC->permiso_padre = $perCit->id;
-        $perRC->estado = 'Activo';
-        $perRC->save();
+        // $perRC = new Permiso();
+        // $perRC->nombre = "Registrar cita";
+        // $perRC->name = "Register appointment";
+        // $perRC->url = $url;
+        // $perRC->permiso_padre = $perCit->id;
+        // $perRC->estado = 'Activo';
+        // $perRC->save();
       
         $perCC = new Permiso();
         $perCC->nombre = "Consultar citas";
         $perCC->name = "Consult appointments";
-        $perCC->url = $url;
+        $perCC->url = $home.'citas/index';
         $perCC->permiso_padre = $perCit->id;
         $perCC->estado = 'Activo';
         $perCC->save();
@@ -221,7 +221,7 @@ class PermisosSeeder extends Seeder
         $perAct = new Permiso();
         $perAct->nombre = "Actividades";
         $perAct->name = "Activities";
-        $perAct->url = $url;
+        $perAct->url = $home.'actividades/index';
         $perAct->permiso_padre = $perPor->id;
         $perAct->estado = 'Activo';
         $perAct->save();
@@ -244,7 +244,7 @@ class PermisosSeeder extends Seeder
         $perRO = new Permiso();
         $perRO->nombre = "Registrar observación";
         $perRO->name = "Record observation";
-        $perRO->url = $url;
+        $perRO->url = $home.'agendaWeb/create';
         $perRO->permiso_padre = $perAge->id;
         $perRO->estado = 'Activo';
         $perRO->save();
@@ -252,7 +252,7 @@ class PermisosSeeder extends Seeder
         $perCO = new Permiso();
         $perCO->nombre = "Consultar observaciones";
         $perCO->name = "Consult observations";
-        $perCO->url = $url;
+        $perCO->url = $home.'agendaWeb/index';
         $perCO->permiso_padre = $perAge->id;
         $perCO->estado = 'Activo';
         $perCO->save();
@@ -274,7 +274,7 @@ class PermisosSeeder extends Seeder
         $perCal = new Permiso();
         $perCal->nombre = "Calificaciones";
         $perCal->name = "Ratings";
-        $perCal->url = $url;
+        $perCal->url = $home.'notas/index';
         $perCal->permiso_padre = $perPla->id;
         $perCal->estado = 'Activo';
         $perCal->save();
@@ -282,7 +282,7 @@ class PermisosSeeder extends Seeder
         $perAsis = new Permiso();
         $perAsis->nombre = "Asistencia";
         $perAsis->name = "Assistance";
-        $perAsis->url = $url;
+        $perAsis->url = $home.'asistencias/index';
         $perAsis->permiso_padre = $perPla->id;
         $perAsis->estado = 'Activo';
         $perAsis->save();

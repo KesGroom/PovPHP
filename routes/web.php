@@ -186,16 +186,16 @@ Route::middleware(['web'])->group(function () {
   Route::get('pages/atencion_curso/{ac}/edit', [AtencionCursoController::class, 'edit'])->name('atencion_ac.edit');
   Route::put('pages/atencion_curso{ac}', [AtencionCursoController::class, 'update'])->name('atencion_ac.update');
   //Routas para citas
-  Route::get('citas/crearCita', [CitaController::class, 'crearCita'])->name('citas.crearCita');
-  Route::get('citas/solitarCita', [CitaController::class, 'solitarCita'])->name('citas.solitarCita');
-  Route::post('citas/reiniciar', [CitaController::class, 'reiniciarCitas'])->name('citas.reiniciarCitas');
-  Route::post('citas/asuntoCita', [CitaController::class, 'asuntoCita'])->name('citas.asuntoCita');
-  Route::post('citas/AgendarCita', [CitaController::class, 'AgendarCita'])->name('citas.AgendarCita');
-  Route::post('citas', [CitaController::class, 'storeArea'])->name('citas.storeArea');
-  Route::get('citas/index', [CitaController::class, 'index'])->name('citas.index');
-  Route::get('citas/miscitas', [CitaController::class, 'miscitas'])->name('citas.miscitas');
-  Route::get('citas/{area}/edit', [CitaController::class, 'edit'])->name('citas.edit');
-  Route::put('citas{area}', [CitaController::class, 'update'])->name('citas.update');
+  Route::get('pages/citas/crearCita', [CitaController::class, 'crearCita'])->name('citas.crearCita');
+  Route::get('pages/citas/solitarCita', [CitaController::class, 'solitarCita'])->name('citas.solitarCita');
+  Route::post('pages/citas/reiniciar', [CitaController::class, 'reiniciarCitas'])->name('citas.reiniciarCitas');
+  Route::post('pages/citas/asuntoCita', [CitaController::class, 'asuntoCita'])->name('citas.asuntoCita');
+  Route::post('pages/citas/AgendarCita', [CitaController::class, 'AgendarCita'])->name('citas.AgendarCita');
+  Route::post('pages/citas', [CitaController::class, 'storeArea'])->name('citas.storeArea');
+  Route::get('pages/citas/index', [CitaController::class, 'index'])->name('citas.index');
+  Route::get('pages/citas/miscitas', [CitaController::class, 'miscitas'])->name('citas.miscitas');
+  Route::get('pages/citas/{area}/edit', [CitaController::class, 'edit'])->name('citas.edit');
+  Route::put('pages/citas{area}', [CitaController::class, 'update'])->name('citas.update');
 
   //--------------------------------------------------------------------------------------------------------------------------\\
 
