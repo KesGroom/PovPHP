@@ -7,6 +7,7 @@ use App\Models\Estudiante;
 use App\Models\Sala_servicio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class BitacoraServicioController extends Controller
 {
@@ -38,14 +39,19 @@ class BitacoraServicioController extends Controller
             if (Auth::user()->rol == 3) {
                 $salas = Sala_servicio::where([['estado', 'Activo'], ['estado_servicio', 'Aceptado'], ['estudiante', Auth::user()->id]])->first();
                 $estu = Estudiante::where('id', Auth::user()->id)->first();
-                $sala = Sala_servicio::where([['estado', 'Activo'], ['estudiante', $estu->id]])->first();
-                $bi = Bitacora_servicio::where([['estado', 'Activo'], ['sala_servicio', $sala->id]])->orderBy('created_at', 'desc')->get();
+                $bit = DB::table('bitacora_servicio')
+                ->join('sala_servicio', 'sala_servicio.id', '=', 'bitacora_servicio.sala_servicio')
+                ->join('users', 'users.id', '=', 'bitacora_servicio.coordinador')
+                ->join('zona_servicio', 'zona_servicio.id', '=', 'sala_servicio.zona_servicio')
+                ->select('bitacora_servicio.*', 'zona_servicio.nombre_zona', 'users.name', 'users.apellido')
+                ->where([['sala_servicio.estado', 'Activo'], ['bitacora_servicio.estado', 'Activo'], ['sala_servicio.estudiante', Auth::user()->id]])
+                ->get();
                 $restante = 120 - $estu->tiempo_servicio;
                 $horas = [
-                    'prestado' => $estu->tiempo_servicio,
-                    'restante' => $restante
+                    $estu->tiempo_servicio,
+                    $restante
                 ];
-                return view('pages.bitacora.index', compact('bi', 'salas', 'rhp', 'estu', 'horas'));
+                return view('pages.bitacora.index', compact('bit', 'salas', 'rhp', 'estu', 'horas'));
             } else {
                 $salas = Sala_servicio::where([['estado', 'Activo'], ['estado_servicio', 'Aceptado']])->orderBy('tiempo_servicio', 'desc')->paginate('7');
                 $bi = Bitacora_servicio::where([['estado', 'Activo']])->orderBy('created_at', 'desc')->get();

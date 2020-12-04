@@ -48,7 +48,8 @@
                         @endif
                         <div class="card-text"><i class="fas fa-people-carry mr-2"></i>{{ $zona->nombre_zona }}</div>
                         <div class="card-text"><b><i class="fas fa-stopwatch mr-2"></i>{{ $zona->tiempo_servicio }}
-                                {{ __('pov.txtHrsService') }}</b></div>
+                                {{ __('pov.txtHrsService') }}</b>
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="card-text">
@@ -95,84 +96,84 @@
                         @endif
                     </div>
                 </div>
-            @empty
-                <div class="card" style="width: 100%;">
-                    <div class="card-body displayRowCC">
-                        <h5 class="card-title displayRowCC">
-                            <ion-icon style="font-size: 1.5em; color: rgb(230, 175, 57);" name="alert-circle-outline"
-                                class="mr-2">
-                            </ion-icon>{{ __('pov.noExistZone') }}
-                        </h5>
-                    </div>
+            </div>
+        @empty
+            <div class="card" style="width: 100%;">
+                <div class="card-body displayRowCC">
+                    <h5 class="card-title displayRowCC">
+                        <ion-icon style="font-size: 1.5em; color: rgb(230, 175, 57);" name="alert-circle-outline" class="mr-2">
+                        </ion-icon>{{ __('pov.noExistZone') }}
+                    </h5>
                 </div>
-            @endforelse
-        </div>
+            </div>
+        @endforelse
+    </div>
 
-        @break
-        @case('true')
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-text"><i class="fas fa-hourglass-half mr-2"></i>{{ __('pov.txtPostPro') }}
-                        </div>
+    @break
+    @case('true')
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-text"><i class="fas fa-hourglass-half mr-2"></i>{{ __('pov.txtPostPro') }}
                     </div>
-                    <div class="card-body">
-                        <div class="card-text">
-                            {{ __('pov.prrPosP1') }} <b>{{ $PV->zonaSS->nombre_zona }}</b>
-                            {{ __('pov.prrPosP2') }} {{ date('d', strtotime($PV->created_at)) }}
-                            {{ __('pov.prrPosP3') }}
-                            {{ date('m', strtotime($PV->created_at)) }}
-                            {{ __('pov.prrPosP4') }}
-                            <br>
-                            <br>
-                            {{ __('pov.prrPosP5') }}
-                        </div>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">
+                        {{ __('pov.prrPosP1') }} <b>{{ $PV->zonaSS->nombre_zona }}</b>
+                        {{ __('pov.prrPosP2') }} {{ date('d', strtotime($PV->created_at)) }}
+                        {{ __('pov.prrPosP3') }}
+                        {{ date('m', strtotime($PV->created_at)) }}
+                        {{ __('pov.prrPosP4') }}
+                        <br>
+                        <br>
+                        {{ __('pov.prrPosP5') }}
                     </div>
                 </div>
             </div>
         </div>
-        @break
-        @case('service')
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-text"><i class="fas fa-people-carry mr-2"></i>No puede aplicar a ninguna zona
-                            actualmente
-                        </div>
+    </div>
+    @break
+    @case('service')
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-text"><i class="fas fa-people-carry mr-2"></i>No puede aplicar a ninguna zona
+                        actualmente
                     </div>
-                    <div class="card-body">
-                        <div class="card-text">
-                            Usted se encuentra en servicio actualmente por lo que no puede aplicar a otras zonas de
-                            servicio,
-                            culminado su servicio se le reestablecerá el acceso a esta página.
-                        </div>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">
+                        Usted se encuentra en servicio actualmente por lo que no puede aplicar a otras zonas de
+                        servicio,
+                        culminado su servicio se le reestablecerá el acceso a esta página.
                     </div>
-                    <div class="mt-2">
-                        <a href="{{ route('bitacora.index') }}" class="btn btn-MC btn-footer">{{ __('pov.txtVerBita') }}</a>
-                    </div>
+                </div>
+                <div class="mt-2">
+                    <a href="{{ route('bitacora.index') }}" class="btn btn-MC btn-footer">{{ __('pov.txtVerBita') }}</a>
                 </div>
             </div>
         </div>
-        @break
-        @default
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-text"><i class="fas fa-people-carry mr-2"></i>No puede aplicar a ninguna zona
-                            actualmente
-                        </div>
+    </div>
+    @break
+    @default
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-text"><i class="fas fa-people-carry mr-2"></i>No puede aplicar a ninguna zona
+                        actualmente
                     </div>
-                    <div class="card-body">
-                        <div class="card-text">
+                </div>
+                <div class="card-body">
+                    <div class="card-text">
 
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    @endswitch
+    </div>
+@endswitch
 </div>
 @endsection
