@@ -6,10 +6,10 @@
         <ion-icon name="people"></ion-icon> {{ __('pov.txtQuienes') }}
     </a>
     <a href="#Mision">
-        <ion-icon name=""></ion-icon> {{ __('pov.txtGaleria') }}
+        <ion-icon name="document-text"></ion-icon> {{ __('pov.txtGaleria') }}
     </a>
     <a href="#Símbolos institucionales">
-        <ion-icon name=""></ion-icon> {{ __('pov.txtSimbolos') }}
+        <ion-icon name="school"></ion-icon> {{ __('pov.txtSimbolos') }}
     </a>
     <a href="#Contacto">
         <ion-icon name="mail"></ion-icon> {{ __('pov.txtContactenos') }}
